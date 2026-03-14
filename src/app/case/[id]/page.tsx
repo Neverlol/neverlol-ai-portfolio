@@ -146,6 +146,9 @@ export default function CaseDetailPage() {
                 <rect x="62" y="22" width="10" height="32" fill="url(#caseAvatarRightBarFade)" />
                 <polygon points="28,22 38,22 72,78 62,78" fill="url(#caseAvatarDiagFade)" />
               </svg>
+              <span className="cursor-blink absolute right-1.5 top-[55%] -translate-y-1/2">
+                <span className="font-mono text-[10px] text-[#0066FF]">_</span>
+              </span>
             </div>
             <div className="flex-1">
               <div className="text-white font-medium">Neverlol</div>
