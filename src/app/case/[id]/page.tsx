@@ -115,8 +115,37 @@ export default function CaseDetailPage() {
           className="mb-6 pb-6 border-b border-white/5"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10">
-              <img src="/logo.svg" alt="Neverlol" className="w-full h-full object-cover" />
+            <div className="relative flex items-center justify-center w-12 h-12 bg-black border border-white/20 rounded-full overflow-hidden">
+              <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes blink {
+                  0%, 50% { opacity: 1; }
+                  51%, 100% { opacity: 0; }
+                }
+                .cursor-blink {
+                  animation: blink 1s step-end infinite;
+                }
+              `}} />
+              <span className="font-mono font-bold text-xs text-[#0066FF] absolute left-1 top-1/2 -translate-y-1/2">{'>'}</span>
+              <svg viewBox="0 0 100 100" className="w-7 h-7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="caseAvatarLeftBarGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="100%" stopColor="#dddddd" />
+                  </linearGradient>
+                  <linearGradient id="caseAvatarRightBarFade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#eeeeee" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#eeeeee" stopOpacity="0.5" />
+                  </linearGradient>
+                  <linearGradient id="caseAvatarDiagFade" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                    <stop offset="60%" stopColor="#eeeeee" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#cccccc" stopOpacity="0.6" />
+                  </linearGradient>
+                </defs>
+                <rect x="28" y="22" width="10" height="56" fill="url(#caseAvatarLeftBarGrad)" />
+                <rect x="62" y="22" width="10" height="32" fill="url(#caseAvatarRightBarFade)" />
+                <polygon points="28,22 38,22 72,78 62,78" fill="url(#caseAvatarDiagFade)" />
+              </svg>
             </div>
             <div className="flex-1">
               <div className="text-white font-medium">Neverlol</div>
