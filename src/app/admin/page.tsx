@@ -9,10 +9,15 @@ import type { Project, EvolutionLog } from "@/lib/database.types";
 import { useRouter } from "next/navigation";
 import {
   Plus, Trash2, Save, ArrowLeft, LogOut, FolderOpen, GitCommit,
-  Zap, BookOpen, Activity, GraduationCap, Radio, Search, X, Image, Eye, Edit3
+  Zap, BookOpen, Activity, GraduationCap, Radio, Search, X, Image, Eye, Edit3, LayoutGrid, Network
 } from "lucide-react";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { HandDrawnTag } from "@/components/HandDrawn";
+import { initialNodes as capabilityNodes, initialEdges as capabilityEdges, nodeTypes as capabilityNodeTypes } from "@/components/CapabilityFlowCanvas";
+import { initialNodes as campaignsNodes, initialEdges as campaignsEdges, nodeTypes as campaignsNodeTypes, edgeTypes as campaignsEdgeTypes } from "@/components/CampaignFlowCanvas";
+import CampaignFlowCanvas from "@/components/CampaignFlowCanvas";
+import CapabilityFlowCanvas from "@/components/CapabilityFlowCanvas";
+import SandboxEditor from "@/components/SandboxEditor";
 
 // Project icons
 const iconOptions = [
@@ -62,7 +67,7 @@ const emptyLog = (): Omit<EvolutionLog, 'id' | 'created_at' | 'updated_at'> => (
   type: "milestone",
 });
 
-type Tab = "projects" | "logs";
+type Tab = "projects" | "logs" | "campaigns" | "capability";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -831,6 +836,28 @@ export default function AdminPage() {
             <GitCommit className="w-4 h-4" />
             进化日志 ({logs.length})
           </button>
+          <button
+            onClick={() => setActiveTab("campaigns")}
+            className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${
+              activeTab === "campaigns"
+                ? "text-white border-[#245fff]"
+                : "text-[#a3a3a3] border-transparent hover:text-white"
+            }`}
+          >
+            <LayoutGrid className="w-4 h-4" />
+            Campaigns 沙盘
+          </button>
+          <button
+            onClick={() => setActiveTab("capability")}
+            className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${
+              activeTab === "capability"
+                ? "text-white border-[#245fff]"
+                : "text-[#a3a3a3] border-transparent hover:text-white"
+            }`}
+          >
+            <Network className="w-4 h-4" />
+            Capability 沙盘
+          </button>
         </div>
 
         {/* Content */}
@@ -887,7 +914,7 @@ export default function AdminPage() {
               <div className="text-center py-12 text-[#a3a3a3]">暂无案例，点击「新增案例」添加</div>
             )}
           </>
-        ) : (
+        ) : activeTab === "logs" ? (
           <>
             <div className="flex justify-end mb-4">
               <button
@@ -948,7 +975,44 @@ export default function AdminPage() {
               <div className="text-center py-12 text-[#a3a3a3]">暂无日志，点击「新增日志」添加</div>
             )}
           </>
-        )}
+        ) : activeTab === "campaigns" ? (
+          <>
+            <div className="mb-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+              <p className="text-blue-400 text-sm">
+                <LayoutGrid className="w-4 h-4 inline mr-2" />
+                在此编辑 Campaigns 业务全景蓝图沙盘。支持拖拽节点、编辑内容、添加连线、保存配置等功能。
+              </p>
+            </div>
+            <div className="h-[calc(100vh-300px)] min-h-[600px] border border-white/10 rounded-xl overflow-hidden">
+              <SandboxEditor
+                configId="campaigns"
+                name="Campaigns 业务全景图"
+                initialNodes={campaignsNodes}
+                initialEdges={campaignsEdges}
+                nodeTypes={campaignsNodeTypes}
+                edgeTypes={campaignsEdgeTypes}
+              />
+            </div>
+          </>
+        ) : activeTab === "capability" ? (
+          <>
+            <div className="mb-4 p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+              <p className="text-purple-400 text-sm">
+                <Network className="w-4 h-4 inline mr-2" />
+                在此编辑 Capability 能力引擎沙盘。支持拖拽节点、编辑内容、添加连线、保存配置等功能。
+              </p>
+            </div>
+            <div className="h-[calc(100vh-300px)] min-h-[600px] border border-white/10 rounded-xl overflow-hidden">
+              <SandboxEditor
+                configId="capability"
+                name="Capability 能力引擎"
+                initialNodes={capabilityNodes}
+                initialEdges={capabilityEdges}
+                nodeTypes={capabilityNodeTypes}
+              />
+            </div>
+          </>
+        ) : null}
       </div>
     </div>
   );
