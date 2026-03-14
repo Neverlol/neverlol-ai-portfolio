@@ -68,7 +68,7 @@ export default function PipelineTeaser() {
 
         {/* 5. 幽灵 CTA 按钮 */}
         <button
-          onClick={() => router.push('/cases')}
+          onClick={() => router.push('/campaigns')}
           className="relative z-20 mt-20 group flex items-center gap-2 px-6 py-3 rounded-xl bg-black border border-white/20 text-sm font-medium text-gray-300 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-300"
         >
           <svg className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
