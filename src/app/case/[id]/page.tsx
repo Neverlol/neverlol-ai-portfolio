@@ -10,6 +10,7 @@ import type { Project, Comment } from "@/lib/database.types";
 import { useAuth } from "@/lib/useAuth";
 import { ArticleNav, ArticleNavMobile } from "@/components/ArticleNav";
 import { HandDrawnTag } from "@/components/HandDrawn";
+import { Header } from "@/components/Header";
 
 const iconMap: Record<string, React.ElementType> = {
   Zap, BookOpen, Activity, GraduationCap, Radio,
@@ -100,25 +101,13 @@ export default function CaseDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#0D1117] pb-20 md:pb-0">
+      <Header />
+
       {/* Glassmorphism Navigation */}
       <ArticleNav />
       <ArticleNavMobile />
 
-      {/* Header */}
-      <div className="border-b border-white/5 bg-[#0D1117]/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button onClick={() => router.push("/#portfolio")} className="flex items-center gap-2 text-[#a3a3a3] hover:text-white transition-colors">
-            <ArrowLeft className="w-4 h-4" /> 返回作品集
-          </button>
-          {user && (
-            <button onClick={() => router.push("/admin")} className="text-sm text-[#a3a3a3] hover:text-white transition-colors">
-              管理后台
-            </button>
-          )}
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-6 py-12 pt-28">
         {/* WeChat Public Account Style Meta */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,8 +115,8 @@ export default function CaseDetailPage() {
           className="mb-6 pb-6 border-b border-white/5"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#245fff] to-[#8b5cf6] flex items-center justify-center text-white font-semibold text-lg">
-              N
+            <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10">
+              <img src="/logo.svg" alt="Neverlol" className="w-full h-full object-cover" />
             </div>
             <div className="flex-1">
               <div className="text-white font-medium">Neverlol</div>
