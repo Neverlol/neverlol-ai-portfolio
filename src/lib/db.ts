@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase'
-import type { Project, EvolutionLog, Comment } from '@/lib/database.types'
+import type { Project, EvolutionLog, Comment, SandboxConfig } from '@/lib/database.types'
 
 // 创建 Supabase 客户端单例
 let supabase: ReturnType<typeof createClient> | null = null
@@ -271,4 +271,105 @@ export async function deleteComment(id: string): Promise<boolean> {
   }
 
   return true
+}
+
+// ==================== Consulting Leads (漏斗收口) ====================
+
+export interface ConsultingLead {
+  id?: string;
+  contact_info: string;
+  bottleneck_type: string;
+  business_desc?: string;
+  status?: string;
+  created_at?: string;
+}
+
+export async function submitConsultingLead(lead: Omit<ConsultingLead, 'id' | 'created_at' | 'status'>): Promise<boolean> {
+  const supabase = getSupabase()
+  const { error } = await supabase
+    .from('consulting_leads')
+    .insert([{
+      ...lead,
+      status: 'pending'
+    }])
+
+  if (error) {
+    console.error('Error submitting consulting lead:', error)
+    return false
+  }
+
+  return true
+}
+
+// ==================== Sandbox Configs 操作 ====================
+
+export async function getSandboxConfig(id: string): Promise<SandboxConfig | null> {
+  const supabase = getSupabase()
+  const { data, error } = await supabase
+    .from('sandbox_configs')
+    .select('*')
+    .eq('id', id)
+    .single()
+
+  if (error) {
+    console.error('Error fetching sandbox config:', error)
+    return null
+  }
+
+  return {
+    ...data,
+    nodes_json: typeof data.nodes_json === 'string' ? JSON.parse(data.nodes_json) : data.nodes_json,
+    edges_json: typeof data.edges_json === 'string' ? JSON.parse(data.edges_json) : data.edges_json,
+  } as SandboxConfig
+}
+
+export async function saveSandboxConfig(id: string, config: { name: string; nodes_json: unknown[]; edges_json: unknown[] }): Promise<SandboxConfig | null> {
+  const supabase = getSupabase()
+
+  // 先尝试更新，如果不存在则插入
+  const { data: existing } = await supabase
+    .from('sandbox_configs')
+    .select('id')
+    .eq('id', id)
+    .single()
+
+  if (existing) {
+    // 更新
+    const { data, error } = await supabase
+      .from('sandbox_configs')
+      .update({
+        name: config.name,
+        nodes_json: config.nodes_json,
+        edges_json: config.edges_json,
+      })
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error updating sandbox config:', error)
+      return null
+    }
+
+    return data as SandboxConfig
+  } else {
+    // 插入
+    const { data, error } = await supabase
+      .from('sandbox_configs')
+      .insert([{
+        id,
+        name: config.name,
+        nodes_json: config.nodes_json,
+        edges_json: config.edges_json,
+      }])
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error creating sandbox config:', error)
+      return null
+    }
+
+    return data as SandboxConfig
+  }
 }

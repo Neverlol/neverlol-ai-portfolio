@@ -101,3 +101,31 @@ CREATE TRIGGER update_evolution_logs_updated_at BEFORE UPDATE ON evolution_logs
 -- 10. 创建索引以提升查询性能
 CREATE INDEX IF NOT EXISTS idx_projects_created_at ON projects(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_evolution_logs_date ON evolution_logs(date DESC);
+
+-- 11. 创建沙盘配置表 (Sandbox Configs)
+CREATE TABLE IF NOT EXISTS sandbox_configs (
+  id TEXT PRIMARY KEY,  -- 'campaigns' 或 'capability'
+  name TEXT NOT NULL,
+  nodes_json JSONB DEFAULT '[]'::jsonb,
+  edges_json JSONB DEFAULT '[]'::jsonb,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 12. 启用 RLS
+ALTER TABLE sandbox_configs ENABLE ROW LEVEL SECURITY;
+
+-- 13. 创建策略
+CREATE POLICY "Enable read access for all users" ON sandbox_configs
+  FOR SELECT USING (true);
+
+CREATE POLICY "Enable insert for authenticated users" ON sandbox_configs
+  FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+
+CREATE POLICY "Enable update for authenticated users" ON sandbox_configs
+  FOR UPDATE USING (auth.role() = 'authenticated');
+
+-- 14. 添加自动更新触发器
+DROP TRIGGER IF EXISTS update_sandbox_configs_updated_at ON sandbox_configs;
+CREATE TRIGGER update_sandbox_configs_updated_at BEFORE UPDATE ON sandbox_configs
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();

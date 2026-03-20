@@ -48,3 +48,13 @@ export interface Comment {
 export type ProjectRow = Project
 export type EvolutionLogRow = EvolutionLog
 export type CommentRow = Comment
+
+// Sandbox Configs 表的类型定义
+export interface SandboxConfig {
+  id: string;  // 'campaigns' 或 'capability'
+  name: string;
+  nodes_json: unknown[];
+  edges_json: unknown[];
+  created_at: string;
+  updated_at: string;
+}

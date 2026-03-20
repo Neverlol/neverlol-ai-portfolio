@@ -154,9 +154,9 @@ export const EVOLUTION_LOGS = [
 ];
 
 export const NAV_ITEMS = [
-  { label: "作品集", href: "#portfolio" },
-  { label: "实验室", href: "#lab" },
-  { label: "关于我", href: "#about" },
+  { label: "核心战役", href: "/#portfolio" },
+  { label: "能力引擎", href: "/#about" },
+  { label: "Build in Public", href: "/build-in-public" },
 ];
 
 export const ABOUT_CONTENT = {

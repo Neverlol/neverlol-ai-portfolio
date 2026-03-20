@@ -18,6 +18,8 @@ const typeConfig = {
   project: { icon: Zap, color: "text-orange-400", bg: "bg-orange-500/10", border: "border-orange-500/20", label: "项目" },
 };
 
+import { Header } from "@/components/Header";
+
 export default function LogDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -104,25 +106,13 @@ export default function LogDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#0D1117] pb-20 md:pb-0">
+      <Header />
+      
       {/* Glassmorphism Navigation */}
       <ArticleNav />
       <ArticleNavMobile />
 
-      {/* Header */}
-      <div className="border-b border-white/5 bg-[#0D1117]/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button onClick={() => router.push("/")} className="flex items-center gap-2 text-[#a3a3a3] hover:text-white transition-colors">
-            <ArrowLeft className="w-4 h-4" /> 返回首页
-          </button>
-          {user && (
-            <button onClick={() => router.push("/admin")} className="text-sm text-[#a3a3a3] hover:text-white transition-colors">
-              管理后台
-            </button>
-          )}
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-6 py-12 pt-28">
         {/* WeChat Public Account Style Meta */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -130,8 +120,40 @@ export default function LogDetailPage() {
           className="mb-6 pb-6 border-b border-white/5"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#245fff] to-[#8b5cf6] flex items-center justify-center text-white font-semibold text-lg">
-              N
+            <div className="relative flex items-center justify-center w-12 h-12 bg-black border border-white/20 rounded-full overflow-hidden">
+              <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes blink {
+                  0%, 50% { opacity: 1; }
+                  51%, 100% { opacity: 0; }
+                }
+                .cursor-blink {
+                  animation: blink 1s step-end infinite;
+                }
+              `}} />
+              <span className="font-mono font-bold text-xs text-[#0066FF] absolute left-1 top-1/2 -translate-y-1/2">{'>'}</span>
+              <svg viewBox="0 0 100 100" className="w-7 h-7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="avatarLeftBarGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#ffffff" />
+                    <stop offset="100%" stopColor="#dddddd" />
+                  </linearGradient>
+                  <linearGradient id="avatarRightBarFade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#eeeeee" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#eeeeee" stopOpacity="0.5" />
+                  </linearGradient>
+                  <linearGradient id="avatarDiagFade" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                    <stop offset="60%" stopColor="#eeeeee" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#cccccc" stopOpacity="0.6" />
+                  </linearGradient>
+                </defs>
+                <rect x="28" y="22" width="10" height="56" fill="url(#avatarLeftBarGrad)" />
+                <rect x="62" y="22" width="10" height="32" fill="url(#avatarRightBarFade)" />
+                <polygon points="28,22 38,22 72,78 62,78" fill="url(#avatarDiagFade)" />
+              </svg>
+              <span className="cursor-blink absolute right-1.5 top-[55%] -translate-y-1/2">
+                <span className="font-mono text-[10px] text-[#0066FF]">_</span>
+              </span>
             </div>
             <div className="flex-1">
               <div className="text-white font-medium">Neverlol</div>

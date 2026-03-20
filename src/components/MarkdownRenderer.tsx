@@ -281,23 +281,13 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
     },
 
     p(props: any) {
-      const { children, ...rest } = props;
-      if (children && Array.isArray(children) && children.length === 1) {
-        const child = children[0];
-        if (child?.type === 'a' && child?.props?.href && isYouTubeUrl(child.props.href)) {
-          const childText = String(child.props.children || '').toLowerCase().trim();
-          if (childText === 'youtube') {
-            return <YouTubeEmbed url={child.props.href} />;
-          }
-        }
-      }
-      return <p {...rest}>{children}</p>;
+      const { node, children, ...rest } = props;
+      return <div className="mb-4 leading-relaxed text-[#c9d1d9] my-5" {...rest}>{children}</div>;
     },
   };
 
   return (
     <>
-      <TableOfContents headings={headings} activeId={activeHeading} />
       <div
         className="prose prose-invert prose-blue max-w-none
         prose-headings:text-white prose-headings:font-semibold
