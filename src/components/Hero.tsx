@@ -23,26 +23,17 @@ export function Hero() {
         <div className="relative z-20 flex flex-col items-center text-center mt-8 md:mt-12 mb-12 pointer-events-auto">
           <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">Agentic CRO Architect</span>
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">前58同城大区运营操盘手</span>
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            <span className="text-white block">告别业务盲盒，</span>
-            <span className="text-blue-500 block">拿回全盘掌控力。</span>
+            <span className="text-white block">年营收过亿的业务全链路，</span>
+            <span className="text-blue-500 block">小微团队怎么Copy？</span>
           </h1>
 
-          <p className="text-gray-500 max-w-xl text-sm md:text-base font-medium leading-relaxed mb-6">
-            前58同城大区运营负责人。懂业务博弈，更懂技术落地。以数据与AI为基石，打造精准、透明、自动化的企业级增长引擎。
+          <p className="text-gray-500 max-w-xl text-sm md:text-base font-medium leading-relaxed mb-0">
+            基于大厂增长体系的底层逻辑，提炼出核心技能。通过 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 自动运转，人只负责成交环节的关键决策。
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button className="px-6 py-2.5 rounded-md bg-white text-black text-sm font-semibold hover:bg-gray-200 transition-colors">
-              预约 15 分钟漏斗诊断
-            </button>
-            <button className="px-6 py-2.5 rounded-md bg-black border border-white/20 text-gray-400 text-sm font-medium hover:bg-white/5 hover:text-white transition-colors">
-              查看核心战役与 ROI
-            </button>
-          </div>
         </div>
 
         {/* 3. 动态数据雷达层 (垫在文字后方，曲线从标题下方开始) */}
@@ -66,7 +57,7 @@ export function Hero() {
               </div>
               {/* 绝对固定标签 */}
               <div className="absolute left-[20%] top-[40%] bg-[#0a0a0a] border border-[#333] text-[#888] font-mono text-[10px] px-2 py-0.5 rounded shadow-lg backdrop-blur-md">
-                WHERE <span className="text-blue-400">cache='hit'</span>
+                LEADS <span className="text-blue-400">(商机)</span>
               </div>
             </div>
 
@@ -78,7 +69,7 @@ export function Hero() {
               </div>
               {/* 绝对固定标签 */}
               <div className="absolute left-[55%] top-[25%] bg-[#0a0a0a] border border-[#333] text-[#888] font-mono text-[10px] px-2 py-0.5 rounded shadow-lg backdrop-blur-md">
-                GROUP BY <span className="text-emerald-400">source_path</span>
+                CLOSED <span className="text-emerald-400">(成交)</span>
               </div>
             </div>
 
@@ -90,7 +81,7 @@ export function Hero() {
               </div>
               {/* 绝对固定标签 */}
               <div className="absolute left-[75%] top-[40%] bg-[#1a0505] border border-red-900/50 text-[#888] font-mono text-[10px] px-2 py-0.5 rounded shadow-lg backdrop-blur-md">
-                <span className="text-red-500 font-bold">ANOMALY DETECTED</span>
+                RENEWAL <span className="text-red-500 font-bold">(续费)</span>
               </div>
             </div>
           </div>
@@ -99,35 +90,41 @@ export function Hero() {
         {/* 4. 底部商业引擎卡片层 (强化内容，完美融入网格) */}
         <div className="relative z-20 w-full grid grid-cols-1 md:grid-cols-3 gap-0 mt-auto pt-12 pb-4">
           <div className="px-8 flex flex-col justify-start">
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">全天候异动归因</h3>
+            <div className="text-[10px] text-blue-400 uppercase tracking-wider mb-2">获客</div>
+            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">智能获客</h3>
             <p className="text-[#888] text-sm leading-relaxed mb-4">
-              业绩异常，分钟级定位原因。告别 T+7 拉 Excel 找问题的石器时代，让数据异常无所遁形。
+              多渠道线索自动聚合，智能清洗去重，自动录入CRM。销售只跟进有价值的客户。
             </p>
-            <div className="text-xs font-mono text-gray-500 mt-auto flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full inline-block"></span>
-              99.7% 异常捕获率
+            <div className="flex flex-wrap gap-2 mt-auto">
+              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">多渠道线索聚合</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">智能清洗去重</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">自动录入CRM</span>
             </div>
           </div>
 
           <div className="px-8 flex flex-col justify-start">
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">线索动态分层引擎</h3>
+            <div className="text-[10px] text-purple-400 uppercase tracking-wider mb-2">跟进</div>
+            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">AI跟进策略引擎</h3>
             <p className="text-[#888] text-sm leading-relaxed mb-4">
-              高意向线索秒级路由到 Top 销售。通过机器学习模型动态算分，将资源倾斜给最高潜力的客群。
+              基于客户画像分层，AI实时推送跟进策略。告诉销售该联系谁、说什么、遇到问题怎么办。
             </p>
-            <div className="text-xs font-mono text-gray-500 mt-auto flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block"></span>
-              3.2x 转化效率
+            <div className="flex flex-wrap gap-2 mt-auto">
+              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">客户画像分层</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">跟进策略推送</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">实时话术指导</span>
             </div>
           </div>
 
           <div className="px-8 flex flex-col justify-start">
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">沉默客源 AI 激活</h3>
+            <div className="text-[10px] text-emerald-400 uppercase tracking-wider mb-2">复购</div>
+            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">客户价值守护</h3>
             <p className="text-[#888] text-sm leading-relaxed mb-4">
-              历史沉淀的"死线索"，通过 AI 外呼与自动营销流进行清洗触达，无需额外投放即可榨取剩余价值。
+              监控客户生命周期，发现流失预警自动提醒。帮助销售在最恰当的时机激活沉睡客户。
             </p>
-            <div className="text-xs font-mono text-gray-500 mt-auto flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-red-500 rounded-full inline-block"></span>
-              +18% 唤醒率
+            <div className="flex flex-wrap gap-2 mt-auto">
+              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">流失预警监控</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">续费时机提醒</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">适时激活</span>
             </div>
           </div>
         </div>

@@ -80,7 +80,7 @@ export function Header() {
           )}
         </motion.div>
 
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-1">
           {NAV_ITEMS.map((item, index) => (
             <motion.a
               key={item.label}
@@ -88,8 +88,10 @@ export function Header() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * (index + 1) + 0.3 }}
-              className="text-sm text-[#8b949e] hover:text-white transition-colors duration-200"
+              className="group relative flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-mono tracking-wider text-gray-500 hover:text-gray-200 hover:bg-white/5 transition-all duration-200 border border-transparent hover:border-white/10"
             >
+              {/* 脉冲点 */}
+              <div className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-blue-500 transition-colors duration-200" />
               {item.label}
             </motion.a>
           ))}

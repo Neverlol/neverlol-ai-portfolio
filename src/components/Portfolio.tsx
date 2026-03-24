@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, Target, Users, TrendingUp, ShieldCheck, Eye, AlertTriangle, Gauge, Package, ArrowRight } from "lucide-react";
+import { Activity, Eye, AlertTriangle, Package, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const BENTO_CASES = [
@@ -9,8 +9,9 @@ const BENTO_CASES = [
     id: "case-1",
     title: "人效提升：物理级强控生命线",
     metric: "人效整体拉升",
-    subtext: "废除销售主观汇报意向，建立 0% 至 100% 的硬性行为进阶卡点，将大班式洗脑转变为漏斗转化靶向赋能。",
-    badges: ["剔除无效拨打", "精准锁定转化卡点", "团队人效整体拉升"],
+    subtext: "废除销售自己报意向，建立 0% 到 100% 的硬性行为进阶卡点，将大班式管理转变为精准跟进赋能。",
+    badges: ["剔除无效拨打", "精准锁定转化卡点", "团队人效整体拉升", "可复用 Skill"],
+    pipelineStep: "跟进",
     className: "col-span-1 md:col-span-2 row-span-2",
     icon: Activity,
     color: "from-[#245fff] to-[#00f0ff]",
@@ -20,8 +21,9 @@ const BENTO_CASES = [
     id: "case-2",
     title: "生命周期：存量防御与价值榨取",
     metric: "续费率绝对值跃升",
-    subtext: "摒弃首签即放养。建立 180 天全生命周期模型，针对体验期与破灭期实施强制教学干预，无限延长客户 LTV。",
-    badges: ["180天激励暗盘", "赋能破灭期", "大连区全国第一"],
+    subtext: "摒弃签完合同就不管了。建立 180 天客户跟踪模型，针对快要流失的客户实施强制干预，大幅提升续费率。",
+    badges: ["180天激励暗盘", "赋能破灭期", "大连区全国第一", "可复用 Skill"],
+    pipelineStep: "复购",
     className: "col-span-1",
     icon: AlertTriangle,
     color: "from-[#8b5cf6] to-[#d946ef]",
@@ -29,10 +31,11 @@ const BENTO_CASES = [
   },
   {
     id: "case-3",
-    title: "大盘归因诊断：打破甩锅黑盒",
-    metric: "分钟级死因定位",
-    subtext: "摒弃口水战，祭出「业务拆车拆漏斗」。从全靠前线一张嘴进化到四级漏斗物理归因，用客观数据斩断跨部门甩锅。",
-    badges: ["四级漏斗诊断", "肃清虚假定论", "业务物理拆解"],
+    title: "大盘归因诊断：打破互相推诿",
+    metric: "分钟级定位问题",
+    subtext: "摒弃吵架，祭出「业务拆解」。从全靠销售一张嘴进化到用数据说话，用客观数据定位问题到底是谁的责任。",
+    badges: ["问题定位", "数据说话", "业务拆解", "可复用 Skill"],
+    pipelineStep: "筛选",
     className: "col-span-1",
     icon: Eye,
     color: "from-[#ef4444] to-[#f97316]",
@@ -40,10 +43,11 @@ const BENTO_CASES = [
   },
   {
     id: "case-4",
-    title: "动能重构：行业垄断与独角兽孵化",
-    metric: "长尾单量大涨",
-    subtext: "专治销售「挑肥拣瘦」。用高意向热门资产强行捆绑长尾冷门资产，设立跨区 PK，孵化深耕垂直类目的行业专家。",
-    badges: ["长尾破局", "终结大锅饭", "独角兽养成"],
+    title: "动能重构：让难啃的客户也被认真对待",
+    metric: "难啃客户成交率提升",
+    subtext: "专治销售挑肥拣瘦。用高意向客户强行捆绑难啃客户，用积分机制让销售愿意跟进所有人。",
+    badges: ["打破挑肥拣瘦", "积分激励", "公平分配", "可复用 Skill"],
+    pipelineStep: "跟进",
     className: "col-span-1 md:col-span-2",
     icon: Package,
     color: "from-[#f59e0b] to-[#fbbf24]",
@@ -62,16 +66,18 @@ export function Portfolio() {
           viewport={{ once: true }}
           className="mb-12 text-center md:text-left"
         >
-          <div className="inline-flex items-center gap-2 mb-4">
-            <ShieldCheck className="w-5 h-5 text-[#245fff]" />
-            <span className="text-[#245fff] text-xs font-bold tracking-widest uppercase">CORE BATTLES / 核心战役库</span>
+          {/* 顶部标签 - 统一脉冲点风格 */}
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">Skill 方案库</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4 tracking-tight">
-            告别黑话，<br className="md:hidden" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">只谈商业转化与 ROI</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            可部署的 Skill，<br className="md:hidden" /><span className="text-blue-500">不是 PPT，是机器</span>
           </h2>
-          <p className="text-[#8b949e] text-base md:text-lg max-w-2xl leading-relaxed">
-            没有复杂的架构图，没有听不懂的 AI 术语。<br className="hidden md:block" />
-            只有被验证过的底层逻辑、增长杠杆，以及实打实的业绩提升。
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
+            这些不是过往战绩，而是已被封装的业务导弹。<br className="hidden md:block" />
+            挂载到你的 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 系统，<br className="hidden md:block" />
+            立刻自动执行。
           </p>
         </motion.div>
 
@@ -119,6 +125,12 @@ export function Portfolio() {
                     {/* 战果标签 */}
                     {item.badges && item.badges.length > 0 && (
                       <div className="flex flex-wrap gap-2">
+                        {/* PipelineTeaser 步骤标签 */}
+                        {item.pipelineStep && (
+                          <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-blue-500/20 border border-blue-500/50 text-blue-400 whitespace-nowrap">
+                            → {item.pipelineStep}
+                          </span>
+                        )}
                         {item.badges.map((badge, idx) => (
                           <span
                             key={idx}
@@ -141,7 +153,7 @@ export function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            onClick={() => router.push("/cases")}
+            onClick={() => router.push("/skills")}
             className="col-span-1 group relative bg-black border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 cursor-pointer min-h-[180px]"
           >
             {/* 悬浮光晕 */}
@@ -154,12 +166,12 @@ export function Portfolio() {
                 <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:scale-110 transition-transform">
                   <ArrowRight className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-medium text-white/90">查看全部实战案例</h3>
+                <h3 className="text-lg font-medium text-white/90">查阅全部 Skill 方案 →</h3>
               </div>
 
               <div>
                 <p className="text-sm text-[#8b949e] mb-4">
-                  探索底层数据系统的降维打击过程
+                  <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 可挂载的自动化导弹库
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-[#a3a3a3]">

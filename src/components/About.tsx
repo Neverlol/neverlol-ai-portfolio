@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ABOUT_CONTENT } from "@/constants";
 import Link from "next/link";
-import { ChevronRight, Terminal } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export function About() {
   return (
@@ -15,17 +15,34 @@ export function About() {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 mb-4">
-            <span className="h-px w-6 bg-[#245fff]/80 block"></span>
-            <span className="text-[#245fff] text-xs font-bold tracking-widest uppercase">CAPABILITY ENGINE</span>
-            <span className="h-px w-6 bg-[#245fff]/80 block"></span>
+          {/* 顶部标签 - 统一脉冲点风格 */}
+          <div className="flex items-center justify-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit mx-auto">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">能力档案</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
-            大厂级基建底座
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+            为什么<span className="text-blue-500">选择我</span>？
           </h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-            业务盘感与数据算法的双轴引擎，拒绝纸上谈兵。
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            从互联网大厂运营操盘者，到AI技术落地实践者——<br className="hidden md:block" />
+            用大厂经验 × AI技能，帮你复制这套增长全链路体系。
           </p>
+
+          {/* 个人资质标签 */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+            <div className="px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium">
+              58同城大区运营负责人
+            </div>
+            <div className="px-3 py-1.5 rounded-full bg-white/5 border border-white/20 text-gray-300 text-xs font-medium">
+              高级数据分析师
+            </div>
+            <div className="px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-medium">
+              北外管理科学硕士
+            </div>
+            <div className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium">
+              AI 技术落地实践者
+            </div>
+          </div>
         </motion.div>
 
         {/* 仿 Next.js 官网底座互联引擎 UI */}
@@ -88,14 +105,14 @@ export function About() {
 
                   {/* 核心文字 */}
                   <span className="font-mono text-sm font-bold tracking-widest text-gray-200 group-hover:text-white transition-colors">
-                    Neverlol_Core
+                    查看完整能力档案
                   </span>
 
                   <span className="text-gray-600 font-mono text-xs">|</span>
 
                   {/* 行为召唤 (CTA) */}
                   <span className="text-xs font-medium text-gray-400 group-hover:text-blue-400 transition-colors flex items-center gap-1">
-                    启动全景控制台
+                    了解我能帮你做什么
                     <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
 
@@ -103,7 +120,7 @@ export function About() {
 
                 {/* 底部悬浮提示文本 */}
                 <div className="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-mono text-blue-500/80 tracking-widest">
-                  PRESS TO INITIALIZE SYSTEM
+                  基于亿级盘口实战沉淀
                 </div>
 
               </Link>
@@ -168,7 +185,7 @@ export function About() {
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                数学与管科学术底座。精通统计学归因、RFM 分层与归因建模。任何商业现象背后都是数据流，任何数据的跳点背后都是生意经。将复杂的商业表象解构为可被量化的数学飞轮。
+                数学与管科学术底座。精通客户价值分级与问题定位建模。任何商业现象背后都是数据流，任何数据的跳点背后都是生意经。将复杂的商业表象解构为可被量化的数学飞轮。
               </p>
             </motion.div>
 
@@ -189,7 +206,7 @@ export function About() {
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                历经 58 同城大区级运营历练，实弹打磨的漏斗全链路体系。深谙 B端获客、续费拦截与线索流转机制。告别纸上谈兵的空洞理念，直接对核心转化率与千万级盘口规模负责。
+                历经 58 同城大区级运营历练，实弹打磨的增长全链路体系。深谙 B端获客、续费拦截与客户流转机制。告别纸上谈兵的空洞理念，直接对核心成交率与千万级盘口规模负责。
               </p>
             </motion.div>
 
