@@ -55,8 +55,8 @@ export function ConsultingCTA() {
                     <Terminal className="w-5 h-5 text-white" />
                 </div>
                 <div className="text-left hidden sm:block">
-                    <div className="text-sm font-bold tracking-wide">获取业务诊断方案</div>
-                    <div className="text-xs text-white/80">中小企业微咨询入驻</div>
+                    <div className="text-sm font-bold tracking-wide">申请 Skill 方案沟通</div>
+                    <div className="text-xs text-white/80">定制 Skill + OpenClaw 部署</div>
                 </div>
                 <ArrowRight className="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </motion.button>
@@ -83,7 +83,7 @@ export function ConsultingCTA() {
                             <div className="flex justify-between items-center p-6 border-b border-white/5 bg-black/20">
                                 <h3 className="text-xl font-bold text-white flex items-center gap-2">
                                     <Terminal className="w-5 h-5 text-[#e94560]" />
-                                    业务漏斗诊断申请
+                                    申请业务 Skill 审计
                                 </h3>
                                 <button
                                     onClick={() => setIsOpen(false)}
@@ -105,15 +105,15 @@ export function ConsultingCTA() {
                                 {step === 1 && (
                                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
                                         <div className="space-y-2">
-                                            <h4 className="text-lg font-medium text-white">您当前业务最大的瓶颈是什么？</h4>
-                                            <p className="text-sm text-white/50">请选择最困扰您的一个核心环节</p>
+                                            <h4 className="text-lg font-medium text-white">你最想优先交给 AI 承担哪一段后台工作？</h4>
+                                            <p className="text-sm text-white/50">先判断适合落地哪 1 到 3 个 Skill，再决定部署方案</p>
                                         </div>
 
                                         <div className="grid gap-3">
                                             {[
-                                                { icon: Target, title: "获客拓客困局", desc: "线索成本高，漏斗上开口断层" },
-                                                { icon: Users, title: "留存与复购疲软", desc: "客损率高，生命周期短，无续费模型" },
-                                                { icon: Coins, title: "转化与变现卡点", desc: "线索浪费，商机转化率低于行业标准" }
+                                                { icon: Target, title: "线索很多，但销售跟不动", desc: "适合先看线索清洗、评分、分发与待办生成" },
+                                                { icon: Coins, title: "商机推进慢，过程不可控", desc: "适合先看漏斗诊断、跟进策略和过程质检" },
+                                                { icon: Users, title: "续费和流失没有预警机制", desc: "适合先看生命周期监控、流失预警和续费拦截" }
                                             ].map((item, i) => (
                                                 <button
                                                     key={i}
@@ -148,8 +148,8 @@ export function ConsultingCTA() {
                                         className="space-y-5"
                                     >
                                         <div className="space-y-2">
-                                            <h4 className="text-lg font-medium text-white">完善基础信息以获取深层诊断</h4>
-                                            <p className="text-sm text-white/50">留下您的联系方式与简单描述，我们会在24小时内发送策略建议初稿。</p>
+                                            <h4 className="text-lg font-medium text-white">留下基础信息，进入 Skill 审计</h4>
+                                            <p className="text-sm text-white/50">我们会根据你的业务链路，判断适合先落地哪 1 到 3 个 Skill，以及是否适合部署 OpenClaw。</p>
                                         </div>
 
                                         <div className="space-y-4">
@@ -170,7 +170,7 @@ export function ConsultingCTA() {
                                                     value={formData.business_desc}
                                                     onChange={(e) => setFormData({ ...formData, business_desc: e.target.value })}
                                                     className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-xl focus:outline-none focus:border-[#e94560] text-white min-h-[100px] resize-none"
-                                                    placeholder="例如：目前主要做教育培训，有5人销售团队，近三个月新签转化率一直在跳水..."
+                                                    placeholder="例如：目前有 6 人销售团队，主要做企服/代账，线索多但跟进过程不可控，最近续费流失也比较明显..."
                                                 />
                                             </div>
                                         </div>
@@ -188,7 +188,7 @@ export function ConsultingCTA() {
                                                 disabled={isSubmitting}
                                                 className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-[#e94560] to-[#c72d47] text-white font-medium shadow-lg shadow-[#e94560]/20 flex justify-center items-center hover:shadow-[#e94560]/40 transition-all disabled:opacity-70"
                                             >
-                                                {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "免费获取针对性诊断"}
+                                                {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : "提交 Skill 审计申请"}
                                             </button>
                                         </div>
                                     </motion.form>
@@ -199,9 +199,10 @@ export function ConsultingCTA() {
                                         <div className="w-16 h-16 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                                             <Terminal className="w-8 h-8 text-green-500" />
                                         </div>
-                                        <h4 className="text-2xl font-bold text-white">线索接收成功！</h4>
+                                        <h4 className="text-2xl font-bold text-white">申请已收到</h4>
                                         <p className="text-white/60 leading-relaxed max-w-sm mx-auto">
-                                            数据已安全抵达后端漏斗底层。<br />我们会在对其进行分析后尽快与您展开交流。
+                                            我们会先判断你的业务是否适合用 Skill 化方式切入，
+                                            <br />再给出优先封装节点与部署建议。
                                         </p>
                                         <div className="pt-6">
                                             <button

@@ -7,10 +7,10 @@ import { useRouter } from "next/navigation";
 const BENTO_CASES = [
   {
     id: "case-1",
-    title: "人效提升：物理级强控生命线",
-    metric: "人效整体拉升",
-    subtext: "废除销售自己报意向，建立 0% 到 100% 的硬性行为进阶卡点，将大班式管理转变为精准跟进赋能。",
-    badges: ["剔除无效拨打", "精准锁定转化卡点", "团队人效整体拉升", "可复用 Skill"],
+    title: "商机质检 Skill",
+    metric: "过程可视化",
+    subtext: "把 0% 到 100% 的商机推进过程拆成硬性节点，自动识别卡点、缺失信息和责任归属，让管理从盯结果变成盯过程。",
+    badges: ["漏斗断点识别", "缺失字段提醒", "过程质检", "首批封装方向"],
     pipelineStep: "跟进",
     className: "col-span-1 md:col-span-2 row-span-2",
     icon: Activity,
@@ -19,10 +19,10 @@ const BENTO_CASES = [
   },
   {
     id: "case-2",
-    title: "生命周期：存量防御与价值榨取",
-    metric: "续费率绝对值跃升",
-    subtext: "摒弃签完合同就不管了。建立 180 天客户跟踪模型，针对快要流失的客户实施强制干预，大幅提升续费率。",
-    badges: ["180天激励暗盘", "赋能破灭期", "大连区全国第一", "可复用 Skill"],
+    title: "流失预警 Skill",
+    metric: "预警前移",
+    subtext: "建立 180 天客户跟踪模型，结合余额、消耗、效果和行为数据，在客户真正流失前给出预警与干预优先级。",
+    badges: ["生命周期监控", "流失风险评分", "续费窗口预测", "首批封装方向"],
     pipelineStep: "复购",
     className: "col-span-1",
     icon: AlertTriangle,
@@ -31,10 +31,10 @@ const BENTO_CASES = [
   },
   {
     id: "case-3",
-    title: "大盘归因诊断：打破互相推诿",
-    metric: "分钟级定位问题",
-    subtext: "摒弃吵架，祭出「业务拆解」。从全靠销售一张嘴进化到用数据说话，用客观数据定位问题到底是谁的责任。",
-    badges: ["问题定位", "数据说话", "业务拆解", "可复用 Skill"],
+    title: "归因诊断 Skill",
+    metric: "分钟级定位",
+    subtext: "把“互相推诿”变成“数据说话”。自动定位问题到底出在线索、分发、跟进、产品效果还是续费阶段。",
+    badges: ["业务拆解", "责任定位", "数据说话", "后续补充方向"],
     pipelineStep: "筛选",
     className: "col-span-1",
     icon: Eye,
@@ -43,11 +43,11 @@ const BENTO_CASES = [
   },
   {
     id: "case-4",
-    title: "动能重构：让难啃的客户也被认真对待",
-    metric: "难啃客户成交率提升",
-    subtext: "专治销售挑肥拣瘦。用高意向客户强行捆绑难啃客户，用积分机制让销售愿意跟进所有人。",
-    badges: ["打破挑肥拣瘦", "积分激励", "公平分配", "可复用 Skill"],
-    pipelineStep: "跟进",
+    title: "线索工厂 Skill",
+    metric: "前台只打有效线索",
+    subtext: "把导入、清洗、补全、评分和分发建议放到 AI 后台，让销售不再把时间耗在线索搬运和低质量触达上。",
+    badges: ["清洗去重", "自动评分", "分发建议", "首批封装方向"],
+    pipelineStep: "获客",
     className: "col-span-1 md:col-span-2",
     icon: Package,
     color: "from-[#f59e0b] to-[#fbbf24]",
@@ -72,12 +72,11 @@ export function Portfolio() {
             <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">Skill 方案库</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            可部署的 Skill，<br className="md:hidden" /><span className="text-blue-500">不是 PPT，是机器</span>
+            首批业务 Skill 案例，<br className="md:hidden" /><span className="text-blue-500">先从关键节点切入</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
-            这些不是过往战绩，而是已被封装的业务导弹。<br className="hidden md:block" />
-            挂载到你的 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 系统，<br className="hidden md:block" />
-            立刻自动执行。
+            这些卡片展示的是最适合优先封装的业务节点，以及它们背后的实战来源。<br className="hidden md:block" />
+            后续会持续更新更多已部署的客户案例，以及来自不同垂直场景的实战封装经验。
           </p>
         </motion.div>
 
@@ -153,7 +152,7 @@ export function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            onClick={() => router.push("/skills")}
+            onClick={() => router.push("/cases")}
             className="col-span-1 group relative bg-black border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 cursor-pointer min-h-[180px]"
           >
             {/* 悬浮光晕 */}
@@ -166,12 +165,12 @@ export function Portfolio() {
                 <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:scale-110 transition-transform">
                   <ArrowRight className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-medium text-white/90">查阅全部 Skill 方案 →</h3>
+                <h3 className="text-lg font-medium text-white/90">查阅全部案例与原型 →</h3>
               </div>
 
               <div>
                 <p className="text-sm text-[#8b949e] mb-4">
-                  <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 可挂载的自动化导弹库
+                  已上线案例、封装中的 Skill 原型，以及后续持续补充的部署节点
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-[#a3a3a3]">

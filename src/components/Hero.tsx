@@ -23,16 +23,18 @@ export function Hero() {
         <div className="relative z-20 flex flex-col items-center text-center mt-8 md:mt-12 mb-12 pointer-events-auto">
           <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">前58同城大区运营操盘手</span>
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">定制 Skill × OpenClaw 部署</span>
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            <span className="text-white block">年营收过亿的业务全链路，</span>
-            <span className="text-blue-500 block">小微团队怎么Copy？</span>
+            <span className="text-white block">把销售运营经验封成 Skill，</span>
+            <span className="text-blue-500 block">部署到你自己的 OpenClaw</span>
           </h1>
 
-          <p className="text-gray-500 max-w-xl text-sm md:text-base font-medium leading-relaxed mb-0">
-            基于大厂增长体系的底层逻辑，提炼出核心技能。通过 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 自动运转，人只负责成交环节的关键决策。
+          <p className="text-gray-500 max-w-3xl text-sm md:text-lg font-medium leading-relaxed mb-0 px-2">
+            我负责定制业务 Skill、部署客户自己的 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw，并按固定周期持续升级优化。
+            <br className="hidden md:block" />
+            AI 负责后台诊断、预警、路由和任务生成，人负责触达、谈判、成交和续费挽回。
           </p>
         </div>
 
@@ -90,41 +92,41 @@ export function Hero() {
         {/* 4. 底部商业引擎卡片层 (强化内容，完美融入网格) */}
         <div className="relative z-20 w-full grid grid-cols-1 md:grid-cols-3 gap-0 mt-auto pt-12 pb-4">
           <div className="px-8 flex flex-col justify-start">
-            <div className="text-[10px] text-blue-400 uppercase tracking-wider mb-2">获客</div>
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">智能获客</h3>
+            <div className="text-[10px] text-blue-400 uppercase tracking-wider mb-2">交付 01</div>
+            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">定制 Skill</h3>
             <p className="text-[#888] text-sm leading-relaxed mb-4">
-              多渠道线索自动聚合，智能清洗去重，自动录入CRM。销售只跟进有价值的客户。
+              将线索清洗、商机诊断、流失预警、续费拦截等关键节点，按你的业务规则封装成可执行的 Skill。
             </p>
             <div className="flex flex-wrap gap-2 mt-auto">
-              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">多渠道线索聚合</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">智能清洗去重</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">自动录入CRM</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">线索工厂</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">商机质检</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">流失预警</span>
             </div>
           </div>
 
           <div className="px-8 flex flex-col justify-start">
-            <div className="text-[10px] text-purple-400 uppercase tracking-wider mb-2">跟进</div>
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">AI跟进策略引擎</h3>
+            <div className="text-[10px] text-purple-400 uppercase tracking-wider mb-2">交付 02</div>
+            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">部署 OpenClaw</h3>
             <p className="text-[#888] text-sm leading-relaxed mb-4">
-              基于客户画像分层，AI实时推送跟进策略。告诉销售该联系谁、说什么、遇到问题怎么办。
+              Skill 不是停留在文档里，而是挂到客户自己的 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 上运行，接 webhook、cron、审批和任务分发。
             </p>
             <div className="flex flex-wrap gap-2 mt-auto">
-              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">客户画像分层</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">跟进策略推送</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">实时话术指导</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">客户自有环境</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">事件触发</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">人机审批</span>
             </div>
           </div>
 
           <div className="px-8 flex flex-col justify-start">
-            <div className="text-[10px] text-emerald-400 uppercase tracking-wider mb-2">复购</div>
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">客户价值守护</h3>
+            <div className="text-[10px] text-emerald-400 uppercase tracking-wider mb-2">交付 03</div>
+            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">周期优化</h3>
             <p className="text-[#888] text-sm leading-relaxed mb-4">
-              监控客户生命周期，发现流失预警自动提醒。帮助销售在最恰当的时机激活沉睡客户。
+              后期按固定节奏做复盘、调参、补节点，不把项目做成一次性交付，而是持续提升识别准确率和业务适配度。
             </p>
             <div className="flex flex-wrap gap-2 mt-auto">
-              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">流失预警监控</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">续费时机提醒</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">适时激活</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">双周复盘</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">规则升级</span>
+              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">持续迭代</span>
             </div>
           </div>
         </div>

@@ -154,8 +154,11 @@ export const EVOLUTION_LOGS = [
 ];
 
 export const NAV_ITEMS = [
-  { label: "Skill方案库", href: "/#portfolio" },
-  { label: "能力引擎", href: "/#about" },
+  { label: "解决方案", href: "/solutions" },
+  { label: "业务沙盘", href: "/campaigns" },
+  { label: "Skill案例", href: "/#portfolio" },
+  { label: "合作方式", href: "/#cooperation" },
+  { label: "关于我", href: "/#about" },
   { label: "Build in Public", href: "/build-in-public" },
 ];
 

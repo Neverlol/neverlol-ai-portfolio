@@ -20,17 +20,17 @@ export default function PipelineTeaser() {
         {/* 顶部标签 - 强调大厂背景 */}
         <div className="flex items-center justify-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit mx-auto">
           <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-          <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">58 同城 · 亿级盘口实战沉淀</span>
+          <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">基于 58 同城本地生活服务实战沉淀</span>
         </div>
 
         {/* 主标题 - 强调提炼过程 */}
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight text-center">
-          <span className="text-gray-500">从 0 到 1 亿的盘口</span><br />
-          <span className="text-white">提炼出这 <span className="text-blue-500">4 步</span> 增长闭环</span>
+          <span className="text-gray-500">我在 58 同城操盘过的</span><br />
+          <span className="text-white"><span className="text-blue-500">过亿盘口</span>，是怎样<span className="text-blue-500">运转</span>的</span>
         </h2>
-        <p className="text-gray-400 text-sm md:text-base mb-10 text-center max-w-xl leading-relaxed">
-          不是理论，是在大客群、高强度竞争环境下验证过的全链路打法。<br className="hidden md:block" />
-          获客 → 筛选 → 跟进 → 复购，每一步都有对应的自动化执行机制。
+        <p className="text-gray-400 text-sm md:text-base mb-10 text-center max-w-[44rem] leading-relaxed">
+          获客 → 筛选 → 跟进 → 复购。
+          <span className="text-gray-500"> 先进入业务沙盘，看“线索到利润”的全链路原貌；再回到首页，看这些节点如何被封成 Skill，并接入人机协同工作流。</span>
         </p>
 
         {/* 核心数据流管线 */}
@@ -82,18 +82,13 @@ export default function PipelineTeaser() {
           ))}
         </div>
 
-        {/* 说明文字 */}
-        <p className="text-xs text-gray-600 mt-10 mb-6 text-center">
-          每一步都可以封装为 Skill，挂在 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-3.5 h-3.5 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 系统里自动执行
-        </p>
-
         {/* CTA 按钮 - 跳转到业务沙盘页面 */}
         <Link
           href="/campaigns"
-          className="relative z-20 group flex items-center gap-2 px-6 py-3 rounded-xl bg-black border border-white/20 text-sm font-medium text-gray-300 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-300"
+          className="relative z-20 group flex items-center gap-2 px-6 py-3 mt-10 rounded-xl bg-black border border-white/20 text-sm font-medium text-gray-300 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-300"
         >
           <Sparkles className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
-          看看这套体系是怎么运转的
+          进入 58 全业务沙盘
           <ArrowRight className="w-4 h-4 ml-1 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
         </Link>
       </div>
