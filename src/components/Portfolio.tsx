@@ -1,57 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, Eye, AlertTriangle, Package, ArrowRight } from "lucide-react";
+import { Database, Route, Users, AlertTriangle, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const BENTO_CASES = [
   {
-    id: "case-1",
-    title: "商机质检 Skill",
-    metric: "过程可视化",
-    subtext: "把 0% 到 100% 的商机推进过程拆成硬性节点，自动识别卡点、缺失信息和责任归属，让管理从盯结果变成盯过程。",
-    badges: ["漏斗断点识别", "缺失字段提醒", "过程质检", "首批封装方向"],
-    pipelineStep: "跟进",
+    id: "crm-auto-fill",
+    title: "crm-auto-fill",
+    metric: "结构化录入",
+    subtext: "把聊天记录、通话纪要和拜访笔记转成可用 CRM 字段，让后续诊断、分层和续费判断建立在干净输入上。",
+    badges: ["聊天转字段", "缺失字段提醒", "CRM 标准化", "首批已封装"],
+    pipelineStep: "筛选",
     className: "col-span-1 md:col-span-2 row-span-2",
-    icon: Activity,
+    icon: Database,
     color: "from-[#245fff] to-[#00f0ff]",
-    href: "/category/activation"
+    href: "/category/crm-auto-fill"
   },
   {
-    id: "case-2",
-    title: "流失预警 Skill",
-    metric: "预警前移",
-    subtext: "建立 180 天客户跟踪模型，结合余额、消耗、效果和行为数据，在客户真正流失前给出预警与干预优先级。",
-    badges: ["生命周期监控", "流失风险评分", "续费窗口预测", "首批封装方向"],
+    id: "funnel-doctor",
+    title: "funnel-doctor",
+    metric: "卡点诊断",
+    subtext: "把主管平时靠经验追问的判断标准显性化，自动识别当前漏斗卡点、缺失字段、下一步动作与经理动作。",
+    badges: ["漏斗诊断", "下一步动作", "经理建议", "首批已封装"],
+    pipelineStep: "跟进",
+    className: "col-span-1",
+    icon: Route,
+    color: "from-[#8b5cf6] to-[#d946ef]",
+    href: "/category/funnel-doctor"
+  },
+  {
+    id: "customer-profiler",
+    title: "customer-profiler",
+    metric: "分层节奏",
+    subtext: "把客户价值等级、联系频率和优先级经验沉淀成可复用规则，让谁该重点维护、谁该降频有清晰标准。",
+    badges: ["客户分层", "owner cadence", "推荐动作", "首批已封装"],
     pipelineStep: "复购",
     className: "col-span-1",
-    icon: AlertTriangle,
-    color: "from-[#8b5cf6] to-[#d946ef]",
-    href: "/category/lead-scoring"
-  },
-  {
-    id: "case-3",
-    title: "归因诊断 Skill",
-    metric: "分钟级定位",
-    subtext: "把“互相推诿”变成“数据说话”。自动定位问题到底出在线索、分发、跟进、产品效果还是续费阶段。",
-    badges: ["业务拆解", "责任定位", "数据说话", "后续补充方向"],
-    pipelineStep: "筛选",
-    className: "col-span-1",
-    icon: Eye,
+    icon: Users,
     color: "from-[#ef4444] to-[#f97316]",
-    href: "/category/attribution"
+    href: "/category/customer-profiler"
   },
   {
-    id: "case-4",
-    title: "线索工厂 Skill",
-    metric: "前台只打有效线索",
-    subtext: "把导入、清洗、补全、评分和分发建议放到 AI 后台，让销售不再把时间耗在线索搬运和低质量触达上。",
-    badges: ["清洗去重", "自动评分", "分发建议", "首批封装方向"],
-    pipelineStep: "获客",
+    id: "renewal-watch",
+    title: "renewal-watch",
+    metric: "续费前移",
+    subtext: "在客户真正流失前给出 P1/P2/P3 风险名单、续费窗口与挽回优先级，把补救从事后抢救拉回到窗口期内。",
+    badges: ["风险分级", "续费窗口", "挽回优先级", "首批已封装"],
+    pipelineStep: "复购",
     className: "col-span-1 md:col-span-2",
-    icon: Package,
+    icon: AlertTriangle,
     color: "from-[#f59e0b] to-[#fbbf24]",
-    href: "/category/sales-enablement"
+    href: "/category/renewal-watch"
   }
 ];
 
@@ -69,14 +69,14 @@ export function Portfolio() {
           {/* 顶部标签 - 统一脉冲点风格 */}
           <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">Skill 方案库</span>
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">首批已封装 Skill 模块</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            首批业务 Skill 案例，<br className="md:hidden" /><span className="text-blue-500">先从关键节点切入</span>
+            先落 4 个关键节点，<br className="md:hidden" /><span className="text-blue-500">再按客户流程继续扩展</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
-            这些卡片展示的是最适合优先封装的业务节点，以及它们背后的实战来源。<br className="hidden md:block" />
-            后续会持续更新更多已部署的客户案例，以及来自不同垂直场景的实战封装经验。
+            这些不是“万能模板”，而是已经完成第一轮封装的 4 个业务节点。<br className="hidden md:block" />
+            真正落地时，会先读取客户自己的工作流、案例数据和团队经验，再继续往下定制扩展。
           </p>
         </motion.div>
 

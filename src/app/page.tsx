@@ -33,15 +33,16 @@ export default function Home() {
                 <span className="text-blue-500">人机协同</span>如何在系统里<span className="text-blue-500">运转</span>
               </h3>
               <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 查看 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 如何承接后台诊断、路由和提醒，<br className="hidden md:block" />
                 而销售只处理真正需要判断和成交的节点
               </p>
               <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1.5 text-xs text-amber-300">
                 <div className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                当前为展示版流程，首批真实封装节点完成后将替换为实际 Skill 案例
+                当前展示的是目标工作流蓝图，首批已完成 4 个核心 Skill 封装，其余节点将按客户真实流程定制
               </div>
             </div>
-            <HomepageSkillDemo skillName="销售全链路人机协作" color="blue" />
+            <HomepageSkillDemo skillName="销售运营人机协同蓝图" color="blue" />
           </div>
         </section>
 

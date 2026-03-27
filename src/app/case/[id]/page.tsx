@@ -169,81 +169,23 @@ export default function CaseDetailPage() {
         {/* Title Section */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <h1 className="text-3xl md:text-4xl font-semibold text-white mb-3">{project.title}</h1>
-          <p className="text-lg text-[#8b949e] mb-4">{project.subtitle}</p>
-
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-lg">
-            <span className="text-green-400 font-medium">{project.metrics}</span>
-          </div>
+          {project.metrics && (
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-lg">
+              <span className="text-green-400 font-medium">{project.metrics}</span>
+            </div>
+          )}
         </motion.div>
 
-        {/* Quick Overview */}
-        {project.sections && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-12 nightwatch-card p-6">
-            <h2 className="text-lg font-medium text-white mb-4">快速概览</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-red-500/20 bg-red-500/5">
-                  <span className="text-xs font-medium text-red-400">业务痛点</span>
-                </div>
-                <p className="text-sm text-[#a3a3a3]">{project.sections.problem?.content}</p>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-green-500/20 bg-green-500/05">
-                  <span className="text-xs font-medium text-green-400">商业价值</span>
-                </div>
-                <p className="text-sm text-green-400">{project.sections.impact?.content}</p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
         {/* Markdown Content */}
-        {project.markdown_content ? (
+        {project.markdown_content && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <MarkdownRenderer content={project.markdown_content} />
-          </motion.div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="space-y-6"
-          >
-            {/* Problem */}
-            <div className="nightwatch-card p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <HandDrawnTag variant="yellow" icon="bulb">业务痛点</HandDrawnTag>
-              </div>
-              <p className="text-[#a3a3a3] leading-relaxed">{project.sections?.problem?.content}</p>
-            </div>
-
-            {/* Traditional */}
-            <div className="nightwatch-card p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <HandDrawnTag variant="purple" icon="pen">传统方案</HandDrawnTag>
-              </div>
-              <p className="text-[#a3a3a3] leading-relaxed">{project.sections?.traditional?.content}</p>
-            </div>
-
-            {/* AI Solution */}
-            <div className="nightwatch-card p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <HandDrawnTag variant="blue" icon="zap">AI 重构</HandDrawnTag>
-              </div>
-              <p className="text-[#a3a3a3] leading-relaxed">{project.sections?.ai?.content}</p>
-            </div>
-
-            {/* Impact */}
-            <div className="nightwatch-card p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <HandDrawnTag variant="green" icon="target">商业价值</HandDrawnTag>
-              </div>
-              <p className="text-green-400 leading-relaxed font-medium">{project.sections?.impact?.content}</p>
-            </div>
+            <MarkdownRenderer 
+              content={project.markdown_content.replace(/^\s*#\s+.*\n/, '')} 
+            />
           </motion.div>
         )}
 

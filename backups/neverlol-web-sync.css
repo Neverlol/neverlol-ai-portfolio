@@ -1,0 +1,51 @@
+/* Neverlol Portfolio Web Theme Sync */
+
+/* Base Colors */
+body {
+  --background-primary: #000000;
+  --text-normal: #e1e1e1;
+  --interactive-accent: #245fff;
+  --text-accent: #245fff;
+}
+
+/* Dark Mode Overrides */
+.theme-dark {
+  background-color: #000000;
+  color: #e1e1e1;
+}
+
+/* Titles */
+h1, h2, h3 {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+/* Project Metrics (Blue Gradient feel) */
+.markdown-preview-view strong {
+  color: #245fff;
+}
+
+/* Evolution Logs (Purple accents) */
+.markdown-preview-view em {
+  color: #8b5cf6;
+  font-style: normal;
+}
+
+/* Link Style */
+a {
+  color: #00f0ff !important;
+  text-decoration: none;
+}
+
+/* Card-like Preview */
+.markdown-preview-view {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px !important;
+  line-height: 1.8;
+}
+
+/* Obsidian Side Panel "Live Preview" Adjustments */
+.workspace-leaf-content[data-type="markdown"] .view-content {
+  background-color: #000000;
+}

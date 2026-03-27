@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, type ElementType } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, Activity, Target, Users, TrendingUp, Loader2, Eye, AlertTriangle, Package, AlertCircle, Database, Brain, Route, TrendingDown, CheckCircle } from "lucide-react";
+import { ArrowRight, Zap, Activity, Target, Users, TrendingUp, Loader2, Eye, AlertTriangle, Package, AlertCircle, Database, Brain, Route, CheckCircle } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { getProjects } from "@/lib/db";
 import type { Project } from "@/lib/database.types";
@@ -13,319 +13,237 @@ import type { PipelineStep } from "@/components/PipelineDemo";
 
 /** 每个 Skill 的痛点定义 */
 const SKILL_PAIN_POINTS: Record<string, { problem: string; why: string }> = {
-    "attribution": {
-        problem: "跨部门互相推诿，永远找不到真正的问题",
-        why: "没有数据的情况下，各部门都说是别人的问题。结果是：领导拍脑袋决策，基层背锅。"
+    "crm-auto-fill": {
+        problem: "销售聊完不记、记了也不全，CRM 永远是脏的",
+        why: "对财税代理团队来说，客户常在微信里临时问做账、报税、注销、工商变更。关键信息散落在聊天记录和销售脑子里，后续所有判断都建立在脏输入上。"
     },
-    "sales-enablement": {
-        problem: "销售挑肥拣瘦，好客户被白白浪费",
-        why: "没有强制分配规则，销售只会跟进容易成交的客户。结果是：难啃的客户永远没人管。"
+    "funnel-doctor": {
+        problem: "商机推进卡在哪，只能靠主管挨个追问",
+        why: "比如客户已经问到套餐价格，但预算、决策人、交付周期一个都没确认。没有统一判断标准时，主管只能反复追问，过程永远不可视。"
     },
-    "activation": {
-        problem: "人效全靠天收，不知道谁在裸泳",
-        why: "没有行为数据，只有结果数据。结果是：出了问题才知道，但已经晚了。"
+    "customer-profiler": {
+        problem: "客户谁该重点维护、谁该降频，全靠老员工感觉",
+        why: "在代账、工商、社保、注销等服务并存时，哪些客户值得重点维护、哪些适合交叉销售、哪些该暂时降频，如果不沉成规则，就只能依赖熟手经验。"
     },
-    "lead-scoring": {
-        problem: "首签即放养，续费全靠客情",
-        why: "没有生命周期意识，只管杀不管埋。结果是：客户用完就走，永远在获新客。"
+    "renewal-watch": {
+        problem: "快流失了才知道，续费全靠感觉抢救",
+        why: "财税代理服务往往有明确账期和申报节奏。一旦客户在续费窗口前静默、余额下降或服务投诉上升，如果没有预警，只能等销售临时救火。"
     }
 };
 
 /** 每个 Skill 的 Pipeline 配置 */
 const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purple" | "red" | "amber"; steps: PipelineStep[] }> = {
-    "activation": {
-        skillName: "人效提升 Pipeline",
+    "crm-auto-fill": {
+        skillName: "crm-auto-fill",
         color: "blue",
         steps: [
             {
-                id: "behavior",
-                label: "行为数据采集",
-                description: "记录每个销售的动作",
-                icon: Activity,
-                annotation: "传统方式：只记录结果（打了多少电话）\n• 没有过程数据，只有结果数据\n• 出问题后才知道，但已经晚了\n\nSkill 替代：自动记录所有行为动作",
+                id: "collect",
+                label: "读取原始沟通记录",
+                description: "微信 / 电话 / 拜访统一输入",
+                icon: Database,
+                annotation: "传统方式：销售聊完之后靠脑子记，或者回头补 CRM。\n• 字段经常漏\n• 记录口径不统一\n\nSkill 替代：先把原始记录统一收进一个结构化入口。",
                 highlight: true,
-                code: `// 行为数据采集模块
-const behaviors = await openclaw
-  .track("sales_behavior")
-  .filter({ team_id: "T001" })
-  .fields([
-    "call_duration",
-    "connect_rate",
-    "followup_count",
-    "intent_confirm",
-    "visit_record"
-  ])
-  .window("7d")
-  .collect();
-// 采集完成: 1,247 条销售行为记录`,
+                code: `// crm-auto-fill.input
+{
+  "record_id": "WX-20260327-001",
+  "source_type": "wechat_chat",
+  "raw_text": "客户是代账公司，老板本人决策，预算 2-3 万...",
+  "owner": "sales_A",
+  "run_date": "2026-03-27"
+}`,
             },
             {
-                id: "grading",
-                label: "硬性分级卡点",
-                description: "0%-100% 行为进阶",
-                icon: TrendingUp,
-                annotation: "传统方式：销售自己报意向\n• 主观性强，容易虚报\n• 领导无法核实\n\nSkill 替代：行为数据 = 意向等级",
-                highlight: true,
-                code: `// 行为驱动分级
-const graded = await openclaw
-  .score("intent_grade")
-  .input(behaviors)
-  .rules({
-    "A": "3d内有有效动作",
-    "B": "7d内有有效动作",
-    "C": "7d+无动作 → 强制回收"
-  })
-  .classify();
-// 分级完成: A类 234 | B类 567 | C类 446`,
-            },
-            {
-                id: "intervention",
-                label: "强制干预",
-                description: "低于卡点自动触发",
+                id: "extract",
+                label: "抽取关键字段",
+                description: "需求 / 预算 / 决策人 / Timeline",
                 icon: Brain,
-                annotation: "传统方式：经理发现问题了才去管\n• 滞后性严重\n• 销售已经错过了最佳跟进时机\n\nSkill 替代：自动触发干预流程",
+                annotation: "传统方式：CRM 填写依赖销售自觉。\n• 愿不愿填、填得全不全，全看个人习惯\n\nSkill 替代：自动抽取关键字段，并识别哪些字段是推断得来的。",
                 highlight: true,
-                code: `// 强制干预触发
-await openclaw
-  .trigger("intervention")
-  .condition({ grade: "C" })
-  .actions([
-    "释放公海",
-    "发送预警给销售",
-    "通知经理 coach"
-  ])
-  .execute();
-// C类客户已释放: 446 条 → 公海池`,
+                code: `// crm-auto-fill.output
+{
+  "structured_fields": {
+    "company_name": "祈福财税",
+    "contact_role": "老板",
+    "budget_range": "2-3万",
+    "timeline": "本月内"
+  },
+  "inferred_fields": ["need_summary"],
+  "missing_required_fields": ["phone"],
+  "confidence": "medium"
+}`,
             },
             {
-                id: "result",
-                label: "效率提升",
-                description: "结果对比",
-                icon: TrendingDown,
-                annotation: "效果对比：\n\n传统方式\n• 10 个销售管 1000 客户\n• 人均管 100 客户，80% 在瞎忙\n\n使用 Skill 后\n• 3 个销售 + Skill 辅助\n• 人均管 300 客户",
-                highlight: false,
-                code: `// 人效提升报告
-const report = {
-  before: { sales: 10, per_capita: 100 },
-  after:  { sales: 3,  per_capita: 300 },
-  improvement: "+180% 有效跟进率"
-};
-// Pipeline 执行完成 ✓`,
+                id: "confirm",
+                label: "回写 CRM 与缺失提醒",
+                description: "生成干净输入",
+                icon: CheckCircle,
+                annotation: "传统方式：后续所有人都在脏数据上继续工作。\n\nSkill 替代：回写结构化字段，并明确缺失项，让后续诊断、分层、续费判断建立在干净输入上。",
+                highlight: true,
+                code: `await openclaw.crm.upsert({
+  record_id: "WX-20260327-001",
+  current_stage: "首次触达",
+  next_step: "补齐电话并安排二次沟通",
+  missing_required_fields: ["phone"]
+});
+// 结果：后续模块拿到的是干净字段，不再依赖销售记忆`,
             },
         ],
     },
-    "attribution": {
-        skillName: "大盘归因 Pipeline",
+    "funnel-doctor": {
+        skillName: "funnel-doctor",
         color: "purple",
         steps: [
             {
-                id: "data",
-                label: "四级漏斗埋点",
-                description: "曝光-点击-留联-成交",
-                icon: Database,
-                annotation: "传统方式：各说各话\n• 市场说：是销售转化不行\n• 销售说：是线索质量不行\n• 领导：到底谁的锅？\n\nSkill 替代：统一埋点口径",
+                id: "read-stage",
+                label: "读取当前阶段",
+                description: "拿到商机状态与推进记录",
+                icon: Route,
+                annotation: "传统方式：主管只能看一个模糊状态，比如“跟进中”。\n• 具体卡在哪不知道\n• 缺什么字段也不知道\n\nSkill 替代：读取当前阶段、阶段历史和触达记录。",
                 highlight: true,
-                code: `// 四级漏斗埋点
-const funnel = await openclaw
-  .funnel("四级漏斗")
-  .stages([
-    { name: "曝光",    events: ["impression"] },
-    { name: "点击",    events: ["click"] },
-    { name: "留联",    events: ["form_submit"] },
-    { name: "成交",    events: ["pay_success"] }
-  ])
-  .dateRange("2024-Q1")
-  .groupBy("city")
-  .collect();
-// 数据对齐完成: 4城市 × 4阶段`,
+                code: `// funnel-doctor.input
+{
+  "opportunity_id": "OPP-321",
+  "owner": "sales_A",
+  "current_stage": "已沟通待报价",
+  "valid_contact_count": 2,
+  "budget_range": "",
+  "recent_note": "客户有兴趣，但一直没推进"
+}`,
             },
             {
-                id: "compare",
-                label: "横向对标",
-                description: "城市/团队/个人",
-                icon: Users,
-                annotation: "传统方式：凭感觉对比\n• A 城市说我们城市特殊\n• B 团队说我们基数大\n\nSkill 替代：标准化对标",
-                highlight: false,
-                code: `// 横向对标分析
-const benchmark = await openclaw
-  .compare("city_performance")
-  .control("北京")
-  .treatment(["上海", "深圳", "广州"])
-  .variables(["流量", "转化率", "客单价"])
-  .method("DiD")
-  .run();
-// 对标完成: 深圳转化率异常 -12.3%`,
+                id: "diagnose",
+                label: "识别卡点与缺失字段",
+                description: "把主管脑内规则显性化",
+                icon: Brain,
+                annotation: "传统方式：主管靠经验追问“预算问没问”“决策人见没见”。\n\nSkill 替代：自动诊断当前卡点，并输出缺失字段与责任归属。",
+                highlight: true,
+                code: `// funnel-doctor.output
+{
+  "diagnosis": "停留在待报价阶段过久",
+  "missing_fields": ["budget_range", "decision_maker_confirmed"],
+  "next_action": "补齐预算并确认拍板人",
+  "manager_action": "经理跟一次关键沟通",
+  "human_required": true
+}`,
             },
             {
-                id: "rootcause",
-                label: "归因分析",
-                description: "定位绝对死因",
-                icon: Target,
-                annotation: "传统方式：开会吵架\n• 吵一天也吵不出结果\n• 最后领导拍脑袋决定\n\nSkill 替代：物理级归因",
+                id: "action",
+                label: "输出下一步动作",
+                description: "销售动作 + 经理动作并行",
+                icon: CheckCircle,
+                annotation: "传统方式：问题看到了，但没人知道下一步谁来做。\n\nSkill 替代：直接输出销售动作与经理动作，让推进从盯结果变成盯过程。",
                 highlight: true,
-                code: `// 归因分析
-const cause = await openclaw
-  .analyze("root_cause")
-  .focus({ city: "深圳", drop: -12.3 })
-  .methods(["Shapley", "Funnel"])
-  .findings([
-    { factor: "渠道质量", weight: 0.45 },
-    { factor: "销售能力", weight: 0.32 },
-    { factor: "产品匹配", weight: 0.23 }
-  ])
-  .recommend([
-    "替换低质量渠道",
-    "销售培训重点: 需求挖掘"
-  ]);
-// 归因完成 ✓`,
+                code: `await openclaw.tasks.create([
+  "sales_A: 今天补问预算范围",
+  "manager_B: 明天跟一次关键沟通"
+]);
+// 结果：不是只知道“有问题”，而是知道“谁下一步做什么”`,
             },
         ],
     },
-    "sales-enablement": {
-        skillName: "动能重构 Pipeline",
+    "customer-profiler": {
+        skillName: "customer-profiler",
         color: "amber",
         steps: [
             {
-                id: "bundling",
-                label: "强制捆绑",
-                description: "热门+冷门打包分配",
-                icon: Package,
-                annotation: "传统方式：销售挑肥拣瘦\n• 只跟进容易转化的\n• 难啃的永远没人管\n\nSkill 替代：强制捆绑规则",
+                id: "ingest",
+                label: "读取客户行为与联系记录",
+                description: "行为 + 价值等级 + 最近联系",
+                icon: Database,
+                annotation: "传统方式：谁该重点维护，全靠老员工凭经验。\n\nSkill 替代：统一读取客户行为、价值等级和最近联系记录，形成可判断输入。",
                 highlight: true,
-                code: `// 强制捆绑分配
-const allocation = await openclaw
-  .allocate("smart_bundle")
-  .rule({
-    A: "1个A类 + 2个C类",
-    B: "2个B类 + 1个C类"
-  })
-  .enforce("no_refuse")
-  .execute();
-// 分配完成: 规避挑肥拣瘦 ✓`,
+                code: `// customer-profiler.input
+{
+  "customer_id": "C-991",
+  "latest_contact_date": "2026-03-18",
+  "recharge_frequency_90d": "low",
+  "usage_status": "declining",
+  "value_level_input": "high"
+}`,
             },
             {
-                id: "incentive",
-                label: "动态激励",
-                description: "越难越奖，多劳多得",
-                icon: TrendingUp,
-                annotation: "传统方式：固定底薪+提成\n• 销售只挑客户，不挑难度\n• 热门赛道内卷，冷门赛道荒废\n\nSkill 替代：动态激励系数",
+                id: "segment",
+                label: "客户分层与优先级判断",
+                description: "价值等级显性化",
+                icon: Users,
+                annotation: "传统方式：维护节奏跟着销售忙闲走，不跟着客户价值走。\n\nSkill 替代：自动输出 segment、value level 和 priority reason。",
                 highlight: true,
-                code: `// 动态积分引擎
-const points = await openclaw
-  .calculate("dynamic_bonus")
-  .rules({
-    "C类成交":    "×2.0 积分",
-    "冷门类目":    "×1.5 积分",
-    "难啃客户":    "×1.8 积分"
-  })
-  .realtime()
-  .leaderboard();
-// 激励重算完成: TOP3 重新洗牌`,
+                code: `// customer-profiler.output
+{
+  "segment": "需关怀",
+  "value_level": "高价值",
+  "priority_reason": [
+    "近 90 天充值频次下降",
+    "最近联系间隔偏长"
+  ],
+  "confidence": "high"
+}`,
             },
             {
-                id: "expert",
-                label: "专家养成",
-                description: "垂直赛道深耕",
-                icon: Brain,
-                annotation: "传统方式：什么客户都接\n• 销售什么都会一点，但都不精\n• 客户感知不到专业价值\n\nSkill 替代：赛道分级认证",
-                highlight: false,
-                code: `// 赛道专家认证
-const experts = await openclaw
-  .certify("industry_expert")
-  .tracks(["装修", "家政", "教育"])
-  .criteria({
-    "成交率 > 40%": true,
-    "客户评分 > 4.5": true,
-    "续费率 > 60%": true
-  })
-  .grant("expert_badge")
-  .benefits(["优先配额", "高佣金"]);
-// 认证完成: 7位赛道专家`,
+                id: "cadence",
+                label: "生成跟进节奏与动作",
+                description: "owner cadence + recommended action",
+                icon: CheckCircle,
+                annotation: "传统方式：谁先跟、多久跟一次，没有统一标准。\n\nSkill 替代：直接输出 owner cadence 和 recommended action，让存量维护有稳定节奏。",
+                highlight: true,
+                code: `await openclaw.cadence.assign({
+  customer_id: "C-991",
+  owner_cadence: "每周一次重点触达",
+  recommended_action: "由负责人做一次价值复盘"
+});
+// 结果：客户维护从“想起来再联系”变成可执行节奏`,
             },
         ],
     },
-    "lead-scoring": {
-        skillName: "生命周期 Pipeline",
+    "renewal-watch": {
+        skillName: "renewal-watch",
         color: "red",
         steps: [
             {
-                id: "import",
-                label: "CRM 录入",
-                description: "客户信息结构化",
+                id: "window",
+                label: "读取续费窗口客户",
+                description: "续费时间 + 行为异常一起看",
                 icon: Database,
-                annotation: "传统方式：销售懒得填\n• 太麻烦了，不如用脑子记\n• 结果是：客户跟着销售走了\n\nSkill 替代：自动补全",
-                highlight: false,
-                code: `// 自动补全 CRM
-const enriched = await openclaw
-  .enrich("customer_profile")
-  .source("chat_history")
-  .extract(["需求", "预算", "决策人", "Timeline"])
-  .fill("crm_fields")
-  .confirm(true)
-  .execute();
-// 补全完成: 1,247 条客户画像`,
+                annotation: "传统方式：等快到期了才想起来找客户。\n\nSkill 替代：把续费日期、余额、使用和服务异常一起纳入判断。",
+                highlight: true,
+                code: `// renewal-watch.input
+{
+  "customer_id": "R-227",
+  "renewal_date": "2026-04-20",
+  "latest_contact_date": "2026-03-01",
+  "balance_status": "low",
+  "usage_status": "declining",
+  "service_issue_flag": true
+}`,
             },
             {
-                id: "lifecycle",
-                label: "生命周期建模",
-                description: "180 天全周期监控",
+                id: "score",
+                label: "风险分级与窗口判断",
+                description: "P1 / P2 / P3 优先级",
                 icon: Activity,
-                annotation: "传统方式：首签即放养\n• 签完合同就没人管了\n• 等客户不续费了才知道\n\nSkill 替代：180 天生命周期模型",
+                annotation: "传统方式：谁先救，全靠感觉拍。\n\nSkill 替代：输出风险等级、生命周期阶段和续费窗口，让优先级不再含糊。",
                 highlight: true,
-                code: `// 生命周期建模
-const lifecycle = await openclaw
-  .model("180d_lifecycle")
-  .stages({
-    "0-30d":   "萌芽期",
-    "31-60d":  "体验期",
-    "61-90d":  "破灭期",
-    "91-180d": "成熟期"
-  })
-  .monitor("churn_risk")
-  .alertAt(0.7)
-  .execute();
-// 建模完成: 23 个高风险客户预警`,
+                code: `// renewal-watch.output
+{
+  "risk_level": "P1",
+  "lifecycle_stage": "续费窗口期",
+  "renewal_window": "30d",
+  "primary_signals": ["余额低", "最近联系中断", "服务异常"],
+  "human_required": true
+}`,
             },
             {
-                id: "intervention",
-                label: "强制教学干预",
-                description: "破灭期自动触发",
-                icon: AlertTriangle,
-                annotation: "传统方式：等客户说不续费了再补救\n• 90% 的客户在破灭期已经决定离开\n• 续费前才联系？晚了\n\nSkill 替代：破灭期前移干预",
-                highlight: true,
-                code: `// 破灭期干预
-await openclaw
-  .trigger("intervention")
-  .condition({ stage: "破灭期", risk: ">0.7" })
-  .actions([
-    "发送健康度检测",
-    "安排主动服务",
-    "触发 coach 流程"
-  ])
-  .deadline("48h")
-  .execute();
-// 干预触发: 23 个高风险客户`,
-            },
-            {
-                id: "renewal",
-                label: "续费驱动",
-                description: "到期前 60 天启动",
+                id: "prioritize",
+                label: "输出挽回优先级",
+                description: "先救谁、怎么救",
                 icon: CheckCircle,
-                annotation: "传统方式：到期了再催\n• 客户早就找好下家了\n• 续费靠客情，等于等死\n\nSkill 替代：前置 60 天启动",
-                highlight: false,
-                code: `// 续费漏斗
-const renewals = await openclaw
-  .track("renewal_pipeline")
-  .window("-90d to 0d")
-  .milestones({
-    "90d": "收集成功案例",
-    "60d": "推送续费方案",
-    "30d": "老板出面谈",
-    "0d":  "续费 or 流失"
-  })
-  .predict("renewal_prob")
-  .execute();
-// 预测完成: 预期续费率 78.3%`,
+                annotation: "传统方式：销售各自凭感觉去追，容易把最危险的客户漏掉。\n\nSkill 替代：直接给出优先级名单和推荐动作，让人工干预有先后顺序。",
+                highlight: true,
+                code: `await openclaw.retention.prioritize([
+  { customer_id: "R-227", risk_level: "P1", owner_role: "负责人" }
+]);
+// 结果：知道“谁最危险、谁先介入、先做什么”`,
             },
         ],
     },
@@ -333,79 +251,112 @@ const renewals = await openclaw
 
 /** 每个 Skill 的执行逻辑（3步以内） */
 const SKILL_EXECUTION_LOGIC: Record<string, { summary: string; steps: { label: string; detail: string }[] }> = {
-    "attribution": {
-        summary: "打破跨部门互相推诿，用数据定位真正的问题",
+    "crm-auto-fill": {
+        summary: "让后续所有判断都建立在干净输入上，而不是建立在销售的记忆和补填习惯上。",
         steps: [
-            { label: "统一数据口径", detail: "打通市场-销售-运营的数据，所有人用同一套数据说话" },
-            { label: "横向对标找异常", detail: "城市对比城市、团队对比团队、个人对比个人，标准化对标" },
-            { label: "定位问题根因", detail: "用数据分析定位真正的问题出在哪个环节，不再吵架" },
+            { label: "统一原始沟通入口", detail: "把微信、电话、拜访记录收进同一个结构化入口" },
+            { label: "自动抽取关键字段", detail: "提取需求、预算、决策人、Timeline、当前阶段与下一步动作" },
+            { label: "输出缺失提醒", detail: "明确哪些字段还没拿到，避免脏输入继续向下游扩散" },
         ],
     },
-    "sales-enablement": {
-        summary: "用机制替代自觉，让最难啃的客户也被认真对待",
+    "funnel-doctor": {
+        summary: "把主管脑中的推进标准显性化，让商机推进从盯结果变成盯过程。",
         steps: [
-            { label: "强制捆绑分配", detail: "高意向客户必须搭配难啃客户，禁止挑肥拣瘦" },
-            { label: "动态积分激励", detail: "越难成交的客户积分越高，多劳多得不再是口号" },
-            { label: "赛道专家认证", detail: "深耕垂直类目，培养真正懂行业的销售" },
+            { label: "读取商机阶段", detail: "把当前阶段、触达记录、阶段历史和备注统一读取进来" },
+            { label: "诊断卡点与缺失", detail: "识别阶段停滞的原因，并指出缺少哪些关键信息" },
+            { label: "输出动作建议", detail: "同时生成销售动作和经理动作，让推进责任清晰可执行" },
         ],
     },
-    "activation": {
-        summary: "用行为数据替代主观汇报，让每个销售的贡献可量化",
+    "customer-profiler": {
+        summary: "把客户分层和维护节奏从老员工经验，变成可复用、可移交、可持续优化的规则。",
         steps: [
-            { label: "全链路行为采集", detail: "记录所有业务动作（打电话、发微信、上门拜访）" },
-            { label: "行为驱动分级", detail: "0%-100% 硬性卡点，3天无动作自动降级" },
-            { label: "自动触发干预", detail: "低于卡点立即释放公海，同时触发 coach 流程" },
+            { label: "读取行为与联系记录", detail: "把充值频次、使用状态、最近联系和价值等级统一纳入判断" },
+            { label: "做分层与优先级判断", detail: "输出 segment、value level 和 priority reason" },
+            { label: "生成跟进节奏", detail: "把 owner cadence 和 recommended action 直接发给执行人" },
         ],
     },
-    "lead-scoring": {
-        summary: "用180天生命周期模型替代首签即放养，大幅提升续费率",
+    "renewal-watch": {
+        summary: "把续费挽回从“快流失了再救”前移到窗口期内，并且明确谁先介入、先做什么。",
         steps: [
-            { label: "CRM 自动补全", detail: "从聊天记录自动提取需求、预算、决策人等字段" },
-            { label: "180天生命周期建模", detail: "萌芽→体验→破灭→成熟→续费，每个阶段有对应策略" },
-            { label: "破灭期前置干预", detail: "在客户决定离开之前主动触发教学干预" },
+            { label: "读取续费窗口客户", detail: "把续费时间、余额、使用和服务异常统一纳入输入" },
+            { label: "做风险分级", detail: "输出 P1 / P2 / P3 风险等级、生命周期阶段和续费窗口" },
+            { label: "生成优先级名单", detail: "把人工干预从“谁有空谁跟”变成“谁最危险先救谁”" },
         ],
     },
 };
 
-const CATEGORY_MAP: Record<string, { title: string, description: string, icon: any, mappedTags?: string[], fallbackIds: string[] }> = {
-    "attribution": {
-        title: "大盘归因诊断：打破互相推诿",
-        description: "摒弃吵架，祭出「业务拆解」。从「全靠销售一张嘴」进化到「用数据分析定位问题」，用客观数据定位异常波动的真正原因。",
-        icon: Eye,
-        fallbackIds: ["bi-diagnoser", "tableau-bi", "fake-leads-audit"],
+type CategoryConfig = {
+    title: string;
+    description: string;
+    icon: ElementType;
+    mappedTags?: string[];
+    fallbackIds: string[];
+};
+
+type ProjectWithCategory = Project & { category?: string };
+
+const CATEGORY_MAP: Record<string, CategoryConfig> = {
+    "crm-auto-fill": {
+        title: "crm-auto-fill：把聊天记录变成干净输入",
+        description: "适合财税代理、代账和工商服务团队。这个 Skill 负责把散落在微信、电话、拜访记录里的关键信息，转成后续模块真正可用的结构化字段。",
+        icon: Database,
+        fallbackIds: ["sales-broadcaster", "rag-copilot"],
     },
-    "sales-enablement": {
-        title: "动能重构：让难啃的客户也被认真对待",
-        description: "专治销售「挑肥拣瘦」。将固定分配变为动态抢单，用高意向客户强行捆绑难啃客户，用积分机制培养深耕垂直类目的行业销售。",
-        icon: Package,
-        fallbackIds: ["dynamic-rfm", "unicorn-upsell"],
+    "funnel-doctor": {
+        title: "funnel-doctor：把商机卡点显性化",
+        description: "适合销售主管需要盯过程的团队。这个 Skill 负责诊断商机当前卡在哪、缺什么字段、下一步该由谁做什么，让主管从事后追责转向过程管理。",
+        icon: Route,
+        fallbackIds: ["bi-diagnoser", "dynamic-rfm", "fake-leads-audit"],
     },
-    "activation": {
-        title: "人效提升：让每个销售的贡献可量化",
-        description: "专治「业绩全靠天收」。废除销售自己报意向，建立 0% 到 100% 的硬性行为进阶卡点，将大班式管理转变为精准跟进赋能。",
-        icon: Activity,
-        fallbackIds: ["coaching-agent", "high-pressure-elimination", "rookie-ramp-up"],
+    "customer-profiler": {
+        title: "customer-profiler：把维护经验沉成规则",
+        description: "适合有存量客户池和交叉销售需求的团队。这个 Skill 负责把客户价值等级、联系频率和维护优先级经验，沉淀成可复用、可移交、可持续优化的分层规则。",
+        icon: Users,
+        fallbackIds: ["dynamic-rfm", "coaching-agent"],
     },
-    "lead-scoring": {
-        title: "生命周期：让客户持续回头买",
-        description: "摒弃「签完合同就不管了」的售后。建立 180 天客户跟踪模型（萌芽-体验-快要流失-成熟-续费），针对快要流失的客户实施强制干预，大幅提升续费率。",
+    "renewal-watch": {
+        title: "renewal-watch：把续费挽回前移到窗口期",
+        description: "适合存在账期、续费节点和客户流失风险的团队。这个 Skill 负责给出风险等级、续费窗口和优先级名单，让续费不再靠最后时刻的临时抢救。",
         icon: AlertTriangle,
-        fallbackIds: ["sales-broadcaster", "t90-churn-prevention", "apollo-handover-crisis"],
+        fallbackIds: ["sales-broadcaster", "t90-churn-prevention", "apollo-handover-crisis", "coaching-agent"],
     }
 };
 
-const iconMap: Record<string, any> = {
+const CATEGORY_ALIASES: Record<string, string> = {
+    "activation": "funnel-doctor",
+    "lead-scoring": "renewal-watch",
+    "attribution": "customer-profiler",
+    "sales-enablement": "crm-auto-fill",
+};
+
+const iconMap: Record<string, ElementType> = {
     Zap, Activity, Target, Users, TrendingUp, Eye, AlertTriangle, Package
 };
 
 export default function CategoryDetailPage() {
     const params = useParams();
     const router = useRouter();
-    const categoryId = params.id as string;
+    const rawCategoryId = params.id as string;
+    const categoryId = CATEGORY_ALIASES[rawCategoryId] ?? rawCategoryId;
     const categoryNode = CATEGORY_MAP[categoryId];
 
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
+
+    const loadProjects = useCallback(async () => {
+        try {
+            const allProjects = await getProjects();
+            // 筛选属于当前 Category 的项目：优先匹配 category 字段，其次匹配 fallbackIds
+            const filtered = allProjects.filter(p => 
+                (p as ProjectWithCategory).category === categoryId || categoryNode?.fallbackIds.includes(p.id)
+            );
+            setProjects(filtered);
+        } catch (error) {
+            console.error("Failed to load category projects:", error);
+        } finally {
+            setLoading(false);
+        }
+    }, [categoryId, categoryNode]);
 
     useEffect(() => {
         if (categoryNode) {
@@ -413,20 +364,7 @@ export default function CategoryDetailPage() {
         } else {
             setLoading(false);
         }
-    }, [categoryNode]);
-
-    const loadProjects = async () => {
-        try {
-            const allProjects = await getProjects();
-            // 筛选属于当前 Category 的项目
-            const filtered = allProjects.filter(p => categoryNode?.fallbackIds.includes(p.id));
-            setProjects(filtered);
-        } catch (error) {
-            console.error("Failed to load category projects:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    }, [categoryNode, loadProjects]);
 
     const TopIcon = categoryNode?.icon || Zap;
 
@@ -453,7 +391,13 @@ export default function CategoryDetailPage() {
                                     <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
                                         <TopIcon className="w-8 h-8 text-[#245fff]" />
                                     </div>
-                                    <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">{categoryNode.title}</h1>
+                                    <div>
+                                        <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs text-blue-300">
+                                            <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                                            首批已封装节点
+                                        </div>
+                                        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">{categoryNode.title}</h1>
+                                    </div>
                                 </div>
 
                                 {/* Pain Point Block */}
@@ -489,7 +433,7 @@ export default function CategoryDetailPage() {
                                 >
                                     <h2 className="text-xl font-medium mb-6 flex items-center gap-2">
                                         <span className="w-2 h-6 bg-[#245fff] rounded-sm inline-block"></span>
-                                        Skill 演示
+                                        封装原型演示
                                     </h2>
                                     <PipelineDemo
                                         skillName={SKILL_PIPELINES[categoryId].skillName}
@@ -509,7 +453,7 @@ export default function CategoryDetailPage() {
                                 >
                                     <h2 className="text-xl font-medium mb-6 flex items-center gap-2">
                                         <span className="w-2 h-6 bg-emerald-500 rounded-sm inline-block"></span>
-                                        执行逻辑（3步以内）
+                                        封装逻辑（3步以内）
                                     </h2>
                                     <div className="p-6 rounded-xl border border-white/10 bg-white/[0.02]">
                                         <p className="text-gray-400 text-sm mb-6">

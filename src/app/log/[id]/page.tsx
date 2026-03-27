@@ -158,7 +158,7 @@ export default function LogDetailPage() {
             <div className="flex-1">
               <div className="text-white font-medium">Neverlol</div>
               <div className="text-[#8b949e] text-sm">
-                {log.date}
+                {new Date(log.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
                 <span className="mx-2">·</span>
                 阅读 {Math.floor(Math.random() * 500) + 50}
               </div>

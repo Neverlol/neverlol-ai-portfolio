@@ -1,0 +1,2716 @@
+[
+  {
+    "id": "campaigns",
+    "name": "Campaigns 业务全景图",
+    "nodes_json": [
+      {
+        "id": "box-sfa",
+        "data": {
+          "label": "商机跟进域 (SFA)",
+          "width": 560,
+          "height": 380,
+          "bgColor": "rgba(202, 138, 4, 0.05)",
+          "borderColor": "#ca8a04"
+        },
+        "type": "groupNode",
+        "zIndex": -1,
+        "measured": {
+          "width": 560,
+          "height": 380
+        },
+        "position": {
+          "x": 1340,
+          "y": 140
+        }
+      },
+      {
+        "id": "m-net",
+        "data": {
+          "align": "left",
+          "items": [
+            "SEO/SEM",
+            "B2B",
+            "行业/垂直",
+            "媒体",
+            "QQ",
+            "微信",
+            "相关论坛",
+            "微博/博客",
+            "友链/外链"
+          ],
+          "label": "网络推广",
+          "theme": "blue",
+          "width": 175,
+          "layout": "standard",
+          "highlight": false
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 175,
+          "height": 268
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "selected": false
+      },
+      {
+        "id": "m-off",
+        "data": {
+          "items": [
+            "电视/广播",
+            "报纸/杂志",
+            "公交/地铁",
+            "楼宇",
+            "户外",
+            "会展"
+          ],
+          "label": "线下推广"
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 201
+        },
+        "position": {
+          "x": 0,
+          "y": 280
+        }
+      },
+      {
+        "id": "m-col",
+        "data": {
+          "items": [
+            "工商",
+            "协会",
+            "网站爬取",
+            "企业名录"
+          ],
+          "label": "数据采集"
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 156
+        },
+        "position": {
+          "x": 0,
+          "y": 500
+        }
+      },
+      {
+        "id": "m-edm",
+        "data": {
+          "items": [
+            "EDM",
+            "SMS",
+            "语音",
+            "微信",
+            "提醒",
+            "QQ"
+          ],
+          "label": "数据库营销"
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 201
+        },
+        "position": {
+          "x": 0,
+          "y": 680
+        }
+      },
+      {
+        "id": "c-web",
+        "data": {
+          "align": "center",
+          "label": "企业网站",
+          "width": 120
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 120,
+          "height": 43
+        },
+        "position": {
+          "x": 260,
+          "y": 100
+        }
+      },
+      {
+        "id": "c-adv",
+        "data": {
+          "align": "center",
+          "label": "咨询通道",
+          "width": 120
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 120,
+          "height": 43
+        },
+        "position": {
+          "x": 260,
+          "y": 280
+        }
+      },
+      {
+        "id": "c-act",
+        "data": {
+          "align": "center",
+          "label": "行动反馈",
+          "width": 120
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 120,
+          "height": 43
+        },
+        "position": {
+          "x": 260,
+          "y": 500
+        }
+      },
+      {
+        "id": "l-gen",
+        "data": {
+          "align": "center",
+          "items": [],
+          "label": "Leads生成",
+          "theme": "blue",
+          "width": 100,
+          "layout": "standard",
+          "highlight": true
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 100,
+          "height": 43
+        },
+        "position": {
+          "x": 450,
+          "y": 280
+        },
+        "selected": true
+      },
+      {
+        "id": "info-top",
+        "data": {
+          "items": [
+            "Leads导入",
+            "标准化",
+            "结构化",
+            "垃圾删除",
+            "信息补全",
+            "重复校验",
+            "号码测试",
+            "Leads评分",
+            "Incall绿色通道"
+          ],
+          "label": "信息管理"
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 268
+        },
+        "position": {
+          "x": 620,
+          "y": 140
+        }
+      },
+      {
+        "id": "info-bot",
+        "data": {
+          "items": [
+            "盘点/评估",
+            "分配策略",
+            "销售识别",
+            "使用规则",
+            "效果监控"
+          ],
+          "label": "信息管理"
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 178
+        },
+        "position": {
+          "x": 620,
+          "y": 440
+        }
+      },
+      {
+        "id": "s-valid",
+        "data": {
+          "align": "center",
+          "label": "有效可分发leads",
+          "width": 160
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 160,
+          "height": 43
+        },
+        "position": {
+          "x": 880,
+          "y": 244
+        }
+      },
+      {
+        "id": "db-priv",
+        "data": {
+          "align": "center",
+          "label": "销售私有库",
+          "width": 160,
+          "highlight": true
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 160,
+          "height": 43
+        },
+        "position": {
+          "x": 1120,
+          "y": 244
+        }
+      },
+      {
+        "id": "sfa-funnel",
+        "data": {
+          "items": [
+            "外呼",
+            "接通",
+            "有效",
+            "拜访",
+            "签单"
+          ],
+          "label": "销售漏斗",
+          "width": 160
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 160,
+          "height": 178
+        },
+        "position": {
+          "x": 1380,
+          "y": 179
+        }
+      },
+      {
+        "id": "sfa-sop",
+        "data": {
+          "items": [
+            "0% 公司名；决策电话；初步意向",
+            "20% 明确需求；意向合作；明确品类",
+            "40% 拜访；预计时间、金额",
+            "60% 订金；签合同；全款时间",
+            "100% 完成全款"
+          ],
+          "label": "商机开发SOP",
+          "width": 260
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 260,
+          "height": 178
+        },
+        "position": {
+          "x": 1600,
+          "y": 179
+        }
+      },
+      {
+        "id": "order",
+        "data": {
+          "items": [
+            "审核",
+            "认证",
+            "财务",
+            "商品库",
+            "进销存"
+          ],
+          "label": "订单管理",
+          "width": 180
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 178
+        },
+        "position": {
+          "x": 1980,
+          "y": 179
+        }
+      },
+      {
+        "id": "s-invalid",
+        "data": {
+          "align": "center",
+          "label": "未达分发标准leads",
+          "width": 160
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 160,
+          "height": 43
+        },
+        "position": {
+          "x": 880,
+          "y": 464
+        }
+      },
+      {
+        "id": "db-pub",
+        "data": {
+          "align": "center",
+          "label": "公海Database",
+          "width": 160,
+          "highlight": true
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 160,
+          "height": 43
+        },
+        "position": {
+          "x": 1120,
+          "y": 464
+        }
+      },
+      {
+        "id": "sfa-diag1",
+        "data": {
+          "align": "center",
+          "label": "销售漏斗与商机转化过程指标关联",
+          "width": 480
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 480,
+          "height": 43
+        },
+        "position": {
+          "x": 1380,
+          "y": 400
+        }
+      },
+      {
+        "id": "sfa-diag2",
+        "data": {
+          "align": "center",
+          "label": "诊断转化问题；推进解决",
+          "width": 480
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 480,
+          "height": 43
+        },
+        "position": {
+          "x": 1380,
+          "y": 464
+        }
+      },
+      {
+        "id": "ltv-head",
+        "data": {
+          "label": "客户生命周期管理",
+          "width": 680,
+          "isHeader": true
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 680,
+          "height": 36
+        },
+        "position": {
+          "x": 2260,
+          "y": 0
+        }
+      },
+      {
+        "id": "ltv-act",
+        "data": {
+          "items": [
+            "开通会员",
+            "发帖投放广告",
+            "消耗现金竞价排名",
+            "获取C端流量",
+            "尝试转化成交"
+          ],
+          "label": "客户行为管理",
+          "width": 680,
+          "layout": "horizontal-flow"
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 680,
+          "height": 153
+        },
+        "position": {
+          "x": 2260,
+          "y": 60
+        }
+      },
+      {
+        "id": "ltv-fine",
+        "data": {
+          "items": [
+            "客户分层管理",
+            "指标监控预警",
+            "行为数据追踪"
+          ],
+          "label": "精细化管理模块",
+          "width": 180
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 133
+        },
+        "position": {
+          "x": 2260,
+          "y": 244
+        }
+      },
+      {
+        "id": "ltv-val",
+        "data": {
+          "items": [
+            "现金充值",
+            "现金消耗",
+            "余额存量",
+            "产品投放",
+            "竞价策略",
+            "流量转化"
+          ],
+          "label": "增值管理",
+          "width": 180
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 201
+        },
+        "position": {
+          "x": 2500,
+          "y": 244
+        }
+      },
+      {
+        "id": "ltv-renew",
+        "data": {
+          "items": [
+            "续费率",
+            "维护频率",
+            "行业效果",
+            "未续费原因",
+            "问题跟踪",
+            "资源投放"
+          ],
+          "label": "续费管理",
+          "width": 180
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 180,
+          "height": 201
+        },
+        "position": {
+          "x": 2740,
+          "y": 244
+        }
+      },
+      {
+        "id": "ltv-dec",
+        "data": {
+          "items": [
+            "政策因素",
+            "服务因素",
+            "效果因素",
+            "行业因素",
+            "其他因素"
+          ],
+          "label": "决策模块",
+          "width": 360,
+          "layout": "decision",
+          "subBlocks": [
+            {
+              "label": "客户诊断"
+            },
+            {
+              "label": "策略仓库",
+              "highlight": true
+            }
+          ]
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 360,
+          "height": 262
+        },
+        "position": {
+          "x": 2260,
+          "y": 460
+        }
+      },
+      {
+        "id": "ltv-exe",
+        "data": {
+          "items": [
+            "电话",
+            "面访",
+            "邮件",
+            "QQ",
+            "微信"
+          ],
+          "label": "执行模块",
+          "width": 280
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 280,
+          "height": 178
+        },
+        "position": {
+          "x": 2260,
+          "y": 800
+        }
+      },
+      {
+        "id": "wp-renew-down",
+        "data": {},
+        "type": "wpNode",
+        "measured": {
+          "width": 1,
+          "height": 1
+        },
+        "position": {
+          "x": 2830,
+          "y": 860
+        }
+      },
+      {
+        "id": "wp-db-up",
+        "data": {},
+        "type": "wpNode",
+        "measured": {
+          "width": 1,
+          "height": 1
+        },
+        "position": {
+          "x": 1200,
+          "y": 860
+        }
+      },
+      {
+        "id": "wp-db-down",
+        "data": {},
+        "type": "wpNode",
+        "measured": {
+          "width": 1,
+          "height": 1
+        },
+        "position": {
+          "x": 1200,
+          "y": 920
+        }
+      },
+      {
+        "id": "wp-edm-up",
+        "data": {},
+        "type": "wpNode",
+        "measured": {
+          "width": 1,
+          "height": 1
+        },
+        "position": {
+          "x": 90,
+          "y": 920
+        }
+      }
+    ],
+    "edges_json": [
+      {
+        "id": "e1",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "m-net",
+        "target": "c-web",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e2",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "m-off",
+        "target": "c-web",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e3",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "m-off",
+        "target": "c-adv",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e4",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "m-col",
+        "target": "c-act",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e5",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "m-edm",
+        "target": "c-act",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e6",
+        "type": "flowing",
+        "label": "行为捕捉",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "c-web",
+        "target": "l-gen",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e7",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "c-adv",
+        "target": "l-gen",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e8",
+        "type": "flowing",
+        "label": "营销激活",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "c-act",
+        "target": "l-gen",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e9",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "l-gen",
+        "target": "info-top",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e10",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "l-gen",
+        "target": "info-bot",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e11",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "info-top",
+        "target": "s-valid",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e12",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "info-top",
+        "target": "s-invalid",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e13",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "info-bot",
+        "target": "s-valid",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e14",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "info-bot",
+        "target": "s-invalid",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e15",
+        "type": "flowing",
+        "label": "Leads分配",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "s-valid",
+        "target": "db-priv",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e16",
+        "type": "flowing",
+        "label": "待孵化",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "s-invalid",
+        "target": "db-pub",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e17",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "db-priv",
+        "target": "sfa-funnel",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e18",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "sfa-funnel",
+        "target": "sfa-sop",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "markerStart": {
+          "type": "arrowclosed",
+          "color": "#3b82f6",
+          "orient": "auto-start-reverse"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e19",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "sfa-funnel",
+        "target": "sfa-diag1",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "e19b",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "sfa-sop",
+        "target": "sfa-diag1",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "e20",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "sfa-diag1",
+        "target": "sfa-diag2",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "e21",
+        "type": "flowing",
+        "label": "未签约",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "sfa-diag2",
+        "target": "db-pub",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "labelStyle": {
+          "fill": "#ef4444",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-left",
+        "targetHandle": "t-right"
+      },
+      {
+        "id": "e22",
+        "type": "flowing",
+        "label": "签约",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "sfa-sop",
+        "target": "order",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e23",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "order",
+        "target": "ltv-act",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e24",
+        "type": "flowing",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "order",
+        "target": "ltv-fine",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e25",
+        "type": "flowing",
+        "label": "活跃",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "ltv-fine",
+        "target": "ltv-val",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e26",
+        "type": "flowing",
+        "label": "到期",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "ltv-val",
+        "target": "ltv-renew",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "err",
+        "type": "flowing",
+        "label": "异常诊断",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "ltv-fine",
+        "target": "ltv-dec",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "labelStyle": {
+          "fill": "#ef4444",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "dec",
+        "type": "flowing",
+        "label": "策略推进",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "ltv-dec",
+        "target": "ltv-exe",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "e-back",
+        "type": "flowing",
+        "label": "未解决回退",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "ltv-exe",
+        "target": "ltv-dec",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "labelStyle": {
+          "fill": "#ef4444",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-left",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "e-ok",
+        "type": "flowing",
+        "label": "解决入增值",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5
+        },
+        "source": "ltv-exe",
+        "target": "ltv-val",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-bottom"
+      },
+      {
+        "id": "r1",
+        "type": "flowing",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "ltv-renew",
+        "target": "wp-renew-down",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "r2",
+        "type": "flowing",
+        "label": "未续费掉库",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "wp-renew-down",
+        "target": "wp-db-up",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "labelStyle": {
+          "fill": "#ef4444",
+          "fontSize": 12,
+          "fontWeight": "bold"
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-left",
+        "targetHandle": "t-right"
+      },
+      {
+        "id": "r3",
+        "type": "flowing",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "wp-db-up",
+        "target": "db-pub",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "sourceHandle": "s-top",
+        "targetHandle": "t-bottom"
+      },
+      {
+        "id": "p1",
+        "type": "flowing",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "db-pub",
+        "target": "wp-db-down",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "p2",
+        "type": "flowing",
+        "label": "公海营销",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "wp-db-down",
+        "target": "wp-edm-up",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "labelStyle": {
+          "fill": "#ef4444",
+          "fontSize": 12,
+          "fontWeight": "bold"
+        },
+        "labelBgStyle": {
+          "fill": "#111"
+        },
+        "sourceHandle": "s-left",
+        "targetHandle": "t-right"
+      },
+      {
+        "id": "p3",
+        "type": "flowing",
+        "style": {
+          "stroke": "#ef4444",
+          "strokeWidth": 1.5,
+          "strokeDasharray": "4 4"
+        },
+        "source": "wp-edm-up",
+        "target": "m-edm",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#ef4444"
+        },
+        "sourceHandle": "s-top",
+        "targetHandle": "t-bottom"
+      }
+    ],
+    "created_at": "2026-03-14T11:24:17.298494+00:00",
+    "updated_at": "2026-03-14T11:24:17.298494+00:00"
+  },
+  {
+    "id": "capability",
+    "name": "Capability 能力引擎",
+    "nodes_json": [
+      {
+        "id": "box-red",
+        "data": {
+          "width": 440,
+          "height": 800,
+          "bgColor": "rgba(190, 18, 60, 0.03)",
+          "borderColor": "#be123c"
+        },
+        "type": "groupNode",
+        "zIndex": -1,
+        "measured": {
+          "width": 440,
+          "height": 800
+        },
+        "position": {
+          "x": 0,
+          "y": 40
+        },
+        "selected": true
+      },
+      {
+        "id": "r-head",
+        "data": {
+          "items": [
+            "基于组织裂变、营销策略与新商业模式进行市场扩张"
+          ],
+          "label": "增量扩张引擎 (Growth)",
+          "theme": "red",
+          "width": 440,
+          "isHeader": true
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 440,
+          "height": 76
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": "r-mkt",
+        "data": {
+          "cols": 2,
+          "items": [
+            "蓝海市场横向拓荒",
+            "存量市场纵向渗透",
+            "下沉区域网格抢占",
+            "高净值客群攻坚"
+          ],
+          "label": "市场拓扑矩阵",
+          "theme": "red",
+          "width": 400,
+          "layout": "grid"
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 175
+        },
+        "position": {
+          "x": 20,
+          "y": 99
+        },
+        "selected": false
+      },
+      {
+        "id": "r-org",
+        "data": {
+          "items": [
+            "核心销售铁军规模化裂变",
+            "区域政委与支持体系搭建"
+          ],
+          "label": "组织能力裂变与溢出",
+          "theme": "red",
+          "width": 400
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 118
+        },
+        "position": {
+          "x": 20,
+          "y": 300
+        },
+        "selected": false
+      },
+      {
+        "id": "r-matrix",
+        "data": {
+          "cols": 2,
+          "items": [
+            "管理梯队孵化器",
+            "Top Sales 基因克隆",
+            "敏捷市场需求嗅探网",
+            "产品核心价值重塑"
+          ],
+          "label": "扩张基建底座",
+          "theme": "red",
+          "width": 400,
+          "layout": "grid"
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 175
+        },
+        "position": {
+          "x": 20,
+          "y": 444
+        },
+        "selected": false
+      },
+      {
+        "id": "r-curve",
+        "data": {
+          "align": "center",
+          "label": "第二曲线：新商业生态与模式验证",
+          "theme": "red",
+          "width": 400
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 48
+        },
+        "position": {
+          "x": 20,
+          "y": 648
+        },
+        "selected": false
+      },
+      {
+        "id": "r-hack",
+        "data": {
+          "align": "center",
+          "label": "增长黑客 (Growth Hacking) 全域实验闭环",
+          "theme": "red",
+          "width": 400
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 48
+        },
+        "position": {
+          "x": 20,
+          "y": 740
+        },
+        "selected": false
+      },
+      {
+        "id": "box-blue",
+        "data": {
+          "width": 460,
+          "height": 800,
+          "bgColor": "rgba(29, 78, 216, 0.03)",
+          "borderColor": "#1d4ed8"
+        },
+        "type": "groupNode",
+        "zIndex": -1,
+        "measured": {
+          "width": 460,
+          "height": 800
+        },
+        "position": {
+          "x": 500,
+          "y": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "b-head",
+        "data": {
+          "items": [
+            "从底层数据赋能前线，到管理中枢通过数据驱动决策"
+          ],
+          "label": "系统提效 (Efficiency)",
+          "theme": "blue",
+          "width": 460,
+          "isHeader": true
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 460,
+          "height": 76
+        },
+        "position": {
+          "x": 500,
+          "y": 0
+        }
+      },
+      {
+        "id": "b-bi",
+        "data": {
+          "cols": 2,
+          "items": [
+            "全域业绩大盘推演",
+            "业务漏斗断层诊断",
+            "360°全景客户画像",
+            "行业标杆与竞品知识库"
+          ],
+          "label": "商业智能 (BI) 数据舱与武器库",
+          "theme": "blue",
+          "width": 420,
+          "layout": "grid"
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 420,
+          "height": 175
+        },
+        "position": {
+          "x": 520,
+          "y": 99
+        },
+        "selected": false
+      },
+      {
+        "id": "b-funnel",
+        "data": {
+          "items": [
+            "精准触达",
+            "痛点挖掘",
+            "方案共创",
+            "逼单签约",
+            "履约交付"
+          ],
+          "label": "标准化漏斗流水线强控 SOP",
+          "theme": "blue",
+          "width": 420,
+          "layout": "horizontal-flow"
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 420,
+          "height": 100
+        },
+        "position": {
+          "x": 520,
+          "y": 292
+        },
+        "selected": false
+      },
+      {
+        "id": "b-empower",
+        "data": {
+          "align": "center",
+          "label": "中台向业务终端赋能",
+          "theme": "blue",
+          "width": 200
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 200,
+          "height": 48
+        },
+        "position": {
+          "x": 520,
+          "y": 409
+        },
+        "selected": false
+      },
+      {
+        "id": "b-feedback",
+        "data": {
+          "align": "center",
+          "label": "终端向中台实战反哺",
+          "theme": "blue",
+          "width": 200
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 200,
+          "height": 48
+        },
+        "position": {
+          "x": 740,
+          "y": 409
+        },
+        "selected": false
+      },
+      {
+        "id": "b-ctrl",
+        "data": {
+          "cols": 2,
+          "items": [
+            "前端行动量级雷达",
+            "核心商机转化时效监控",
+            "终阶成单比率异常预警",
+            "后端履约/交付质量追踪"
+          ],
+          "label": "全生命周期过程指标强控",
+          "theme": "blue",
+          "width": 420,
+          "layout": "grid"
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 420,
+          "height": 175
+        },
+        "position": {
+          "x": 520,
+          "y": 477
+        },
+        "selected": false
+      },
+      {
+        "id": "b-result",
+        "data": {
+          "align": "center",
+          "label": "终端行动量管理与转化技巧敏捷迭代",
+          "theme": "blue",
+          "width": 420
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 420,
+          "height": 48
+        },
+        "position": {
+          "x": 520,
+          "y": 672
+        },
+        "selected": false
+      },
+      {
+        "id": "b-close",
+        "data": {
+          "align": "center",
+          "label": "行为与结果的强关联闭环追踪模型",
+          "theme": "blue",
+          "width": 420
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 420,
+          "height": 48
+        },
+        "position": {
+          "x": 520,
+          "y": 740
+        },
+        "selected": false
+      },
+      {
+        "id": "box-green",
+        "data": {
+          "width": 440,
+          "height": 800,
+          "bgColor": "rgba(5, 150, 105, 0.03)",
+          "borderColor": "#059669"
+        },
+        "type": "groupNode",
+        "zIndex": -1,
+        "measured": {
+          "width": 440,
+          "height": 800
+        },
+        "position": {
+          "x": 1020,
+          "y": 40
+        },
+        "selected": false
+      },
+      {
+        "id": "g-head",
+        "data": {
+          "items": [
+            "通过市场数据敏捷迭代，实现资源动态配置与决策调整"
+          ],
+          "label": "市场生态布局 (Market Layout)",
+          "theme": "green",
+          "width": 440,
+          "isHeader": true
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 440,
+          "height": 76
+        },
+        "position": {
+          "x": 1020,
+          "y": 0
+        }
+      },
+      {
+        "id": "g-insight",
+        "data": {
+          "items": [
+            "持续深度盘点大盘市场波动周期",
+            "全域目标客群资源热力图描绘",
+            "基于区域市场容量的期望业绩基线测算"
+          ],
+          "label": "宏观市场洞察与动态推演",
+          "theme": "green",
+          "width": 400
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 143
+        },
+        "position": {
+          "x": 1040,
+          "y": 112
+        },
+        "selected": false
+      },
+      {
+        "id": "g-monitor",
+        "data": {
+          "items": [
+            "大盘异动告警",
+            "漏斗断层定位",
+            "异常归因分析"
+          ],
+          "label": "市场动态监测雷达",
+          "theme": "green",
+          "width": 400,
+          "layout": "horizontal-flow"
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 100
+        },
+        "position": {
+          "x": 1040,
+          "y": 290
+        },
+        "selected": false
+      },
+      {
+        "id": "g-eval",
+        "data": {
+          "cols": 2,
+          "items": [
+            "业务人效分布密度核算",
+            "各类资源/政策投放回报率",
+            "竞品动态压制与反制分析",
+            "底层系统与产研需求统筹"
+          ],
+          "label": "ROI 与生态动态评估体系",
+          "theme": "green",
+          "width": 400,
+          "layout": "grid"
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 400,
+          "height": 175
+        },
+        "position": {
+          "x": 1040,
+          "y": 420
+        }
+      },
+      {
+        "id": "g-strategy",
+        "data": {
+          "align": "center",
+          "label": "敏捷策略库调度与高优先级指令下发",
+          "theme": "green",
+          "width": 400
+        },
+        "type": "richNode",
+        "dragging": false,
+        "measured": {
+          "width": 400,
+          "height": 48
+        },
+        "position": {
+          "x": 1040,
+          "y": 645
+        },
+        "selected": false
+      },
+      {
+        "id": "g-dual",
+        "data": {
+          "align": "center",
+          "label": "大盘生态与终端指标的双向纠偏防线",
+          "theme": "green",
+          "width": 400
+        },
+        "type": "richNode",
+        "measured": {
+          "width": 400,
+          "height": 48
+        },
+        "position": {
+          "x": 1040,
+          "y": 740
+        },
+        "selected": false
+      }
+    ],
+    "edges_json": [
+      {
+        "id": "re1-track",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "stroke": "#e11d48",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "r-mkt",
+        "target": "r-org",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "re1-light",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #e11d48) drop-shadow(0 0 8px #e11d48)",
+          "stroke": "#e11d48",
+          "strokeWidth": 2
+        },
+        "source": "r-mkt",
+        "target": "r-org",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#e11d48"
+        },
+        "labelStyle": {
+          "fill": "#e11d48",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "re2-track",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "stroke": "#e11d48",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "r-org",
+        "target": "r-matrix",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "re2-light",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #e11d48) drop-shadow(0 0 8px #e11d48)",
+          "stroke": "#e11d48",
+          "strokeWidth": 2
+        },
+        "source": "r-org",
+        "target": "r-matrix",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#e11d48"
+        },
+        "labelStyle": {
+          "fill": "#e11d48",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "re3-track",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "stroke": "#e11d48",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "r-matrix",
+        "target": "r-curve",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "re3-light",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #e11d48) drop-shadow(0 0 8px #e11d48)",
+          "stroke": "#e11d48",
+          "strokeWidth": 2
+        },
+        "source": "r-matrix",
+        "target": "r-curve",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#e11d48"
+        },
+        "labelStyle": {
+          "fill": "#e11d48",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "re4-track",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "stroke": "#e11d48",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "r-curve",
+        "target": "r-hack",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "re4-light",
+        "type": "step",
+        "color": "#e11d48",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #e11d48) drop-shadow(0 0 8px #e11d48)",
+          "stroke": "#e11d48",
+          "strokeWidth": 2
+        },
+        "source": "r-curve",
+        "target": "r-hack",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#e11d48"
+        },
+        "labelStyle": {
+          "fill": "#e11d48",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be1-track",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "b-bi",
+        "target": "b-funnel",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be1-light",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #3b82f6) drop-shadow(0 0 8px #3b82f6)",
+          "stroke": "#3b82f6",
+          "strokeWidth": 2
+        },
+        "source": "b-bi",
+        "target": "b-funnel",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be2-track",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "b-bi",
+        "target": "b-empower",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be2-light",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #3b82f6) drop-shadow(0 0 8px #3b82f6)",
+          "stroke": "#3b82f6",
+          "strokeWidth": 2
+        },
+        "source": "b-bi",
+        "target": "b-empower",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be3-track",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "b-empower",
+        "target": "b-feedback",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "be3-light",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #3b82f6) drop-shadow(0 0 8px #3b82f6)",
+          "stroke": "#3b82f6",
+          "strokeWidth": 2
+        },
+        "source": "b-empower",
+        "target": "b-feedback",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "be4-track",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "b-funnel",
+        "target": "b-ctrl",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be4-light",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #3b82f6) drop-shadow(0 0 8px #3b82f6)",
+          "stroke": "#3b82f6",
+          "strokeWidth": 2
+        },
+        "source": "b-funnel",
+        "target": "b-ctrl",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be5-track",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "b-ctrl",
+        "target": "b-result",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be5-light",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #3b82f6) drop-shadow(0 0 8px #3b82f6)",
+          "stroke": "#3b82f6",
+          "strokeWidth": 2
+        },
+        "source": "b-ctrl",
+        "target": "b-result",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be6-track",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "stroke": "#3b82f6",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "b-result",
+        "target": "b-close",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "be6-light",
+        "type": "step",
+        "color": "#3b82f6",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #3b82f6) drop-shadow(0 0 8px #3b82f6)",
+          "stroke": "#3b82f6",
+          "strokeWidth": 2
+        },
+        "source": "b-result",
+        "target": "b-close",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#3b82f6"
+        },
+        "labelStyle": {
+          "fill": "#3b82f6",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge1-track",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "stroke": "#10b981",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "g-insight",
+        "target": "g-monitor",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge1-light",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #10b981) drop-shadow(0 0 8px #10b981)",
+          "stroke": "#10b981",
+          "strokeWidth": 2
+        },
+        "source": "g-insight",
+        "target": "g-monitor",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#10b981"
+        },
+        "labelStyle": {
+          "fill": "#10b981",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge2-track",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "stroke": "#10b981",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "g-monitor",
+        "target": "g-eval",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge2-light",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #10b981) drop-shadow(0 0 8px #10b981)",
+          "stroke": "#10b981",
+          "strokeWidth": 2
+        },
+        "source": "g-monitor",
+        "target": "g-eval",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#10b981"
+        },
+        "labelStyle": {
+          "fill": "#10b981",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge3-track",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "stroke": "#10b981",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "g-eval",
+        "target": "g-strategy",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge3-light",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #10b981) drop-shadow(0 0 8px #10b981)",
+          "stroke": "#10b981",
+          "strokeWidth": 2
+        },
+        "source": "g-eval",
+        "target": "g-strategy",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#10b981"
+        },
+        "labelStyle": {
+          "fill": "#10b981",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge4-track",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "stroke": "#10b981",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "g-strategy",
+        "target": "g-dual",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ge4-light",
+        "type": "step",
+        "color": "#10b981",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #10b981) drop-shadow(0 0 8px #10b981)",
+          "stroke": "#10b981",
+          "strokeWidth": 2
+        },
+        "source": "g-strategy",
+        "target": "g-dual",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#10b981"
+        },
+        "labelStyle": {
+          "fill": "#10b981",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-top"
+      },
+      {
+        "id": "ce1-track",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "style": {
+          "stroke": "#a855f7",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "g-insight",
+        "target": "b-bi",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-left",
+        "targetHandle": "t-right"
+      },
+      {
+        "id": "ce1-light",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "label": "市场情报赋能BI",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #a855f7) drop-shadow(0 0 8px #a855f7)",
+          "stroke": "#a855f7",
+          "strokeWidth": 2
+        },
+        "source": "g-insight",
+        "target": "b-bi",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#a855f7"
+        },
+        "labelStyle": {
+          "fill": "#a855f7",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-left",
+        "targetHandle": "t-right"
+      },
+      {
+        "id": "ce2-track",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "style": {
+          "stroke": "#a855f7",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "b-feedback",
+        "target": "g-monitor",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "ce2-light",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "label": "终端实战反哺预警",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #a855f7) drop-shadow(0 0 8px #a855f7)",
+          "stroke": "#a855f7",
+          "strokeWidth": 2
+        },
+        "source": "b-feedback",
+        "target": "g-monitor",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#a855f7"
+        },
+        "labelStyle": {
+          "fill": "#a855f7",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-right",
+        "targetHandle": "t-left"
+      },
+      {
+        "id": "ce3-track",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "style": {
+          "stroke": "#a855f7",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "g-strategy",
+        "target": "b-ctrl",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-left",
+        "targetHandle": "t-right"
+      },
+      {
+        "id": "ce3-light",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "label": "策略指导强控",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #a855f7) drop-shadow(0 0 8px #a855f7)",
+          "stroke": "#a855f7",
+          "strokeWidth": 2
+        },
+        "source": "g-strategy",
+        "target": "b-ctrl",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#a855f7"
+        },
+        "labelStyle": {
+          "fill": "#a855f7",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-left",
+        "targetHandle": "t-right"
+      },
+      {
+        "id": "ce4-track",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "style": {
+          "stroke": "#a855f7",
+          "strokeWidth": 1.5,
+          "strokeOpacity": 0.15
+        },
+        "source": "g-strategy",
+        "target": "r-hack",
+        "animated": false,
+        "selectable": true,
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-bottom"
+      },
+      {
+        "id": "ce4-light",
+        "type": "smoothstep",
+        "color": "#a855f7",
+        "label": "大盘策略直驱黑客实验",
+        "style": {
+          "filter": "drop-shadow(0 0 4px #a855f7) drop-shadow(0 0 8px #a855f7)",
+          "stroke": "#a855f7",
+          "strokeWidth": 2
+        },
+        "source": "g-strategy",
+        "target": "r-hack",
+        "animated": true,
+        "className": "capability-flowing-light",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "color": "#a855f7"
+        },
+        "labelStyle": {
+          "fill": "#a855f7",
+          "fontSize": 10,
+          "fontWeight": "bold"
+        },
+        "selectable": true,
+        "labelBgStyle": {
+          "fill": "#111",
+          "fillOpacity": 0.8
+        },
+        "sourceHandle": "s-bottom",
+        "targetHandle": "t-bottom"
+      }
+    ],
+    "created_at": "2026-03-14T03:09:56.388109+00:00",
+    "updated_at": "2026-03-14T05:12:47.601987+00:00"
+  }
+]

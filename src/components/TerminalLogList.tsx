@@ -92,7 +92,7 @@ export function TerminalLogList({
         (log.tags && log.tags.some(t => t.toLowerCase().includes(query)));
 
       return matchTag && matchSearch;
-    });
+    }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     // 4. 应用数量限制
     if (limit && limit > 0) {
@@ -228,8 +228,8 @@ export function TerminalLogList({
                         onClick={() => handleLogClick(log.id)}
                         className="flex items-center gap-3 p-3 rounded bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-[#FACC15]/30 transition-all cursor-pointer font-mono"
                       >
-                        <div className="text-[#8b949e] text-xs w-24 shrink-0 flex items-center gap-1.5">
-                          <span className="text-[#245fff]">{'>'}</span> {log.date.substring(5)}
+                        <div className="text-[#8b949e] text-xs w-28 shrink-0 flex items-center gap-1.5">
+                          <span className="text-[#245fff]">{'>'}</span> {log.date.substring(0, 10)}
                         </div>
 
                         <div className="flex-1 min-w-0 flex items-center gap-3">

@@ -1,11 +1,9 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CasesList } from "@/components/CasesList";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
-    title: "全部案例 - Skill方案库",
+    title: "全部案例与封装原型",
 };
 
 export default function CasesPage() {
@@ -15,12 +13,11 @@ export default function CasesPage() {
             <main className="flex-1 pt-24 pb-16">
                 <div className="max-w-4xl mx-auto px-6 mb-8">
                     <h1 className="text-3xl font-bold tracking-tight mb-4">
-                        Skill方案库
-                        <span className="text-[#245fff] ml-3 text-lg font-mono font-medium">~/skill-arsenal</span>
+                        案例与封装原型
+                        <span className="text-[#245fff] ml-3 text-lg font-mono font-medium">~/deployment-modules</span>
                     </h1>
                     <p className="text-[#8b949e]">
-                        这里沉淀了历经实弹打磨的商业增长战役。
-                        每一个案例背后都是可量化的 ROI 与可复用的方法论。
+                        这里展示的是已经沉淀出的业务案例、首批封装模块，以及后续可继续接入客户真实工作流的扩展原型。
                     </p>
                 </div>
                 <CasesList />

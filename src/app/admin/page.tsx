@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { createClient } from "@/lib/supabase";
+import { signOut } from "@/lib/auth";
 import { useAuth } from "@/lib/useAuth";
 import { getProjects, createProject, updateProject, deleteProject, getEvolutionLogs, createEvolutionLog, updateEvolutionLog, deleteEvolutionLog } from "@/lib/db";
 import type { Project, EvolutionLog } from "@/lib/database.types";
@@ -71,7 +71,6 @@ type Tab = "projects" | "logs" | "campaigns" | "capability";
 
 export default function AdminPage() {
   const router = useRouter();
-  const supabase = createClient();
   const { user, loading: authLoading } = useAuth();
 
   // 数据状态
@@ -116,7 +115,7 @@ export default function AdminPage() {
   };
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
+    await signOut();
     router.push("/");
   };
 

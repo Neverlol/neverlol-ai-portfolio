@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, Brain, Sparkles, Zap, User, ArrowRight, Play, ArrowDown } from "lucide-react";
+import { CheckCircle, Brain, Sparkles, Zap, User, ArrowRight, Play, ArrowDown, Boxes } from "lucide-react";
+import Link from "next/link";
 
 // Logo 图片（本地文件）
 const OPENCLAW_LOGO_URL = "/openclaw-logo.png";
@@ -10,8 +11,8 @@ const FEISHU_LOGO_URL = "/feishu-logo.png";
 const WECHAT_LOGO_URL = "/wechat-logo.png";
 const QQ_LOGO_URL = "/qq-logo.png";
 
-// 节点类型：智能体(agent) 或 人工(human)
-type NodeType = "agent" | "human";
+// 节点类型：已封装 Skill / 人工 / 可定制扩展
+type NodeType = "skill" | "human" | "planned";
 
 export interface PipelineNode {
   id: string;
@@ -20,8 +21,6 @@ export interface PipelineNode {
   skill?: string;
   input: string;
   output: string;
-  strategyInput?: string;
-  strategyOutput?: string;
   strategyAction?: string;
 }
 
@@ -37,114 +36,100 @@ const colorMap = {
   amber: { accent: "border-amber-500/50", text: "text-amber-400", bg: "bg-amber-500/10", glow: "shadow-amber-500/20", bar: "bg-amber-500", icon: "text-amber-400", badge: "bg-amber-500/20 text-amber-400" },
 };
 
-// 全链路节点配置
+const nodeTypeMeta = {
+  skill: {
+    label: "已封装 Skill",
+    badge: "bg-blue-500/20 text-blue-400",
+    border: "#3b82f6",
+    activeBg: "rgba(59, 130, 246, 0.2)",
+    icon: Sparkles,
+  },
+  human: {
+    label: "人工判断",
+    badge: "bg-purple-500/20 text-purple-400",
+    border: "#a855f7",
+    activeBg: "rgba(168, 85, 247, 0.2)",
+    icon: User,
+  },
+  planned: {
+    label: "可定制扩展",
+    badge: "bg-white/10 text-gray-300",
+    border: "#6b7280",
+    activeBg: "rgba(107, 114, 128, 0.2)",
+    icon: Boxes,
+  },
+} as const;
+
+// 全链路蓝图节点配置
 const PIPELINE_NODES: PipelineNode[] = [
   {
-    id: "lead-gen",
-    type: "agent",
-    name: "获客智能体",
-    skill: "线索获取 Skill",
-    input: "各渠道线索",
-    output: "清洗后 3200 条有效线索",
-    strategyInput: "原始线索数据",
-    strategyOutput: "有效线索分类",
-    strategyAction: "自动过滤无效线索，标准化格式",
+    id: "lead-intake",
+    type: "planned",
+    name: "线索进入",
+    skill: "可定制接入",
+    input: "表单 / 企微 / 转介绍 / 存量名单",
+    output: "进入客户自有线索池",
+    strategyAction: "按客户当前渠道结构接入线索，并预留后续清洗、去重和标签扩展能力",
   },
   {
-    id: "human-followup",
+    id: "first-touch",
     type: "human",
-    name: "销售初步跟进",
-    input: "3200 条有效线索",
-    output: "获取需求、预算、决策人、Timeline",
-    strategyInput: "跟进沟通记录",
-    strategyOutput: "客户画像补充",
-    strategyAction: "微信/飞书/电话沟通，记录关键信息",
+    name: "销售首次触达",
+    input: "进入线索池的客户名单",
+    output: "聊天记录 / 通话纪要 / 拜访反馈",
+    strategyAction: "销售通过微信、飞书、电话建立信任，判断客户真实意图并收集一手信息",
   },
   {
-    id: "scoring",
-    type: "agent",
-    name: "评分智能体",
-    skill: "NLP 画像 Skill",
-    input: "客户跟进记录 + 沟通内容",
-    output: "A类 580 / B类 1200 / C类 1420",
-    strategyInput: "沟通记录分析请求",
-    strategyOutput: "客户分层结果",
-    strategyAction: "NLP 分析沟通内容，自动提取标签",
+    id: "crm-auto-fill",
+    type: "skill",
+    name: "crm-auto-fill",
+    skill: "input / output schema 已就绪",
+    input: "聊天记录 / 通话纪要 / 拜访笔记",
+    output: "结构化 CRM 字段 + 缺失字段提醒",
+    strategyAction: "自动抽取公司名、需求、预算、决策人、Timeline、当前阶段和下一步动作",
   },
   {
-    id: "routing",
-    type: "agent",
-    name: "路由智能体",
-    skill: "分层策略 Skill",
-    input: "A类 580 线索 + 销售 Skill 匹配",
-    output: "按 Skill 分配给对应销售",
-    strategyInput: "销售能力矩阵 + 客户画像",
-    strategyOutput: "最优分配方案",
-    strategyAction: "Skill 匹配 + 强制捆绑规则 + 负载均衡",
+    id: "funnel-doctor",
+    type: "skill",
+    name: "funnel-doctor",
+    skill: "漏斗诊断规则已就绪",
+    input: "商机记录 + 当前阶段 + 有效触达次数",
+    output: "卡点诊断 + 缺失字段 + 下一步动作",
+    strategyAction: "识别商机推进卡点、责任归属与经理动作建议，把主管脑中的判断标准显性化",
   },
   {
-    id: "strategy",
-    type: "agent",
-    name: "策略智能体",
-    skill: "策略建议 Skill",
-    input: "A类 580 客户完整画像",
-    output: "本周建议跟进 23 组高价值客户",
-    strategyInput: "客户画像 + 历史跟进记录",
-    strategyOutput: "个性化跟进策略",
-    strategyAction: "分析最佳联系时机、话术重点、决策人突破口",
-  },
-  {
-    id: "human-execute",
+    id: "sales-push",
     type: "human",
-    name: "销售执行跟进",
-    input: "策略建议 + 客户信息",
-    output: "本周成交 23 单，金额 ¥46.8 万",
-    strategyInput: "策略建议执行",
-    strategyOutput: "跟进结果反馈",
-    strategyAction: "按策略执行，微信/飞书/电话跟进，汇报结果",
+    name: "销售推进 / 谈判",
+    input: "诊断建议 + 客户反馈 + 现场判断",
+    output: "报价进展 / 异议记录 / 成交推进",
+    strategyAction: "销售基于现场信息推进报价、谈判、资源协调和关键承诺",
   },
   {
-    id: "order",
-    type: "agent",
-    name: "订单管理",
-    skill: "CRM 自动录入",
-    input: "成交订单信息",
-    output: "订单状态跟踪、交付进度",
-    strategyInput: "订单数据",
-    strategyOutput: "订单生命周期",
-    strategyAction: "自动创建订单记录，关联客户、交付、收款",
+    id: "customer-profiler",
+    type: "skill",
+    name: "customer-profiler",
+    skill: "客户分层规则已就绪",
+    input: "客户行为 + 最近联系记录 + 价值等级",
+    output: "客户分层 + 跟进节奏 + 推荐动作",
+    strategyAction: "将客户分成高净值、需关怀、沉睡边缘等类型，并生成 owner cadence 与推荐动作",
   },
   {
-    id: "lifecycle",
-    type: "agent",
-    name: "生命周期监控",
-    skill: "180天监控 Skill",
-    input: "所有成交客户状态",
-    output: "23 个高风险客户预警",
-    strategyInput: "客户健康度数据",
-    strategyOutput: "风险等级 + 预警",
-    strategyAction: "监控 180 天生命周期阶段，发现异常自动预警",
+    id: "renewal-watch",
+    type: "skill",
+    name: "renewal-watch",
+    skill: "续费预警规则已就绪",
+    input: "续费窗口客户 + 余额 / 使用 / 服务异常",
+    output: "P1 / P2 / P3 风险名单 + 优先级",
+    strategyAction: "预测续费风险、标记关键信号，并给出优先级名单与推荐干预动作",
   },
   {
-    id: "human-intervention",
+    id: "save-intervention",
     type: "human",
-    name: "人工干预",
-    input: "预警客户列表 + 策略建议",
-    output: "问题确认已解决 / 需继续跟进",
-    strategyInput: "干预策略",
-    strategyOutput: "干预结果",
-    strategyAction: "收到预警后按策略执行干预，确认是否解决",
-  },
-  {
-    id: "renewal",
-    type: "agent",
-    name: "续费智能体",
-    skill: "续费预测 Skill",
-    input: "到期前 60 天客户列表",
-    output: "续费意向预测 + 跟进优先级",
-    strategyInput: "续费窗口期客户",
-    strategyOutput: "续费概率 + 推荐策略",
-    strategyAction: "提前 60 天启动续费流程，生成续费方案",
+    name: "人工干预 / 续费挽回",
+    input: "优先级名单 + 推荐动作",
+    output: "挽回结果 + 下轮策略反馈",
+    strategyAction: "客户成功或销售按风险优先级执行挽回，并把结果回写系统用于后续迭代",
   },
 ];
 
@@ -155,12 +140,12 @@ const IM_CHANNELS = [
   { name: "QQ", icon: QQ_LOGO_URL },
 ];
 
-// L1 的 4 步与 L2 的 10 步对应关系
+// L1 的 4 步与 L2 蓝图节点对应关系
 const L1_L2_MAPPING = [
-  { l1: "获客", l2Nodes: ["获客智能体"] },
-  { l1: "筛选", l2Nodes: ["评分智能体", "路由智能体"] },
-  { l1: "跟进", l2Nodes: ["策略智能体", "销售执行跟进"] },
-  { l1: "复购", l2Nodes: ["订单管理", "生命周期监控", "人工干预", "续费智能体"] },
+  { l1: "获客", l2Nodes: ["线索进入", "销售首次触达"] },
+  { l1: "筛选", l2Nodes: ["crm-auto-fill", "funnel-doctor"] },
+  { l1: "跟进", l2Nodes: ["销售推进 / 谈判"] },
+  { l1: "复购", l2Nodes: ["customer-profiler", "renewal-watch", "人工干预 / 续费挽回"] },
 ];
 
 export default function HomepageSkillDemo({
@@ -211,8 +196,9 @@ export default function HomepageSkillDemo({
   return (
     <div className="rounded-xl border border-white/10 bg-black/60 overflow-hidden">
       {/* 顶部标题栏 */}
-      <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10">
+        <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10">
         <div className="flex items-center gap-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={OPENCLAW_LOGO_URL} alt="OpenClaw" className="w-5 h-5 object-contain" />
           <span className="text-sm font-medium text-white">{skillName}</span>
         </div>
@@ -240,6 +226,7 @@ export default function HomepageSkillDemo({
         <div className="flex items-center gap-4">
           {IM_CHANNELS.map((channel) => (
             <div key={channel.name} className="flex items-center gap-1.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={channel.icon} alt={channel.name} className="w-4 h-4 object-contain" />
               <span className="text-xs text-gray-400">{channel.name}</span>
             </div>
@@ -255,9 +242,22 @@ export default function HomepageSkillDemo({
             <Brain className={`w-4 h-4 ${colors.text}`} />
             <span className="text-xs text-gray-400 flex items-center gap-1.5">
               OpenClaw
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={OPENCLAW_LOGO_URL} alt="OpenClaw" className="w-3.5 h-3.5 object-contain" />
-              小龙虾 全链路
+              目标工作流蓝图
             </span>
+          </div>
+
+          <div className="mb-4 rounded-lg border border-white/10 bg-white/[0.03] p-3">
+            <div className="mb-2 flex items-center justify-between">
+              <span className="text-[10px] uppercase text-gray-500">当前状态</span>
+              <span className="text-[10px] text-gray-400">4 个已封装 / 3 个人工 / 1 个扩展入口</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span className={`text-[10px] px-2 py-1 rounded ${nodeTypeMeta.skill.badge}`}>已封装 Skill</span>
+              <span className={`text-[10px] px-2 py-1 rounded ${nodeTypeMeta.human.badge}`}>人工判断</span>
+              <span className={`text-[10px] px-2 py-1 rounded ${nodeTypeMeta.planned.badge}`}>可定制扩展</span>
+            </div>
           </div>
 
           {/* L1 → L2 对应关系说明 */}
@@ -279,7 +279,7 @@ export default function HomepageSkillDemo({
             {PIPELINE_NODES.map((node, index) => {
               const isActive = index === currentStep;
               const isPast = index < currentStep;
-              const Icon = node.type === "agent" ? Sparkles : User;
+              const Icon = nodeTypeMeta[node.type].icon;
 
               return (
                 <div key={node.id} className="relative flex items-start gap-3">
@@ -293,12 +293,12 @@ export default function HomepageSkillDemo({
                     initial={false}
                     animate={{
                       backgroundColor: isActive
-                        ? node.type === "agent" ? "rgba(59, 130, 246, 0.2)" : "rgba(168, 85, 247, 0.2)"
+                        ? nodeTypeMeta[node.type].activeBg
                         : isPast
                         ? "rgba(34, 197, 94, 0.2)"
                         : "rgba(255, 255, 255, 0.05)",
                       borderColor: isActive
-                        ? node.type === "agent" ? "#3b82f6" : "#a855f7"
+                        ? nodeTypeMeta[node.type].border
                         : isPast
                         ? "#22c55e"
                         : "rgba(255, 255, 255, 0.2)",
@@ -324,9 +324,9 @@ export default function HomepageSkillDemo({
                   >
                     <div className="text-xs font-medium flex items-center gap-1.5 truncate">
                       {node.name}
-                      {node.type === "agent" && (
-                        <span className={`text-[8px] px-1 py-0.5 rounded ${colors.badge}`}>AI</span>
-                      )}
+                      <span className={`text-[8px] px-1 py-0.5 rounded ${nodeTypeMeta[node.type].badge}`}>
+                        {nodeTypeMeta[node.type].label}
+                      </span>
                       {isActive && (
                         <span className={`text-[8px] px-1 py-0.5 rounded ${colors.badge}`}>
                           进行中
@@ -348,8 +348,8 @@ export default function HomepageSkillDemo({
               正在演示 · {currentStep + 1}/{PIPELINE_NODES.length}
             </span>
             <div className="flex-1" />
-            <span className={`text-[10px] px-2 py-0.5 rounded ${currentNode.type === "agent" ? colors.badge : "bg-purple-500/20 text-purple-400"}`}>
-              {currentNode.type === "agent" ? "智能体" : "人工"}
+            <span className={`text-[10px] px-2 py-0.5 rounded ${nodeTypeMeta[currentNode.type].badge}`}>
+              {nodeTypeMeta[currentNode.type].label}
             </span>
           </div>
 
@@ -362,23 +362,30 @@ export default function HomepageSkillDemo({
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
               className={`p-4 rounded-lg border ${
-                currentNode.type === "agent"
+                currentNode.type === "skill"
                   ? "border-blue-500/50 bg-blue-500/10"
-                  : "border-purple-500/50 bg-purple-500/10"
+                  : currentNode.type === "human"
+                  ? "border-purple-500/50 bg-purple-500/10"
+                  : "border-white/10 bg-white/[0.03]"
               }`}>
               <div className="flex items-center gap-3 mb-3">
-                <div className={`w-10 h-10 rounded-lg ${currentNode.type === "agent" ? colors.bg : "bg-purple-500/10"} flex items-center justify-center`}>
-                  {currentNode.type === "agent" ? (
+                <div className={`w-10 h-10 rounded-lg ${currentNode.type === "skill" ? colors.bg : currentNode.type === "human" ? "bg-purple-500/10" : "bg-white/10"} flex items-center justify-center`}>
+                  {currentNode.type === "skill" ? (
                     <Sparkles className={`w-5 h-5 ${colors.icon}`} />
-                  ) : (
+                  ) : currentNode.type === "human" ? (
                     <User className="w-5 h-5 text-purple-400" />
+                  ) : (
+                    <Boxes className="w-5 h-5 text-gray-300" />
                   )}
                 </div>
                 <div>
                   <div className="text-sm font-medium text-white flex items-center gap-2">
                     {currentNode.name}
-                    {currentNode.type === "agent" && (
-                      <img src={OPENCLAW_LOGO_URL} alt="OpenClaw" className="w-4 h-4 object-contain" />
+                    {currentNode.type === "skill" && (
+                      <>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={OPENCLAW_LOGO_URL} alt="OpenClaw" className="w-4 h-4 object-contain" />
+                      </>
                     )}
                   </div>
                   {currentNode.skill && (
@@ -434,6 +441,9 @@ export default function HomepageSkillDemo({
             {PIPELINE_NODES[(currentStep + 1) % PIPELINE_NODES.length].type === "human" && (
               <span className="text-purple-400">(需人工执行)</span>
             )}
+            {PIPELINE_NODES[(currentStep + 1) % PIPELINE_NODES.length].type === "planned" && (
+              <span className="text-gray-400">(按客户流程定制)</span>
+            )}
           </motion.div>
 
           {/* 进度条 */}
@@ -471,21 +481,22 @@ export default function HomepageSkillDemo({
             </div>
             <div>
               <p className="text-white text-sm font-medium flex items-center gap-2">
-                全链路循环播放中
+                蓝图循环播放中
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={OPENCLAW_LOGO_URL} alt="OpenClaw" className="w-4 h-4 object-contain" />
               </p>
               <p className="text-gray-400 text-xs">
-                智能体自动监控、预警，人执行关键干预。策略已推送至飞书/微信/QQ
+                已封装 4 个核心 Skill，其余节点将在客户业务访谈后按真实流程定制
               </p>
             </div>
           </div>
-          <a
+          <Link
             href="/#portfolio"
             className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:text-white hover:border-white/30 transition-all shrink-0"
           >
             看看这些 Skill 怎么落地
             <ArrowDown className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

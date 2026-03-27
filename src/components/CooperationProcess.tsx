@@ -7,23 +7,23 @@ const STEPS = [
   {
     icon: Search,
     step: "阶段 01",
-    title: "业务 Skill 审计",
-    desc: "先判断你的团队适合先从哪 1 到 3 个节点切入，而不是一上来做一整套大而全系统。",
-    bullets: ["梳理业务链路与数据条件", "判断优先封装节点", "给出首期 Skill 方案与范围"],
+    title: "业务访谈与工作流梳理",
+    desc: "先看清你们团队当前到底怎么跑、哪些判断依赖人脑、哪些动作已经重复高频，再决定第一批从哪几个节点切入。",
+    bullets: ["梳理角色节点与手工动作", "提炼高频判断规则", "锁定第一批封装范围"],
   },
   {
     icon: Wrench,
     step: "阶段 02",
-    title: "定制 Skill + 部署 OpenClaw",
-    desc: "把业务规则封成可执行 Skill，并部署到客户自己的 OpenClaw 环境，接入真实工作流。",
-    bullets: ["封装关键节点 Skill", "部署客户自有 OpenClaw", "打通 webhook / cron / 审批流程"],
+    title: "规则抽取与 Skill 封装",
+    desc: "把你们团队已经验证过的经验、案例数据和优先级逻辑抽出来，结合我的大厂方法论，封成真正可执行的 Skill。",
+    bullets: ["抽取经验与案例数据", "封装客户自有 Skill 知识库", "定义输入输出与人工边界"],
   },
   {
     icon: RefreshCcw,
     step: "阶段 03",
-    title: "固定周期升级优化",
-    desc: "不是一次性交付，而是按固定节奏持续复盘、调参和补节点，让 Skill 越跑越准。",
-    bullets: ["双周或月度复盘", "规则调参与误判修正", "新增节点与流程扩展"],
+    title: "OpenClaw 部署与周期优化",
+    desc: "Skill 不是停留在文档里，而是挂到客户自己的 OpenClaw 上跑起来，再按固定周期持续调参、补节点和扩展流程。",
+    bullets: ["接入 OpenClaw 与审批流", "双周或月度复盘", "规则升级与流程扩展"],
   },
 ];
 
@@ -42,11 +42,11 @@ export function CooperationProcess() {
             <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">合作方式</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            不是接外包，<span className="text-blue-500">而是交付一套能持续优化的 Skill 系统</span>
+            不是卖模板，<span className="text-blue-500">而是把你团队已验证的经验封成 Skill 系统</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-            我的工作不是替你重做一套 CRM，也不是卖一个通用 SaaS。
-            而是把你业务里最值得自动化的后台节点封成 Skill，部署到你自己的 OpenClaw，再按固定周期持续优化。
+            我的工作不是把一套现成流程硬塞给你，也不是替你重做一个通用 SaaS。
+            而是先理解你们现在的工作流，再把已经验证过的经验、规则和案例数据抽出来，封进你们自己的 Skill 系统。
           </p>
         </motion.div>
 
