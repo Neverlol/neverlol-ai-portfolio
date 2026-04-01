@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ABOUT_CONTENT } from "@/constants";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
@@ -18,20 +17,23 @@ export function About() {
           {/* 顶部标签 - 统一脉冲点风格 */}
           <div className="flex items-center justify-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit mx-auto">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">能力档案</span>
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">背景与能力</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            为什么<span className="text-blue-500">选择我</span>？
+            这套系统为什么由<span className="text-blue-500">我来做</span>
           </h2>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            从互联网大厂运营操盘者，到AI技术落地实践者——<br className="hidden md:block" />
-            用大厂经验 × AI技能，帮你复制这套增长全链路体系。
+          <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+            少有人同时具备大厂业务履历、数据运营底座和 AI 技术落地能力。
+            <br className="hidden md:block" />
+            我会把过往管理经验提炼成可复用的方法论，
+            <br className="hidden md:block" />
+            再封装成能在业务里真正跑起来的业务模块与后台协作系统。
           </p>
 
           {/* 个人资质标签 */}
           <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
             <div className="px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium">
-              58同城大区运营负责人
+              前 58 同城大区运营负责人
             </div>
             <div className="px-3 py-1.5 rounded-full bg-white/5 border border-white/20 text-gray-300 text-xs font-medium">
               高级数据分析师
@@ -185,7 +187,7 @@ export function About() {
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                数学与管科学术底座。精通客户价值分级与问题定位建模。任何商业现象背后都是数据流，任何数据的跳点背后都是生意经。将复杂的商业表象解构为可被量化的数学飞轮。
+                能把客户分层、成交卡点、续费风险这些复杂问题拆成清楚的数据结构和判断规则，为后续系统接入打下底层基础。
               </p>
             </motion.div>
 
@@ -202,11 +204,11 @@ export function About() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
               </div>
               <h3 className="text-xl font-medium text-white mb-2 flex items-center gap-2">
-                运营策略
+                运营方法论
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                历经 58 同城大区级运营历练，实弹打磨的增长全链路体系。深谙 B端获客、续费拦截与客户流转机制。告别纸上谈兵的空洞理念，直接对核心成交率与千万级盘口规模负责。
+                把过往管理经验、一线打法和复盘机制提炼成可复制的方法论，再进一步沉淀进可运行的业务模块里。
               </p>
             </motion.div>
 
@@ -223,11 +225,11 @@ export function About() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 7 4 4 20 4 20 7" /><line x1="9" y1="20" x2="15" y2="20" /><line x1="12" y1="4" x2="12" y2="20" /></svg>
               </div>
               <h3 className="text-xl font-medium text-white mb-2 flex items-center gap-2">
-                Vibe Coding
+                AI 技术落地
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                基于自然语言和高维智能体的全栈实现力。掌握从 MCP 知识库拉取到客户端动态交互组件再到 Supabase 底层数据的流转通道。将运营策略和数据见解，秒级转换为可运行的生产力工具。
+                不只是会讲 AI，也能把业务模块接到 OpenClaw（小龙虾）里，串起知识库、触发、审批和任务分发，让系统真正在业务里跑起来。
               </p>
             </motion.div>
           </div>

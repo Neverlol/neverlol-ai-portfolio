@@ -20,17 +20,22 @@ export default function PipelineTeaser() {
         {/* 顶部标签 - 强调大厂背景 */}
         <div className="flex items-center justify-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit mx-auto">
           <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-          <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">基于 58 同城本地生活服务实战沉淀</span>
+          <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">业务原型 · 58 同城本地生活服务实战</span>
         </div>
 
-        {/* 主标题 - 强调提炼过程 */}
+        {/* 主标题 - 强调业务原型 */}
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight text-center">
-          <span className="text-gray-500">我在 58 同城操盘过的</span><br />
-          <span className="text-white"><span className="text-blue-500">过亿盘口</span>，是怎样<span className="text-blue-500">运转</span>的</span>
+          <span className="text-gray-500">这套系统背后有一条</span><br />
+          <span className="text-white">真实跑通过的<span className="text-blue-500">业务链</span></span>
         </h2>
         <p className="text-gray-400 text-sm md:text-base mb-10 text-center max-w-[44rem] leading-relaxed">
           获客 → 筛选 → 跟进 → 复购。
-          <span className="text-gray-500"> 先进入业务沙盘，看“线索到利润”的全链路原貌；再回到首页，看这些节点如何被封成 Skill，并接入人机协同工作流。</span>
+          <br className="hidden md:block" />
+          <span className="text-gray-500">
+            先进入 58 业务沙盘，看“线索到利润”怎样在真实团队里运转；
+            <br className="hidden md:block" />
+            再看这些成熟节点如何被接进一套人机交互式 AI 业务系统。
+          </span>
         </p>
 
         {/* 核心数据流管线 */}
@@ -88,7 +93,7 @@ export default function PipelineTeaser() {
           className="relative z-20 group flex items-center gap-2 px-6 py-3 mt-10 rounded-xl bg-black border border-white/20 text-sm font-medium text-gray-300 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-300"
         >
           <Sparkles className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
-          进入 58 全业务沙盘
+          进入 58 业务沙盘
           <ArrowRight className="w-4 h-4 ml-1 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
         </Link>
       </div>

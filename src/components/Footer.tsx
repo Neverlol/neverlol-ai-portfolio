@@ -44,11 +44,11 @@ export function Footer() {
               </span>
             </div>
             <div className="text-sm text-[#8b949e]">
-              © 2024 AI Portfolio. Built with Next.js & Shadcn UI.
+              © 2024 Neverlol. Human-in-the-loop AI business systems.
             </div>
           </div>
           <div className="text-xs text-[#8b949e]/50">
-            From 58 同城 to AI Agent
+            From 58 method to client-ready AI systems
           </div>
         </motion.div>
       </div>

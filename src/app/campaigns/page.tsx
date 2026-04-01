@@ -19,20 +19,23 @@ export default function CampaignsPage() {
 
       <div className="max-w-6xl mx-auto w-full mb-12 flex flex-col items-center text-center relative z-10">
 
-        {/* 标签 - 强调方法论来源 */}
+        {/* 标签 - 强调业务原型来源 */}
         <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
           <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-          <span className="text-[10px] font-mono text-gray-400 tracking-wider uppercase">方法论来源 · 58 同城本地生活服务实战</span>
+          <span className="text-[10px] font-mono text-gray-400 tracking-wider uppercase">业务原型 · 58 同城本地生活服务实战</span>
         </div>
 
         {/* 主标题 - 对齐首页 PipelineTeaser */}
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          我在 58 同城操盘过的<br />
-          <span className="text-white"><span className="text-blue-500">过亿盘口</span>，是怎样<span className="text-blue-500">运转</span>的</span>
+          这套系统背后那条<br />
+          <span className="text-white">真实跑通过的<span className="text-blue-500">业务链</span></span>
         </h1>
         <p className="text-gray-500 max-w-2xl text-sm leading-relaxed mb-6">
-          这不是抽象理论，而是我在 58 同城本地生活服务一线操盘时真正跑通过的业务链路。
-          <br />先看“线索到利润”的原始业务沙盘，再看我如何把其中适合 AI 承担的节点封成 Skill。
+          这里展示的是这套系统背后的业务原型，也就是一条真实团队怎样从线索走到利润的销售运营链路。
+          <br className="hidden md:block" />
+          先看“线索到利润”如何在现场运转，
+          <br className="hidden md:block" />
+          再看哪些成熟节点最适合交给后台持续协作。
         </p>
       </div>
 
@@ -40,10 +43,12 @@ export default function CampaignsPage() {
       <div className="w-full max-w-5xl mx-auto mb-16 relative z-10">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-white mb-3">
-            为什么这套业务，适合被封成<span className="text-blue-500">Skill</span>
+            为什么这条业务链，适合接进<span className="text-blue-500">AI 业务系统</span>
           </h2>
           <p className="text-gray-500 text-sm max-w-xl mx-auto">
-            因为它包含大量高频、可标准化、依赖数据判断的后台动作，正适合交给系统持续稳定地承担。
+            因为它包含大量高频、可标准化、依赖数据判断的后台动作，
+            <br className="hidden md:block" />
+            正适合交给系统长期稳定地承担。
           </p>
         </div>
 
@@ -65,7 +70,7 @@ export default function CampaignsPage() {
                 <span className="text-sm font-medium text-white">规则明确</span>
               </div>
               <p className="text-sm text-gray-400 leading-relaxed">
-                哪些字段缺失、哪些状态异常、哪些客户该优先处理，都能被拆成清晰规则，而不是只能靠感觉判断。
+                哪些字段缺失、哪些状态异常、哪些客户该优先处理，都能被拆成清晰规则，方便系统持续协作。
               </p>
             </div>
 
@@ -82,7 +87,7 @@ export default function CampaignsPage() {
         </div>
 
         <div className="flex items-center justify-center gap-3 text-sm">
-          <span className="text-gray-500">优先可封装的节点：</span>
+          <span className="text-gray-500">优先接入的模块：</span>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
             <Wrench className="w-3 h-3 text-blue-400" />
             <span className="text-gray-300">线索工厂</span>
@@ -193,11 +198,12 @@ export default function CampaignsPage() {
       <div className="w-full max-w-4xl mx-auto mb-16 relative z-10">
         <div className="text-center p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
           <h3 className="text-lg font-medium text-white mb-3">
-            看完了 58 同城的实战沙盘？
+            看完业务原型，再看它怎样接进你的团队
           </h3>
           <p className="text-gray-500 text-sm mb-6">
-            这页展示的是方法论来源，也就是这套业务最初在真实团队里是怎么跑起来的。
-            <br />接下来可以继续看，我是如何把这些节点拆成面向客户的人机协同方案。
+            这页展示的是底层业务原型，也就是这套系统最早在真实团队里怎样跑通。
+            <br className="hidden md:block" />
+            下一页会把这条链拆成客户可直接接入的人机交互式 AI 业务系统，说明 AI 和团队各自承担什么。
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -205,14 +211,14 @@ export default function CampaignsPage() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/50 text-blue-400 font-medium transition-colors"
             >
               <Sparkles className="w-4 h-4" />
-              查看人机协同全链路方案
+              查看解决方案
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/#demo"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-white/[0.03] text-gray-300 transition-colors hover:border-white/20 hover:bg-white/[0.05] hover:text-white"
             >
-              返回首页看 Demo
+              直接看系统 Demo
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -225,10 +231,12 @@ export default function CampaignsPage() {
         {/* 标题 */}
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-white mb-3">
-            你的业务遇到<span className="text-blue-500">什么问题</span>
+            如果你已经知道最想优先解决哪一段
           </h2>
           <p className="text-gray-500 text-sm">
-            选一个最痛的，我帮你匹配对应的 Skill 方案
+            可以继续进入对应模块方向，
+            <br className="hidden md:block" />
+            看更具体的落地案例
           </p>
         </div>
 
@@ -256,7 +264,7 @@ export default function CampaignsPage() {
               投了很多广告，但不知道哪分钱真的有用。客户留了电话就消失。
             </p>
             <div className="mt-4 pt-4 border-t border-white/5">
-              <div className="text-[10px] text-blue-400">→ 查看归因诊断 Skill</div>
+              <div className="text-[10px] text-blue-400">→ 查看对应模块方向</div>
             </div>
           </Link>
 
@@ -282,7 +290,7 @@ export default function CampaignsPage() {
               10个客户进来，只成交1-2个。销售挑肥拣瘦，难啃的客户没人跟进。
             </p>
             <div className="mt-4 pt-4 border-t border-white/5">
-              <div className="text-[10px] text-blue-400">→ 查看跟进赋能 Skill</div>
+              <div className="text-[10px] text-blue-400">→ 查看对应模块方向</div>
             </div>
           </Link>
 
@@ -308,7 +316,7 @@ export default function CampaignsPage() {
               签完合同就消失了，永远在找新客户。续费率上不去，获客成本降不下来。
             </p>
             <div className="mt-4 pt-4 border-t border-white/5">
-              <div className="text-[10px] text-blue-400">→ 查看生命周期 Skill</div>
+              <div className="text-[10px] text-blue-400">→ 查看对应模块方向</div>
             </div>
           </Link>
         </div>
@@ -320,7 +328,7 @@ export default function CampaignsPage() {
             className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors"
           >
             <ArrowRight className="w-4 h-4 rotate-180" />
-            查看全部 Skill 方案
+            查看首页中的模块案例
           </Link>
         </div>
 

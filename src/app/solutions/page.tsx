@@ -16,118 +16,118 @@ import {
 const stages = [
   {
     id: "01",
-    title: "线索进入与整理",
-    mode: "AI 可完全承担",
+    title: "线索进入与建档",
+    mode: "后台可连续承担",
     modeClass: "text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
-    ai: "自动导入、去重、标准化、补全字段，并完成首轮线索标签与优先级排序。",
-    human: "只处理异常样本、特殊渠道和少量高价值例外客户。",
+    ai: "接住表单、微信、飞书、CRM 和存量名单，完成去重、建档并保留原始来源。",
+    human: "处理异常样本、特殊客户归属和少量高价值例外。",
   },
   {
     id: "02",
     title: "线索分层与分发",
-    mode: "建议人机协同",
+    mode: "后台与团队协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
-    ai: "根据客户画像、历史转化和分配规则，给出推荐分发对象和跟进优先级。",
-    human: "确认特殊客户归属，处理跨团队资源分配和重点客户保护。",
+    ai: "依据来源、画像、分发规则和优先级逻辑，给出推荐分发对象与首次触达队列。",
+    human: "确认重点客户归属，处理跨团队分配和特批资源。",
   },
   {
     id: "03",
-    title: "首次触达与需求确认",
-    mode: "必须人工主导",
+    title: "首次触达与信息回填",
+    mode: "关键环节由团队主导",
     modeClass: "text-amber-300 border-amber-500/30 bg-amber-500/10",
-    ai: "生成客户摘要、通话前 briefing、异议预案和需要补采的信息清单。",
-    human: "打首电、加微信、建立信任、判断客户真实意图。",
+    ai: "把聊天、通话和拜访记录整理成结构化字段，补齐关键信息缺口，并生成沟通摘要。",
+    human: "打首电、加微信、建立信任、确认真实意图和一手事实。",
   },
   {
     id: "04",
     title: "商机推进与漏斗质检",
-    mode: "建议人机协同",
+    mode: "后台与团队协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
-    ai: "识别卡点、提示缺失字段、输出下一步动作建议，帮助主管看清过程。",
-    human: "补充信息、推进拜访、协调资源，并对关键节点做管理动作。",
+    ai: "识别推进卡点、虚假进展、缺失字段和需要主管介入的时机。",
+    human: "推进拜访、方案沟通、资源协调，并在关键阶段做管理动作。",
   },
   {
     id: "05",
     title: "方案、报价与成交",
-    mode: "必须人工主导",
+    mode: "关键环节由团队主导",
     modeClass: "text-amber-300 border-amber-500/30 bg-amber-500/10",
-    ai: "提供报价草稿、异议处理参考和风险提示，减少准备时间。",
-    human: "拜访、谈判、价格博弈、合同承诺和最终签约拍板。",
+    ai: "提供报价准备参考、异议提醒和风险提示，减少重复准备时间。",
+    human: "拜访、谈判、价格、合同承诺和最终签约拍板。",
   },
   {
     id: "06",
     title: "客户生命周期监控",
-    mode: "AI 可完全承担",
+    mode: "后台可连续承担",
     modeClass: "text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
-    ai: "持续监控余额、消耗、投放、登录、联系频率等异动，并自动生成预警。",
-    human: "只在系统预警后介入重点客户，节省日常巡检时间。",
+    ai: "持续巡检客户状态，输出客户分层结果、跟进节奏和推荐动作。",
+    human: "只处理异常客户和高价值例外，不再靠人工翻表盯存量。",
   },
   {
     id: "07",
     title: "流失预警与续费拦截",
-    mode: "建议人机协同",
+    mode: "后台与团队协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
-    ai: "给出风险评分、续费窗口、优先级名单和干预建议。",
-    human: "决定先救谁、怎么谈、是否投入额外资源挽回客户。",
+    ai: "输出风险等级、续费窗口、优先级名单和建议动作。",
+    human: "决定先救谁、怎么谈、是否联动主管或客户成功挽回。",
   },
   {
     id: "08",
     title: "复盘与规则迭代",
-    mode: "建议人机协同",
+    mode: "后台与团队协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
-    ai: "汇总数据变化、提炼高频问题、生成可更新的规则建议。",
-    human: "确定管理机制、考核口径和下一轮要新增的 Skill 节点。",
+    ai: "汇总动作结果、提炼高频问题，沉淀下一轮规则和管理口径。",
+    human: "确定审批边界、经营规则和下一轮要继续加深的能力。",
   },
 ];
 
 const boundaries = [
   {
-    title: "AI 更适合承担",
+    title: "后台先接住",
     icon: Bot,
     tint: "text-emerald-300 border-emerald-500/20 bg-emerald-500/10",
     points: [
-      "线索清洗、打标、评分和优先级排序",
-      "客户生命周期监控与异常预警",
-      "日报、周报、待办和提醒生成",
+      "接入、建档和客户台账结构化回填",
+      "漏斗质检、客户分层和续费风险排序",
+      "处理清单、风险提醒、沟通摘要和复核提醒",
     ],
   },
   {
-    title: "销售必须承担",
+    title: "团队亲自推进",
     icon: Handshake,
     tint: "text-amber-300 border-amber-500/20 bg-amber-500/10",
     points: [
-      "首次建立信任和深度需求确认",
-      "拜访、谈判、价格与合同承诺",
-      "客情修复、续费挽回和关键拍板",
+      "首次建立信任和真实需求确认",
+      "拜访、谈判、价格、合同与关键承诺",
+      "客情修复、续费挽回和资源拍板",
     ],
   },
   {
-    title: "最适合人机协同",
+    title: "一起把重点抬出来",
     icon: Users,
     tint: "text-blue-300 border-blue-500/20 bg-blue-500/10",
     points: [
-      "商机漏斗质检与下一步动作建议",
-      "客户诊断、流失分级与续费优先级",
-      "主管复盘与规则迭代",
+      "模糊问题先在后台分清，再把处理事项推给对应的人",
+      "商机卡点诊断、客户分层和流失优先级",
+      "重点名单、沟通摘要和主管复盘同步刷新",
     ],
   },
 ];
 
 const fitCards = [
   {
-    title: "适合先落地的团队",
+    title: "成熟业务节点模块",
     icon: BriefcaseBusiness,
-    body: "已经有销售流程、客户数据和续费压力，希望先从 1 到 3 个关键节点开始提效的团队。",
+    body: "把新客推进、问题分流、客户分层、续费风险这些关键节点拆成可持续运转的业务模块，直接接进真实销售流程。",
   },
   {
-    title: "交付形式",
+    title: "OpenClaw 后台承载",
     icon: ShieldCheck,
-    body: "定制 Skill、部署客户自己的 OpenClaw，并按固定周期持续升级优化，让系统和数据始终掌握在客户自己手里。",
+    body: "由 OpenClaw 在后台负责触发、调度、回写、提醒和持续协作，把系统真正部署成能跑的业务底盘。",
   },
   {
-    title: "核心结果",
+    title: "按你当前流程定制接入",
     icon: Radar,
-    body: "让 AI 承担后台高频动作，让销售只做真正需要关系、判断和成交的工作。",
+    body: "微信、电话、CRM、飞书表格和原有分工都可以继续保留，系统按团队现在的销售工作流去做定制化接入。",
   },
 ];
 
@@ -142,21 +142,22 @@ export default function SolutionsPage() {
 
       <section className="relative z-10 mx-auto mb-10 flex w-full max-w-6xl flex-col items-center text-center">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 backdrop-blur-md">
-          <div className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
+          <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-500" />
           <span className="text-[10px] font-mono uppercase tracking-[0.24em] text-gray-400">
-            人机协同全链路方案
+            人机交互式 AI 业务系统
           </span>
         </div>
 
         <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-6xl">
-          让 AI 承担后台高频动作，
+          把成熟业务链路接成一套
           <br />
-          让销售只做真正影响<span className="text-blue-500">成交</span>的事
+          <span className="text-blue-500">人机交互式 AI 业务系统</span>
         </h1>
 
         <p className="max-w-3xl text-sm leading-relaxed text-gray-400 md:text-base">
-          这不是用 AI 替代销售，而是把线索整理、过程质检、客户预警和任务路由交给系统，
-          让团队把时间重新放回到触达、谈判、成交和续费挽回上。
+          这套系统基于成熟的全链路业务体系，把关键业务节点封装成可持续运转的模块，
+          <br className="hidden md:block" />
+          再由 OpenClaw 在后台承载运行，并按你当前的销售工作流做定制接入，平滑融入现有团队。
         </p>
 
         <div className="mt-8 grid w-full gap-4 md:grid-cols-3">
@@ -176,20 +177,21 @@ export default function SolutionsPage() {
       </section>
 
       <section className="relative z-10 mx-auto mb-10 w-full max-w-6xl rounded-[28px] border border-white/10 bg-[#050505] p-6 md:p-8">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
+        <div className="mb-8">
+          <div className="max-w-4xl">
             <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs text-blue-300">
               <Sparkles className="h-3.5 w-3.5" />
-              从线索到续费的节点拆分
+              从业务节点到系统分工
             </div>
-            <h2 className="text-2xl font-bold text-white md:text-3xl">
-              一条业务链路里，
-              <span className="text-blue-500">AI、销售、主管</span>分别做什么
+            <h2 className="text-2xl font-bold leading-[1.2] text-white md:text-3xl md:leading-[1.15]">
+              这套系统如何接进
+              <br className="hidden md:block" />
+              <span className="text-blue-500">你的销售工作流</span>
             </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
+              先把业务节点、后台承载和团队接手点说清楚，后面的部署、接线和持续优化才会稳定。
+            </p>
           </div>
-          <p className="max-w-xl text-sm leading-relaxed text-gray-500">
-            先把职责边界划清楚，后面的 Skill 封装、部署和优化才有稳定落地的基础。
-          </p>
         </div>
 
         <div className="space-y-4">
@@ -217,7 +219,7 @@ export default function SolutionsPage() {
                   <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4">
                     <div className="mb-2 flex items-center gap-2 text-sm font-medium text-emerald-300">
                       <Bot className="h-4 w-4" />
-                      AI 负责
+                      后台承担
                     </div>
                     <p className="text-sm leading-relaxed text-gray-300">{stage.ai}</p>
                   </div>
@@ -225,7 +227,7 @@ export default function SolutionsPage() {
                   <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4">
                     <div className="mb-2 flex items-center gap-2 text-sm font-medium text-amber-300">
                       <Users className="h-4 w-4" />
-                      人负责
+                      团队出手
                     </div>
                     <p className="text-sm leading-relaxed text-gray-300">{stage.human}</p>
                   </div>
@@ -239,10 +241,10 @@ export default function SolutionsPage() {
       <section className="relative z-10 mx-auto mb-10 w-full max-w-6xl">
         <div className="mb-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white md:text-3xl">
-            这套方案的边界，要先说清楚
+            这套系统落地后的三个关键变化
           </h2>
           <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-500">
-            把该自动化的、该人工接管的、该协同判断的拆清楚，团队才更容易真正跑出降本增效的结果。
+            客户真正买单的，是这套系统能否无痛接进团队、持续在后台运转，并把关键动作稳定交回给人。
           </p>
         </div>
 
@@ -270,21 +272,22 @@ export default function SolutionsPage() {
         <div className="mx-auto max-w-3xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
             <ChevronsRight className="h-3.5 w-3.5 text-blue-400" />
-            下一步怎么落地
+            下一步看真实演示
           </div>
           <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
-            看完方案后，继续看系统怎么跑起来
+            回到首页，看整套系统怎么运转
           </h2>
           <p className="mb-8 text-sm leading-relaxed text-gray-400 md:text-base">
-            如果你已经理解这套人机协同方案，下一步就直接回首页看 Demo 展示，
-            或继续查看合作方式，确认怎么从审计、部署走到周期优化。
+            如果你已经理解这套系统的接入方式，下一步就回首页看它在业务主线里怎样持续运转，
+            <br className="hidden md:block" />
+            或继续查看合作方式，确认怎么从业务梳理、接入部署走到周期优化。
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/#demo"
               className="inline-flex items-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/15 px-6 py-3 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-500/20"
             >
-              返回首页看 Demo
+              返回首页看系统 Demo
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link

@@ -11,11 +11,11 @@ import { Footer } from "@/components/Footer";
 import { PipelineDemo } from "@/components/PipelineDemo";
 import type { PipelineStep } from "@/components/PipelineDemo";
 
-/** 每个 Skill 的痛点定义 */
+/** 每个模块的痛点定义 */
 const SKILL_PAIN_POINTS: Record<string, { problem: string; why: string }> = {
     "crm-auto-fill": {
         problem: "销售聊完不记、记了也不全，CRM 永远是脏的",
-        why: "对财税代理团队来说，客户常在微信里临时问做账、报税、注销、工商变更。关键信息散落在聊天记录和销售脑子里，后续所有判断都建立在脏输入上。"
+        why: "在重销售团队里，客户经常会在微信、电话和临时沟通里补充关键需求。关键信息散落在聊天记录和销售脑子里，后续所有判断都建立在脏输入上。"
     },
     "funnel-doctor": {
         problem: "商机推进卡在哪，只能靠主管挨个追问",
@@ -23,15 +23,15 @@ const SKILL_PAIN_POINTS: Record<string, { problem: string; why: string }> = {
     },
     "customer-profiler": {
         problem: "客户谁该重点维护、谁该降频，全靠老员工感觉",
-        why: "在代账、工商、社保、注销等服务并存时，哪些客户值得重点维护、哪些适合交叉销售、哪些该暂时降频，如果不沉成规则，就只能依赖熟手经验。"
+        why: "在服务层级、客单价和合作节奏都不同的业务里，哪些客户值得重点维护、哪些适合追加服务、哪些该暂时降频，如果不沉成规则，就只能依赖熟手经验。"
     },
     "renewal-watch": {
         problem: "快流失了才知道，续费全靠感觉抢救",
-        why: "财税代理服务往往有明确账期和申报节奏。一旦客户在续费窗口前静默、余额下降或服务投诉上升，如果没有预警，只能等销售临时救火。"
+        why: "凡是存在服务周期、续费节点或客户活跃度波动的业务，一旦客户在续费窗口前静默、使用下降或投诉上升，如果没有预警，就只能等销售临时救火。"
     }
 };
 
-/** 每个 Skill 的 Pipeline 配置 */
+/** 每个模块的 Pipeline 配置 */
 const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purple" | "red" | "amber"; steps: PipelineStep[] }> = {
     "crm-auto-fill": {
         skillName: "crm-auto-fill",
@@ -42,13 +42,13 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "读取原始沟通记录",
                 description: "微信 / 电话 / 拜访统一输入",
                 icon: Database,
-                annotation: "传统方式：销售聊完之后靠脑子记，或者回头补 CRM。\n• 字段经常漏\n• 记录口径不统一\n\nSkill 替代：先把原始记录统一收进一个结构化入口。",
+                annotation: "传统方式：销售聊完之后靠脑子记，或者回头补 CRM。\n• 字段经常漏\n• 记录口径不统一\n\n系统接手：先把原始记录统一收进一个结构化入口。",
                 highlight: true,
                 code: `// crm-auto-fill.input
 {
   "record_id": "WX-20260327-001",
   "source_type": "wechat_chat",
-  "raw_text": "客户是代账公司，老板本人决策，预算 2-3 万...",
+  "raw_text": "客户是一家连锁服务团队，业务负责人参与评估，预算 2-3 万，希望本月内推进...",
   "owner": "sales_A",
   "run_date": "2026-03-27"
 }`,
@@ -58,13 +58,13 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "抽取关键字段",
                 description: "需求 / 预算 / 决策人 / Timeline",
                 icon: Brain,
-                annotation: "传统方式：CRM 填写依赖销售自觉。\n• 愿不愿填、填得全不全，全看个人习惯\n\nSkill 替代：自动抽取关键字段，并识别哪些字段是推断得来的。",
+                annotation: "传统方式：CRM 填写依赖销售自觉。\n• 愿不愿填、填得全不全，全看个人习惯\n\n系统接手：自动抽取关键字段，并识别哪些字段是推断得来的。",
                 highlight: true,
                 code: `// crm-auto-fill.output
 {
   "structured_fields": {
-    "company_name": "祈福财税",
-    "contact_role": "老板",
+    "company_name": "华辰增长中心",
+    "contact_role": "业务负责人",
     "budget_range": "2-3万",
     "timeline": "本月内"
   },
@@ -78,7 +78,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "回写 CRM 与缺失提醒",
                 description: "生成干净输入",
                 icon: CheckCircle,
-                annotation: "传统方式：后续所有人都在脏数据上继续工作。\n\nSkill 替代：回写结构化字段，并明确缺失项，让后续诊断、分层、续费判断建立在干净输入上。",
+                annotation: "传统方式：后续所有人都在脏数据上继续工作。\n\n系统接手：回写结构化字段，并明确缺失项，让后续诊断、分层、续费判断建立在干净输入上。",
                 highlight: true,
                 code: `await openclaw.crm.upsert({
   record_id: "WX-20260327-001",
@@ -86,7 +86,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
   next_step: "补齐电话并安排二次沟通",
   missing_required_fields: ["phone"]
 });
-// 结果：后续模块拿到的是干净字段，不再依赖销售记忆`,
+// 结果：后续模块拿到统一字段，可直接继续判断`,
             },
         ],
     },
@@ -99,7 +99,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "读取当前阶段",
                 description: "拿到商机状态与推进记录",
                 icon: Route,
-                annotation: "传统方式：主管只能看一个模糊状态，比如“跟进中”。\n• 具体卡在哪不知道\n• 缺什么字段也不知道\n\nSkill 替代：读取当前阶段、阶段历史和触达记录。",
+                annotation: "传统方式：主管只能看一个模糊状态，比如“跟进中”。\n• 具体卡在哪不知道\n• 缺什么字段也不知道\n\n系统接手：读取当前阶段、阶段历史和触达记录。",
                 highlight: true,
                 code: `// funnel-doctor.input
 {
@@ -116,7 +116,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "识别卡点与缺失字段",
                 description: "把主管脑内规则显性化",
                 icon: Brain,
-                annotation: "传统方式：主管靠经验追问“预算问没问”“决策人见没见”。\n\nSkill 替代：自动诊断当前卡点，并输出缺失字段与责任归属。",
+                annotation: "传统方式：主管靠经验追问“预算问没问”“决策人见没见”。\n\n系统接手：自动诊断当前卡点，并输出缺失字段与责任归属。",
                 highlight: true,
                 code: `// funnel-doctor.output
 {
@@ -132,13 +132,13 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "输出下一步动作",
                 description: "销售动作 + 经理动作并行",
                 icon: CheckCircle,
-                annotation: "传统方式：问题看到了，但没人知道下一步谁来做。\n\nSkill 替代：直接输出销售动作与经理动作，让推进从盯结果变成盯过程。",
+                annotation: "传统方式：问题看到了，但没人知道下一步谁来做。\n\n系统接手：直接输出销售动作与经理动作，让推进从盯结果变成盯过程。",
                 highlight: true,
                 code: `await openclaw.tasks.create([
   "sales_A: 今天补问预算范围",
   "manager_B: 明天跟一次关键沟通"
 ]);
-// 结果：不是只知道“有问题”，而是知道“谁下一步做什么”`,
+// 结果：可以直接看到“谁下一步做什么”`,
             },
         ],
     },
@@ -151,7 +151,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "读取客户行为与联系记录",
                 description: "行为 + 价值等级 + 最近联系",
                 icon: Database,
-                annotation: "传统方式：谁该重点维护，全靠老员工凭经验。\n\nSkill 替代：统一读取客户行为、价值等级和最近联系记录，形成可判断输入。",
+                annotation: "传统方式：谁该重点维护，全靠老员工凭经验。\n\n系统接手：统一读取客户行为、价值等级和最近联系记录，形成可判断输入。",
                 highlight: true,
                 code: `// customer-profiler.input
 {
@@ -167,7 +167,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "客户分层与优先级判断",
                 description: "价值等级显性化",
                 icon: Users,
-                annotation: "传统方式：维护节奏跟着销售忙闲走，不跟着客户价值走。\n\nSkill 替代：自动输出 segment、value level 和 priority reason。",
+                annotation: "传统方式：维护节奏跟着销售忙闲走，不跟着客户价值走。\n\n系统接手：自动输出 segment、value level 和 priority reason。",
                 highlight: true,
                 code: `// customer-profiler.output
 {
@@ -185,7 +185,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "生成跟进节奏与动作",
                 description: "owner cadence + recommended action",
                 icon: CheckCircle,
-                annotation: "传统方式：谁先跟、多久跟一次，没有统一标准。\n\nSkill 替代：直接输出 owner cadence 和 recommended action，让存量维护有稳定节奏。",
+                annotation: "传统方式：谁先跟、多久跟一次，没有统一标准。\n\n系统接手：直接输出 owner cadence 和 recommended action，让存量维护有稳定节奏。",
                 highlight: true,
                 code: `await openclaw.cadence.assign({
   customer_id: "C-991",
@@ -205,7 +205,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "读取续费窗口客户",
                 description: "续费时间 + 行为异常一起看",
                 icon: Database,
-                annotation: "传统方式：等快到期了才想起来找客户。\n\nSkill 替代：把续费日期、余额、使用和服务异常一起纳入判断。",
+                annotation: "传统方式：等快到期了才想起来找客户。\n\n系统接手：把续费日期、余额、使用和服务异常一起纳入判断。",
                 highlight: true,
                 code: `// renewal-watch.input
 {
@@ -222,7 +222,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "风险分级与窗口判断",
                 description: "P1 / P2 / P3 优先级",
                 icon: Activity,
-                annotation: "传统方式：谁先救，全靠感觉拍。\n\nSkill 替代：输出风险等级、生命周期阶段和续费窗口，让优先级不再含糊。",
+                annotation: "传统方式：谁先救，全靠感觉拍。\n\n系统接手：输出风险等级、生命周期阶段和续费窗口，让优先级不再含糊。",
                 highlight: true,
                 code: `// renewal-watch.output
 {
@@ -238,7 +238,7 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
                 label: "输出挽回优先级",
                 description: "先救谁、怎么救",
                 icon: CheckCircle,
-                annotation: "传统方式：销售各自凭感觉去追，容易把最危险的客户漏掉。\n\nSkill 替代：直接给出优先级名单和推荐动作，让人工干预有先后顺序。",
+                annotation: "传统方式：销售各自凭感觉去追，容易把最危险的客户漏掉。\n\n系统接手：直接给出优先级名单和推荐动作，让人工干预有先后顺序。",
                 highlight: true,
                 code: `await openclaw.retention.prioritize([
   { customer_id: "R-227", risk_level: "P1", owner_role: "负责人" }
@@ -249,10 +249,10 @@ const SKILL_PIPELINES: Record<string, { skillName: string; color: "blue" | "purp
     },
 };
 
-/** 每个 Skill 的执行逻辑（3步以内） */
+/** 每个模块的执行逻辑（3步以内） */
 const SKILL_EXECUTION_LOGIC: Record<string, { summary: string; steps: { label: string; detail: string }[] }> = {
     "crm-auto-fill": {
-        summary: "让后续所有判断都建立在干净输入上，而不是建立在销售的记忆和补填习惯上。",
+        summary: "让后续所有判断都建立在干净输入上，减少对销售记忆和补填习惯的依赖。",
         steps: [
             { label: "统一原始沟通入口", detail: "把微信、电话、拜访记录收进同一个结构化入口" },
             { label: "自动抽取关键字段", detail: "提取需求、预算、决策人、Timeline、当前阶段与下一步动作" },
@@ -297,26 +297,26 @@ type ProjectWithCategory = Project & { category?: string };
 
 const CATEGORY_MAP: Record<string, CategoryConfig> = {
     "crm-auto-fill": {
-        title: "crm-auto-fill：把聊天记录变成干净输入",
-        description: "适合财税代理、代账和工商服务团队。这个 Skill 负责把散落在微信、电话、拜访记录里的关键信息，转成后续模块真正可用的结构化字段。",
+        title: "把聊天记录变成干净输入",
+        description: "适合任何需要把沟通记录结构化的销售团队。这个模块负责把散落在微信、电话、拜访记录里的关键信息，转成后续环节真正可用的结构化字段。",
         icon: Database,
         fallbackIds: ["sales-broadcaster", "rag-copilot"],
     },
     "funnel-doctor": {
-        title: "funnel-doctor：把商机卡点显性化",
-        description: "适合销售主管需要盯过程的团队。这个 Skill 负责诊断商机当前卡在哪、缺什么字段、下一步该由谁做什么，让主管从事后追责转向过程管理。",
+        title: "把商机卡点显性化",
+        description: "适合销售主管需要盯过程的团队。这个模块负责诊断商机当前卡在哪、缺什么字段、下一步该由谁做什么，让主管从事后追责转向过程管理。",
         icon: Route,
         fallbackIds: ["bi-diagnoser", "dynamic-rfm", "fake-leads-audit"],
     },
     "customer-profiler": {
-        title: "customer-profiler：把维护经验沉成规则",
-        description: "适合有存量客户池和交叉销售需求的团队。这个 Skill 负责把客户价值等级、联系频率和维护优先级经验，沉淀成可复用、可移交、可持续优化的分层规则。",
+        title: "把维护经验沉成规则",
+        description: "适合有存量客户池和交叉销售需求的团队。这个模块负责把客户价值等级、联系频率和维护优先级经验，沉淀成可复用、可移交、可持续优化的分层规则。",
         icon: Users,
         fallbackIds: ["dynamic-rfm", "coaching-agent"],
     },
     "renewal-watch": {
-        title: "renewal-watch：把续费挽回前移到窗口期",
-        description: "适合存在账期、续费节点和客户流失风险的团队。这个 Skill 负责给出风险等级、续费窗口和优先级名单，让续费不再靠最后时刻的临时抢救。",
+        title: "把续费挽回前移到窗口期",
+        description: "适合存在续费节点和客户流失风险的团队。这个模块负责给出风险等级、续费窗口和优先级名单，让续费提前进入窗口期管理。",
         icon: AlertTriangle,
         fallbackIds: ["sales-broadcaster", "t90-churn-prevention", "apollo-handover-crisis", "coaching-agent"],
     }
@@ -394,7 +394,7 @@ export default function CategoryDetailPage() {
                                     <div>
                                         <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs text-blue-300">
                                             <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-                                            首批已封装节点
+                                            优先接入模块
                                         </div>
                                         <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">{categoryNode.title}</h1>
                                     </div>
@@ -433,7 +433,7 @@ export default function CategoryDetailPage() {
                                 >
                                     <h2 className="text-xl font-medium mb-6 flex items-center gap-2">
                                         <span className="w-2 h-6 bg-[#245fff] rounded-sm inline-block"></span>
-                                        封装原型演示
+                                        模块运行演示
                                     </h2>
                                     <PipelineDemo
                                         skillName={SKILL_PIPELINES[categoryId].skillName}
@@ -453,7 +453,7 @@ export default function CategoryDetailPage() {
                                 >
                                     <h2 className="text-xl font-medium mb-6 flex items-center gap-2">
                                         <span className="w-2 h-6 bg-emerald-500 rounded-sm inline-block"></span>
-                                        封装逻辑（3步以内）
+                                        系统接手逻辑（3步以内）
                                     </h2>
                                     <div className="p-6 rounded-xl border border-white/10 bg-white/[0.02]">
                                         <p className="text-gray-400 text-sm mb-6">

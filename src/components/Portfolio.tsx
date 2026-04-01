@@ -69,14 +69,17 @@ export function Portfolio() {
           {/* 顶部标签 - 统一脉冲点风格 */}
           <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">首批已封装 Skill 模块</span>
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">当前优先落地的业务模块</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            先落 4 个关键节点，<br className="md:hidden" /><span className="text-blue-500">再按客户流程继续扩展</span>
+            先接 4 个高频节点，<br className="md:hidden" /><span className="text-blue-500">再按团队流程继续扩展</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
-            这些不是“万能模板”，而是已经完成第一轮封装的 4 个业务节点。<br className="hidden md:block" />
-            真正落地时，会先读取客户自己的工作流、案例数据和团队经验，再继续往下定制扩展。
+            这 4 个是最适合第一批接入的高频业务模块。
+            <br className="hidden md:block" />
+            真正落地时，会先读取客户自己的工作流、案例数据和团队经验，
+            <br className="hidden md:block" />
+            再决定先接哪几个节点，并继续往下定制扩展。
           </p>
         </motion.div>
 

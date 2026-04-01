@@ -15,14 +15,14 @@ const STEPS = [
     icon: Wrench,
     step: "阶段 02",
     title: "规则抽取与 Skill 封装",
-    desc: "把你们团队已经验证过的经验、案例数据和优先级逻辑抽出来，结合我的大厂方法论，封成真正可执行的 Skill。",
+    desc: "把你们团队已经验证过的经验、案例数据和优先级逻辑抽出来，结合我的大厂方法论，封装成真正可执行的 Skill。",
     bullets: ["抽取经验与案例数据", "封装客户自有 Skill 知识库", "定义输入输出与人工边界"],
   },
   {
     icon: RefreshCcw,
     step: "阶段 03",
     title: "OpenClaw 部署与周期优化",
-    desc: "Skill 不是停留在文档里，而是挂到客户自己的 OpenClaw 上跑起来，再按固定周期持续调参、补节点和扩展流程。",
+    desc: "把模块接到客户自己的 OpenClaw 上跑起来，再按固定周期持续调参、补节点和扩展流程。",
     bullets: ["接入 OpenClaw 与审批流", "双周或月度复盘", "规则升级与流程扩展"],
   },
 ];
@@ -41,12 +41,29 @@ export function CooperationProcess() {
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">合作方式</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            不是卖模板，<span className="text-blue-500">而是把你团队已验证的经验封成 Skill 系统</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight leading-[1.05]">
+            <span className="block">从业务梳理到系统接入</span>
+            <span className="mt-2 inline-flex flex-wrap items-center justify-center gap-3 text-blue-500">
+              <span>接进</span>
+              <span className="inline-flex items-center gap-2">
+                <img src="/openclaw-logo.png" alt="OpenClaw" className="h-9 w-9 object-contain md:h-10 md:w-10" />
+                <span>OpenClaw</span>
+              </span>
+            </span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-            我的工作不是把一套现成流程硬塞给你，也不是替你重做一个通用 SaaS。
-            而是先理解你们现在的工作流，再把已经验证过的经验、规则和案例数据抽出来，封进你们自己的 Skill 系统。
+            <span className="md:block">
+              我会先理解你们现在的工作流、角色分工和业务节奏。
+            </span>
+            <span className="md:block">
+              再把已经验证过的经验、规则和案例数据抽出来，
+            </span>
+            <span className="md:block">
+              封进你们自己的业务模块里；
+            </span>
+            <span className="md:block">
+              OpenClaw（小龙虾）负责把这些能力接到客户自己的流程里持续运转。
+            </span>
           </p>
         </motion.div>
 

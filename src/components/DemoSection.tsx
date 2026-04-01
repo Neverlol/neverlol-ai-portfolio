@@ -176,7 +176,7 @@ export function DemoSection() {
               </div>
             </div>
             <div className="p-4">
-              <p className="text-xs text-[#8b949e] mb-3">真正的 Vibe Coding，不是套壳。核心路由逻辑实时展示：</p>
+              <p className="text-xs text-[#8b949e] mb-3">这里展示的是核心路由逻辑如何在系统里实际运行：</p>
               
               {/* Always show full code when running */}
               <motion.div layout className="overflow-hidden">

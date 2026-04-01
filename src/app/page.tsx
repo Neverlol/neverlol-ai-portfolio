@@ -19,30 +19,31 @@ export default function Home() {
         {/* 微型流光数据流 - Pipeline Teaser */}
         <PipelineTeaser />
 
-        {/* L2 运转层：Demo 展示 4 步闭环如何跑 */}
+        {/* L2 运转层：展示整套人机交互式 AI 业务系统如何跑 */}
         <section id="demo" className="px-6">
           <div className="max-w-6xl mx-auto">
-            {/* 顶部标签 */}
             <div className="flex items-center justify-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit mx-auto">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-              <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">演示版 workflow</span>
+              <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">系统运行 Demo</span>
             </div>
 
             <div className="text-center mb-8">
               <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                <span className="text-blue-500">人机协同</span>如何在系统里<span className="text-blue-500">运转</span>
+                接进团队之后
+                <br className="hidden md:block" />
+                <span className="text-blue-500">这套 AI 业务系统</span>会怎样持续运转
               </h3>
-              <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                查看 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 如何承接后台诊断、路由和提醒，<br className="hidden md:block" />
-                而销售只处理真正需要判断和成交的节点
+              <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                左侧按真实业务主线轮播 8 个节点，右侧同步展示 AI 在后台做什么、销售和主管各自做什么，以及管理侧最终看到的变化。
+                <br className="hidden md:block" />
+                你可以直接看到它如何接进现有销售流程，把后台协作、人工接手和管理结果串成一个闭环。
               </p>
               <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1.5 text-xs text-amber-300">
                 <div className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                当前展示的是目标工作流蓝图，首批已完成 4 个核心 Skill 封装，其余节点将按客户真实流程定制
+                当前演示新客推进、问题分流和老客续费三类高频销售场景
               </div>
             </div>
-            <HomepageSkillDemo skillName="销售运营人机协同蓝图" color="blue" />
+            <HomepageSkillDemo skillName="人机协作 AI 业务系统" color="blue" />
           </div>
         </section>
 

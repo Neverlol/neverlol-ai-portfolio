@@ -38,7 +38,7 @@ const PIPELINE_STEPS: PipelineStep[] = [
     label: "线索获取",
     description: "批量号码单",
     icon: Database,
-    annotation: "传统方式：购买号码名单后直接分配给销售\n• 问题：号码质量差，有效联系率极低\n• 销售状态：盲目拨打，效率低下\n\n没有数据，怎么分析？\n所以第一步不是分析，是先打通沟通环节。",
+    annotation: "传统方式：购买号码名单后直接分配给销售\n• 问题：号码质量差，有效联系率极低\n• 销售状态：盲目拨打，效率低下\n\n先把沟通环节打通、把原始数据接住，后面的判断才会稳定。",
     highlight: false,
   },
   {
@@ -231,7 +231,7 @@ export function TerminalDemo({
                       <div className="text-[10px] text-gray-500 mt-0.5">{step.description}</div>
                     </motion.div>
 
-                    {/* 高亮标记 - Skill 替代环节 */}
+                  {/* 高亮标记 - 系统接手环节 */}
                     {step.highlight && !isActive && index < currentStep && (
                       <div className="absolute -top-6">
                         <span className={`text-[10px] px-1.5 py-0.5 rounded ${colors.bg} ${colors.text}`}>
@@ -267,7 +267,7 @@ export function TerminalDemo({
                     </span>
                     {PIPELINE_STEPS[currentStep].highlight && (
                       <span className={`text-[10px] px-2 py-0.5 rounded ${colors.bg} ${colors.text} ml-auto`}>
-                        Skill 替代环节
+                        系统接手环节
                       </span>
                     )}
                   </div>
