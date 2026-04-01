@@ -70,10 +70,10 @@ export function About() {
 
           {/* 复杂背景连线网络 (微暗虚线底板) */}
           <div className="absolute inset-0 z-0 pointer-events-none opacity-30 hidden md:block">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <path d="M50% 10% L20% 10% L20% 50%" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
-              <path d="M50% 15% L85% 15% L85% 80%" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
-              <path d="M50% 25% L10% 25% L10% 70%" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
+            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 10 L20 10 L20 50" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
+              <path d="M50 15 L85 15 L85 80" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
+              <path d="M50 25 L10 25 L10 70" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
             </svg>
           </div>
 
@@ -107,14 +107,14 @@ export function About() {
 
                   {/* 核心文字 */}
                   <span className="font-mono text-sm font-bold tracking-widest text-gray-200 group-hover:text-white transition-colors">
-                    查看完整能力档案
+                    查看完整业务背景
                   </span>
 
                   <span className="text-gray-600 font-mono text-xs">|</span>
 
                   {/* 行为召唤 (CTA) */}
                   <span className="text-xs font-medium text-gray-400 group-hover:text-blue-400 transition-colors flex items-center gap-1">
-                    了解我能帮你做什么
+                    了解这套系统背后的能力底座
                     <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
 

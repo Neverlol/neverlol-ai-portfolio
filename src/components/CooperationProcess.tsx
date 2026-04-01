@@ -14,9 +14,9 @@ const STEPS = [
   {
     icon: Wrench,
     step: "阶段 02",
-    title: "规则抽取与 Skill 封装",
-    desc: "把你们团队已经验证过的经验、案例数据和优先级逻辑抽出来，结合我的大厂方法论，封装成真正可执行的 Skill。",
-    bullets: ["抽取经验与案例数据", "封装客户自有 Skill 知识库", "定义输入输出与人工边界"],
+    title: "规则抽取与模块封装",
+    desc: "把你们团队已经验证过的经验、案例数据和优先级逻辑抽出来，结合我的实战方法论，封装成真正可执行的后台模块。",
+    bullets: ["抽取经验与案例数据", "封装客户自有模块规则", "定义输入输出与人工边界"],
   },
   {
     icon: RefreshCcw,
@@ -42,9 +42,9 @@ export function CooperationProcess() {
             <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">合作方式</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight leading-[1.05]">
-            <span className="block">从业务梳理到系统接入</span>
+            <span className="block">准备认真评估时</span>
             <span className="mt-2 inline-flex flex-wrap items-center justify-center gap-3 text-blue-500">
-              <span>接进</span>
+              <span>我们会这样把系统接进</span>
               <span className="inline-flex items-center gap-2">
                 <img src="/openclaw-logo.png" alt="OpenClaw" className="h-9 w-9 object-contain md:h-10 md:w-10" />
                 <span>OpenClaw</span>

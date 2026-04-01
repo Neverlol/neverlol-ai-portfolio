@@ -110,44 +110,56 @@ export function Hero() {
           </div>
         </div>
 
-        {/* 4. 底部商业引擎卡片层 (强化内容，完美融入网格) */}
-        <div className="relative z-20 mt-12 grid w-full grid-cols-1 gap-0 pb-4 md:mt-16 md:grid-cols-3">
-          <div className="px-8 flex flex-col justify-start">
-            <div className="text-[10px] text-blue-400 uppercase tracking-wider mb-2">交付 01</div>
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">梳理业务节点模块</h3>
-            <p className="text-[#888] text-sm leading-relaxed mb-4">
-              把线索进入、推进质检、客户分层、续费预警等高频环节整理成可持续运行的业务模块，先接住最值得系统承担的后台动作。
-            </p>
-            <div className="flex flex-wrap gap-2 mt-auto">
-              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">线索进入</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">推进质检</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">续费预警</span>
-            </div>
+        {/* 4. 底部交付结构说明层 */}
+        <div className="relative z-20 mt-10 w-full border-t border-white/5 pt-6 pb-4 md:mt-12">
+          <div className="mb-4 flex flex-wrap items-center gap-2 px-4 text-[11px] uppercase tracking-[0.18em] text-gray-500 md:px-6">
+            <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">最终交付结构</span>
+            <span className="text-gray-700">/</span>
+            <span>模块梳理</span>
+            <span className="text-gray-700">/</span>
+            <span>后台接入</span>
+            <span className="text-gray-700">/</span>
+            <span>周期优化</span>
           </div>
 
-          <div className="px-8 flex flex-col justify-start">
-            <div className="text-[10px] text-purple-400 uppercase tracking-wider mb-2">交付 02</div>
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">接进 OpenClaw 后台</h3>
-            <p className="text-[#888] text-sm leading-relaxed mb-4">
-              由 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 在后台负责触发、回写、提醒、审批和协作，让系统真正接进团队现在的工作流里。
-            </p>
-            <div className="flex flex-wrap gap-2 mt-auto">
-              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">后台承载</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">回写提醒</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">团队协作</span>
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-white/8 bg-white/[0.02] px-6 py-5">
+              <div className="text-[10px] text-blue-400 uppercase tracking-wider mb-2">交付 01</div>
+              <h3 className="text-white text-base font-semibold mb-2 tracking-tight">梳理业务节点模块</h3>
+              <p className="text-[#8f96a3] text-sm leading-relaxed mb-4">
+                先确定哪些高频环节最值得系统接手，避免一上来把整套流程做重。
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">线索进入</span>
+                <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">推进质检</span>
+                <span className="text-[10px] px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">续费预警</span>
+              </div>
             </div>
-          </div>
 
-          <div className="px-8 flex flex-col justify-start">
-            <div className="text-[10px] text-emerald-400 uppercase tracking-wider mb-2">交付 03</div>
-            <h3 className="text-white text-lg font-bold mb-3 tracking-tight">按团队流程持续优化</h3>
-            <p className="text-[#888] text-sm leading-relaxed mb-4">
-              上线后围绕真实使用情况复盘、调参、补节点，让这套系统越来越贴合你们团队，并持续向更多业务环节延伸。
-            </p>
-            <div className="flex flex-wrap gap-2 mt-auto">
-              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">周期复盘</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">规则升级</span>
-              <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">继续扩展</span>
+            <div className="rounded-2xl border border-white/8 bg-white/[0.02] px-6 py-5">
+              <div className="text-[10px] text-purple-400 uppercase tracking-wider mb-2">交付 02</div>
+              <h3 className="text-white text-base font-semibold mb-2 tracking-tight">接进 OpenClaw 后台</h3>
+              <p className="text-[#8f96a3] text-sm leading-relaxed mb-4">
+                由 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 负责触发、回写、提醒和协作，让系统真正嵌入日常工作流。
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">后台承载</span>
+                <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">回写提醒</span>
+                <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">团队协作</span>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/8 bg-white/[0.02] px-6 py-5">
+              <div className="text-[10px] text-emerald-400 uppercase tracking-wider mb-2">交付 03</div>
+              <h3 className="text-white text-base font-semibold mb-2 tracking-tight">按团队流程持续优化</h3>
+              <p className="text-[#8f96a3] text-sm leading-relaxed mb-4">
+                上线后继续围绕真实使用情况复盘和扩展，让系统越来越贴合团队节奏。
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">周期复盘</span>
+                <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">规则升级</span>
+                <span className="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">继续扩展</span>
+              </div>
             </div>
           </div>
         </div>

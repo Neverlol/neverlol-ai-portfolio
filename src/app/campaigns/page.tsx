@@ -194,7 +194,7 @@ export default function CampaignsPage() {
         </div>
       </div>
 
-      {/* 沙盘后的引导 - 先看解决方案，再回看 Demo */}
+      {/* 沙盘后的引导 - 先看解决方案 */}
       <div className="w-full max-w-4xl mx-auto mb-16 relative z-10">
         <div className="text-center p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
           <h3 className="text-lg font-medium text-white mb-3">
@@ -215,17 +215,17 @@ export default function CampaignsPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/#demo"
+              href="/"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-white/[0.03] text-gray-300 transition-colors hover:border-white/20 hover:bg-white/[0.05] hover:text-white"
             >
-              直接看系统 Demo
+              返回首页继续浏览
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </div>
 
-      {/* --- Skill 落地匹配区 --- */}
+      {/* --- 模块方向匹配区 --- */}
       <div className="w-full max-w-6xl mx-auto relative z-10">
 
         {/* 标题 */}

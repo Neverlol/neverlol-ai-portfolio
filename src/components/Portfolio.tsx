@@ -7,10 +7,10 @@ import { useRouter } from "next/navigation";
 const BENTO_CASES = [
   {
     id: "crm-auto-fill",
-    title: "crm-auto-fill",
+    title: "沟通记录结构化回填",
     metric: "结构化录入",
     subtext: "把聊天记录、通话纪要和拜访笔记转成可用 CRM 字段，让后续诊断、分层和续费判断建立在干净输入上。",
-    badges: ["聊天转字段", "缺失字段提醒", "CRM 标准化", "首批已封装"],
+    badges: ["聊天转字段", "缺失字段提醒", "CRM 标准化", "首批可接入"],
     pipelineStep: "筛选",
     className: "col-span-1 md:col-span-2 row-span-2",
     icon: Database,
@@ -19,10 +19,10 @@ const BENTO_CASES = [
   },
   {
     id: "funnel-doctor",
-    title: "funnel-doctor",
+    title: "商机卡点诊断",
     metric: "卡点诊断",
     subtext: "把主管平时靠经验追问的判断标准显性化，自动识别当前漏斗卡点、缺失字段、下一步动作与经理动作。",
-    badges: ["漏斗诊断", "下一步动作", "经理建议", "首批已封装"],
+    badges: ["漏斗诊断", "下一步动作", "经理建议", "首批可接入"],
     pipelineStep: "跟进",
     className: "col-span-1",
     icon: Route,
@@ -31,10 +31,10 @@ const BENTO_CASES = [
   },
   {
     id: "customer-profiler",
-    title: "customer-profiler",
+    title: "客户分层与维护节奏",
     metric: "分层节奏",
     subtext: "把客户价值等级、联系频率和优先级经验沉淀成可复用规则，让谁该重点维护、谁该降频有清晰标准。",
-    badges: ["客户分层", "owner cadence", "推荐动作", "首批已封装"],
+    badges: ["客户分层", "维护节奏", "推荐动作", "首批可接入"],
     pipelineStep: "复购",
     className: "col-span-1",
     icon: Users,
@@ -43,10 +43,10 @@ const BENTO_CASES = [
   },
   {
     id: "renewal-watch",
-    title: "renewal-watch",
+    title: "续费风险前移预警",
     metric: "续费前移",
     subtext: "在客户真正流失前给出 P1/P2/P3 风险名单、续费窗口与挽回优先级，把补救从事后抢救拉回到窗口期内。",
-    badges: ["风险分级", "续费窗口", "挽回优先级", "首批已封装"],
+    badges: ["风险分级", "续费窗口", "挽回优先级", "首批可接入"],
     pipelineStep: "复购",
     className: "col-span-1 md:col-span-2",
     icon: AlertTriangle,
@@ -69,13 +69,15 @@ export function Portfolio() {
           {/* 顶部标签 - 统一脉冲点风格 */}
           <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 w-fit">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">当前优先落地的业务模块</span>
+            <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">首批可接入的业务模块</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            先接 4 个高频节点，<br className="md:hidden" /><span className="text-blue-500">再按团队流程继续扩展</span>
+            系统会先从 4 个高频节点切入，<br className="md:hidden" /><span className="text-blue-500">再按团队流程继续扩展</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
-            这 4 个是最适合第一批接入的高频业务模块。
+            这 4 个是最适合第一批接入的高频业务模块，
+            <br className="hidden md:block" />
+            能先把后台最重复、最依赖经验判断的地方接住。
             <br className="hidden md:block" />
             真正落地时，会先读取客户自己的工作流、案例数据和团队经验，
             <br className="hidden md:block" />
@@ -168,12 +170,12 @@ export function Portfolio() {
                 <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:scale-110 transition-transform">
                   <ArrowRight className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-medium text-white/90">查阅全部案例与原型 →</h3>
+                <h3 className="text-lg font-medium text-white/90">查看更多模块案例 →</h3>
               </div>
 
               <div>
                 <p className="text-sm text-[#8b949e] mb-4">
-                  已上线案例、封装中的 Skill 原型，以及后续持续补充的部署节点
+                  已上线案例、在接模块以及后续持续补充的扩展方向
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-[#a3a3a3]">

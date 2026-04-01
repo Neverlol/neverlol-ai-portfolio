@@ -272,17 +272,17 @@ export default function SolutionsPage() {
         <div className="mx-auto max-w-3xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
             <ChevronsRight className="h-3.5 w-3.5 text-blue-400" />
-            下一步看真实演示
+            下一步看系统实际运转
           </div>
           <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
-            回到首页，看整套系统怎么运转
+            回到首页，看它在业务主线里怎样持续运转
           </h2>
           <p className="mb-8 text-sm leading-relaxed text-gray-400 md:text-base">
-            如果你已经理解这套系统的接入方式，下一步就回首页看它在业务主线里怎样持续运转，
+            如果你已经理解这套系统的接入方式，下一步就回首页看它怎样在真实销售主线里持续运转。
             <br className="hidden md:block" />
-            或继续查看合作方式，确认怎么从业务梳理、接入部署走到周期优化。
+            看完 Demo，往下继续浏览，就能顺着看到模块案例、合作方式和关于我。
           </p>
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-3">
             <Link
               href="/#demo"
               className="inline-flex items-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/15 px-6 py-3 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-500/20"
@@ -290,13 +290,7 @@ export default function SolutionsPage() {
               返回首页看系统 Demo
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link
-              href="/#cooperation"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-300 transition-colors hover:border-white/20 hover:bg-white/[0.05] hover:text-white"
-            >
-              查看合作方式
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <p className="text-xs text-gray-500">Demo 之后继续往下，即可自然进入模块案例、合作方式和关于我。</p>
           </div>
         </div>
       </section>
