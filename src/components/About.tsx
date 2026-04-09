@@ -23,11 +23,11 @@ export function About() {
             这套系统为什么由<span className="text-blue-500">我来做</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-            少有人同时具备大厂业务履历、数据运营底座和 AI 技术落地能力。
+            同时具备大厂操盘经验、规则抽象底座以及最前沿的 AI 技术落地能力。
             <br className="hidden md:block" />
-            我会把过往管理经验提炼成可复用的方法论，
+            我会根据团队当前工作流提炼可复用方法及案例，
             <br className="hidden md:block" />
-            再封装成能在业务里真正跑起来的业务模块与后台协作系统。
+            再封装成更贴合团队的业务模块与 AI 协作系统。
           </p>
 
           {/* 个人资质标签 */}
@@ -183,11 +183,11 @@ export function About() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 12 12 17 22 12" /><polyline points="2 17 12 22 22 17" /></svg>
               </div>
               <h3 className="text-xl font-medium text-white mb-2 flex items-center gap-2">
-                数据思维
+                大厂操盘经验
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                能把客户分层、成交卡点、续费风险这些复杂问题拆成清楚的数据结构和判断规则，为后续系统接入打下底层基础。
+                来自大厂一线和管理岗位的实战操盘经验，知道销售、运营和管理在真实团队里如何协同，也更清楚系统该先接哪一段、怎么接才不打断现有流程。
               </p>
             </motion.div>
 
@@ -204,11 +204,11 @@ export function About() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
               </div>
               <h3 className="text-xl font-medium text-white mb-2 flex items-center gap-2">
-                运营方法论
+                规则抽象技术
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                把过往管理经验、一线打法和复盘机制提炼成可复制的方法论，再进一步沉淀进可运行的业务模块里。
+                能把团队当前工作流里依赖人脑的判断、节奏和案例，抽成可复用规则、字段结构与协作边界，再封装成真正可运行的业务模块。
               </p>
             </motion.div>
 
@@ -229,7 +229,7 @@ export function About() {
                 <span className="text-[#8b949e] opacity-0 group-hover:opacity-100 transition-opacity transition-transform group-hover:translate-x-1 inline-block">↗</span>
               </h3>
               <p className="text-[#8b949e] text-sm leading-relaxed">
-                不只是会讲 AI，也能把业务模块接到 OpenClaw（小龙虾）里，串起知识库、触发、审批和任务分发，让系统真正在业务里跑起来。
+                不只是会讲 AI，也能把前沿 AI 能力接进 OpenClaw 与真实业务流程，串起知识库、触发、回写、审批和任务分发，让系统长期稳定地在业务里跑起来。
               </p>
             </motion.div>
           </div>

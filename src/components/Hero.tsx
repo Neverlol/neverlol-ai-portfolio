@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import Link from "next/link";
 
 export function Hero() {
@@ -40,7 +41,7 @@ export function Hero() {
           <p className="max-w-3xl px-2 text-gray-500 text-sm md:text-lg font-medium leading-relaxed">
             基于成熟的全链路业务体系，把高频业务节点封装成持续运转的模块，
             <br className="hidden md:block" />
-            由 OpenClaw 在后台承载，让销售继续推进成交，主管持续看清重点、风险和节奏。
+            由 OpenClaw 作为 Agent 智能体运行底座承载，让销售继续推进成交，主管持续看清重点、风险和节奏。
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
@@ -48,7 +49,7 @@ export function Hero() {
               href="/campaigns"
               className="inline-flex items-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/15 px-6 py-3 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-500/20"
             >
-              先看 58 业务沙盘
+              进入成熟业务沙盘
             </Link>
             <Link
               href="/solutions"
@@ -117,7 +118,7 @@ export function Hero() {
             <span className="text-gray-700">/</span>
             <span>模块梳理</span>
             <span className="text-gray-700">/</span>
-            <span>后台接入</span>
+            <span>AI 接入</span>
             <span className="text-gray-700">/</span>
             <span>周期优化</span>
           </div>
@@ -138,12 +139,20 @@ export function Hero() {
 
             <div className="rounded-2xl border border-white/8 bg-white/[0.02] px-6 py-5">
               <div className="text-[10px] text-purple-400 uppercase tracking-wider mb-2">交付 02</div>
-              <h3 className="text-white text-base font-semibold mb-2 tracking-tight">接进 OpenClaw 后台</h3>
+              <h3 className="text-white text-base font-semibold mb-2 tracking-tight">接进 OpenClaw AI 底座</h3>
               <p className="text-[#8f96a3] text-sm leading-relaxed mb-4">
-                由 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 负责触发、回写、提醒和协作，让系统真正嵌入日常工作流。
+                由{" "}
+                <Image
+                  src="/openclaw-logo.png"
+                  alt="OpenClaw"
+                  width={16}
+                  height={16}
+                  className="mx-0.5 inline-block h-4 w-4 object-contain align-text-bottom"
+                />
+                OpenClaw 作为 AI / Agent 智能体底座，负责触发、回写、提醒和协作，让系统真正嵌入日常工作流。
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">后台承载</span>
+                <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">AI 承载</span>
                 <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">回写提醒</span>
                 <span className="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">团队协作</span>
               </div>

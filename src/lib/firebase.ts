@@ -1,5 +1,5 @@
 import { initializeApp, getApps } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, initializeFirestore, setLogLevel, type Firestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -13,7 +13,25 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-const db = getFirestore(app);
 const auth = getAuth(app);
 
-export { app, db, auth };
+let dbInstance: Firestore | null = null;
+
+export function getDb() {
+  if (dbInstance) return dbInstance;
+
+  setLogLevel(process.env.NODE_ENV === 'development' ? 'silent' : 'error');
+
+  try {
+    dbInstance = initializeFirestore(app, {
+      experimentalAutoDetectLongPolling: true,
+      useFetchStreams: false,
+    });
+  } catch {
+    dbInstance = getFirestore(app);
+  }
+
+  return dbInstance;
+}
+
+export { app, auth };

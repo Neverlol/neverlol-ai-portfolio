@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, CheckCircle, Terminal, FileCode, ChevronRight } from "lucide-react";
+import { Play, CheckCircle, Terminal, FileCode } from "lucide-react";
+import Image from "next/image";
 
 export interface PipelineStep {
   id: string;
@@ -173,7 +174,7 @@ export function PipelineDemo({
                     <div className="text-xs text-gray-500 mt-0.5">{step.description}</div>
                     {step.highlight && isPast && (
                       <span className={`inline-block mt-1 text-[10px] px-1.5 py-0.5 rounded ${colors.bg} ${colors.text}`}>
-                        Skill ✓
+                        模块 ✓
                       </span>
                     )}
                   </motion.div>
@@ -187,7 +188,16 @@ export function PipelineDemo({
         <div className="flex-1 p-6 bg-black/40">
           <div className="flex items-center gap-2 mb-4">
             <FileCode className={`w-4 h-4 ${colors.text}`} />
-            <span className="text-xs text-gray-400"><img src="/openclaw-logo.png" alt="OpenClaw" className="w-3.5 h-3.5 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw Skill 执行中</span>
+            <span className="text-xs text-gray-400">
+              <Image
+                src="/openclaw-logo.png"
+                alt="OpenClaw"
+                width={14}
+                height={14}
+                className="mx-0.5 inline-block h-3.5 w-3.5 object-contain align-text-bottom"
+              />
+              OpenClaw AI 模块执行中
+            </span>
           </div>
 
           {/* 代码展示区 */}
@@ -200,7 +210,7 @@ export function PipelineDemo({
           >
             {/* 代码头部 */}
             <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
-              <span className="text-gray-500">//</span>
+              <span className="text-gray-500">{"//"}</span>
               <span className="text-gray-400">
                 {currentStepData ? currentStepData.label : "等待执行"}
               </span>
@@ -208,7 +218,7 @@ export function PipelineDemo({
 
             {/* 代码内容 */}
             <pre className={`${colors.text} leading-relaxed whitespace-pre-wrap`}>
-              {currentStepData?.code || `// 点击"运行 Pipeline"开始执行\n// 系统将逐步展示 Skill 执行逻辑`}
+              {currentStepData?.code || `// 点击"运行 Pipeline"开始执行\n// 系统将逐步展示 AI 模块执行逻辑`}
               <span className="animate-pulse">▋</span>
             </pre>
           </motion.div>
@@ -228,7 +238,7 @@ export function PipelineDemo({
               </span>
             </div>
             <p className="text-xs text-gray-300 leading-relaxed">
-              {currentStepData?.annotation || "点击「运行 Pipeline」查看 Skill 执行过程"}
+              {currentStepData?.annotation || "点击「运行 Pipeline」查看 AI 模块执行过程"}
             </p>
           </motion.div>
         </div>
@@ -249,7 +259,15 @@ export function PipelineDemo({
               <div>
                 <p className="text-white font-medium">Pipeline 执行完成</p>
                 <p className="text-gray-400 text-sm">
-                  所有 Skill 模块已就绪，可部署到 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-3.5 h-3.5 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw 系统
+                  所有业务模块已就绪，可部署到{" "}
+                  <Image
+                    src="/openclaw-logo.png"
+                    alt="OpenClaw"
+                    width={14}
+                    height={14}
+                    className="mx-0.5 inline-block h-3.5 w-3.5 object-contain align-text-bottom"
+                  />
+                  OpenClaw 系统
                 </p>
               </div>
             </div>

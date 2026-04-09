@@ -32,9 +32,9 @@ export default function PipelineTeaser() {
           获客 → 筛选 → 跟进 → 复购。
           <br className="hidden md:block" />
           <span className="text-gray-500">
-            先进入 58 业务沙盘，看“线索到利润”怎样在真实团队里运转；
+            进入成熟业务沙盘，直接看“线索到利润”怎样在真实团队里运转；
             <br className="hidden md:block" />
-            再看这些成熟节点如何被接进一套人机交互式 AI 业务系统。
+            哪些成熟节点最值得先交给 AI / Agent 智能体持续协作，也会在里面一起展开。
           </span>
         </p>
 
@@ -93,7 +93,7 @@ export default function PipelineTeaser() {
           className="relative z-20 group flex items-center gap-2 px-6 py-3 mt-10 rounded-xl bg-black border border-white/20 text-sm font-medium text-gray-300 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-300"
         >
           <Sparkles className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
-          进入 58 业务沙盘
+          进入成熟业务沙盘
           <ArrowRight className="w-4 h-4 ml-1 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
         </Link>
       </div>

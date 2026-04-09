@@ -1,4 +1,4 @@
-import { db } from '@/lib/firebase'
+import { getDb } from '@/lib/firebase'
 import { collection, query, where, getDocs, addDoc, getDoc, doc, setDoc, deleteDoc, orderBy } from 'firebase/firestore'
 import type { Project, EvolutionLog, Comment, SandboxConfig } from '@/lib/database.types'
 
@@ -6,6 +6,10 @@ import type { Project, EvolutionLog, Comment, SandboxConfig } from '@/lib/databa
 // 使用本地生成的 JSON 作为内容来源 (由 nl-publish 同步)
 import projectsBackup from '../data/projects.json'
 import logsBackup from '../data/evolution_logs.json'
+
+function logRecoverableFirestoreWarning(action: string, error: unknown) {
+  console.warn(`[Firestore degraded] ${action}`, error)
+}
 
 // ==================== Projects 操作 (已切换至本地/Obsidian流) ====================
 
@@ -53,6 +57,7 @@ export async function deleteEvolutionLog(id: string) { return false }
 
 export async function getComments(articleType: 'project' | 'log', articleId: string): Promise<Comment[]> {
   try {
+    const db = getDb()
     const q = query(
       collection(db, 'comments'),
       where('article_type', '==', articleType),
@@ -62,13 +67,14 @@ export async function getComments(articleType: 'project' | 'log', articleId: str
     const querySnapshot = await getDocs(q)
     return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Comment[]
   } catch (error) {
-    console.error('Error fetching comments from Firebase:', error)
+    logRecoverableFirestoreWarning('fetch comments failed, fallback to empty list', error)
     return []
   }
 }
 
 export async function createComment(comment: Omit<Comment, 'id' | 'created_at' | 'updated_at'>): Promise<Comment | null> {
   try {
+    const db = getDb()
     const docRef = await addDoc(collection(db, 'comments'), {
       ...comment,
       author_name: comment.author_name || '匿名访客',
@@ -76,17 +82,18 @@ export async function createComment(comment: Omit<Comment, 'id' | 'created_at' |
     })
     return { id: docRef.id, ...comment } as Comment
   } catch (error) {
-    console.error('Error creating comment in Firebase:', error)
+    logRecoverableFirestoreWarning('create comment failed', error)
     return null
   }
 }
 
 export async function deleteComment(id: string): Promise<boolean> {
   try {
+    const db = getDb()
     await deleteDoc(doc(db, 'comments', id))
     return true
   } catch (error) {
-    console.error('Error deleting comment in Firebase:', error)
+    logRecoverableFirestoreWarning('delete comment failed', error)
     return false
   }
 }
@@ -104,6 +111,7 @@ export interface ConsultingLead {
 
 export async function submitConsultingLead(lead: Omit<ConsultingLead, 'id' | 'created_at' | 'status'>): Promise<boolean> {
   try {
+    const db = getDb()
     await addDoc(collection(db, 'consulting_leads'), {
       ...lead,
       status: 'pending',
@@ -111,7 +119,7 @@ export async function submitConsultingLead(lead: Omit<ConsultingLead, 'id' | 'cr
     })
     return true
   } catch (error) {
-    console.error('Error submitting consulting lead to Firebase:', error)
+    logRecoverableFirestoreWarning('submit consulting lead failed', error)
     return false
   }
 }
@@ -120,6 +128,7 @@ export async function submitConsultingLead(lead: Omit<ConsultingLead, 'id' | 'cr
 
 export async function getSandboxConfig(id: string): Promise<SandboxConfig | null> {
   try {
+    const db = getDb()
     const docRef = doc(db, 'sandbox_configs', id)
     const docSnap = await getDoc(docRef)
     if (docSnap.exists()) {
@@ -133,13 +142,14 @@ export async function getSandboxConfig(id: string): Promise<SandboxConfig | null
     }
     return null
   } catch (error) {
-    console.error('Error fetching sandbox config from Firebase:', error)
+    logRecoverableFirestoreWarning(`fetch sandbox config "${id}" failed, fallback to local config`, error)
     return null
   }
 }
 
 export async function saveSandboxConfig(id: string, config: { name: string; nodes_json: unknown[]; edges_json: unknown[] }): Promise<SandboxConfig | null> {
   try {
+    const db = getDb()
     const data = {
       name: config.name,
       nodes_json: config.nodes_json,
@@ -149,7 +159,7 @@ export async function saveSandboxConfig(id: string, config: { name: string; node
     await setDoc(doc(db, 'sandbox_configs', id), data, { merge: true })
     return { id, ...data } as SandboxConfig
   } catch (error) {
-    console.error('Error saving sandbox config to Firebase:', error)
+    logRecoverableFirestoreWarning(`save sandbox config "${id}" failed`, error)
     return null
   }
 }

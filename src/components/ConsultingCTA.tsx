@@ -105,7 +105,7 @@ export function ConsultingCTA() {
                                 {step === 1 && (
                                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
                                         <div className="space-y-2">
-                                            <h4 className="text-lg font-medium text-white">你最想优先交给 AI 承担哪一段后台工作？</h4>
+                                            <h4 className="text-lg font-medium text-white">你最想优先交给 AI 承担哪一段高频业务动作？</h4>
                                             <p className="text-sm text-white/50">先判断适合落地哪 1 到 3 个关键模块，再决定接入方案</p>
                                         </div>
 
@@ -148,7 +148,7 @@ export function ConsultingCTA() {
                                         className="space-y-5"
                                     >
                                         <div className="space-y-2">
-                                            <h4 className="text-lg font-medium text-white">留下基础信息，进入 Skill 审计</h4>
+                                            <h4 className="text-lg font-medium text-white">留下基础信息，进入模块审计</h4>
                                             <p className="text-sm text-white/50">我们会根据你的业务链路，判断适合先落地哪 1 到 3 个关键模块，以及是否适合部署 OpenClaw。</p>
                                         </div>
 
@@ -201,7 +201,7 @@ export function ConsultingCTA() {
                                         </div>
                                         <h4 className="text-2xl font-bold text-white">申请已收到</h4>
                                         <p className="text-white/60 leading-relaxed max-w-sm mx-auto">
-                                            我们会先判断你的业务是否适合用 Skill 化方式切入，
+                                            我们会先判断你的业务是否适合用模块化 + AI 协作方式切入，
                                             <br />再给出优先封装节点与部署建议。
                                         </p>
                                         <div className="pt-6">

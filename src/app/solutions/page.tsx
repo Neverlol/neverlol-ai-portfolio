@@ -17,7 +17,7 @@ const stages = [
   {
     id: "01",
     title: "线索进入与建档",
-    mode: "后台可连续承担",
+    mode: "AI 可连续承担",
     modeClass: "text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
     ai: "接住表单、微信、飞书、CRM 和存量名单，完成去重、建档并保留原始来源。",
     human: "处理异常样本、特殊客户归属和少量高价值例外。",
@@ -25,7 +25,7 @@ const stages = [
   {
     id: "02",
     title: "线索分层与分发",
-    mode: "后台与团队协同",
+    mode: "AI 与销售协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
     ai: "依据来源、画像、分发规则和优先级逻辑，给出推荐分发对象与首次触达队列。",
     human: "确认重点客户归属，处理跨团队分配和特批资源。",
@@ -33,7 +33,7 @@ const stages = [
   {
     id: "03",
     title: "首次触达与信息回填",
-    mode: "关键环节由团队主导",
+    mode: "销售主导关键环节",
     modeClass: "text-amber-300 border-amber-500/30 bg-amber-500/10",
     ai: "把聊天、通话和拜访记录整理成结构化字段，补齐关键信息缺口，并生成沟通摘要。",
     human: "打首电、加微信、建立信任、确认真实意图和一手事实。",
@@ -41,7 +41,7 @@ const stages = [
   {
     id: "04",
     title: "商机推进与漏斗质检",
-    mode: "后台与团队协同",
+    mode: "AI 与销售协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
     ai: "识别推进卡点、虚假进展、缺失字段和需要主管介入的时机。",
     human: "推进拜访、方案沟通、资源协调，并在关键阶段做管理动作。",
@@ -49,7 +49,7 @@ const stages = [
   {
     id: "05",
     title: "方案、报价与成交",
-    mode: "关键环节由团队主导",
+    mode: "销售主导关键环节",
     modeClass: "text-amber-300 border-amber-500/30 bg-amber-500/10",
     ai: "提供报价准备参考、异议提醒和风险提示，减少重复准备时间。",
     human: "拜访、谈判、价格、合同承诺和最终签约拍板。",
@@ -57,7 +57,7 @@ const stages = [
   {
     id: "06",
     title: "客户生命周期监控",
-    mode: "后台可连续承担",
+    mode: "AI 可连续承担",
     modeClass: "text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
     ai: "持续巡检客户状态，输出客户分层结果、跟进节奏和推荐动作。",
     human: "只处理异常客户和高价值例外，不再靠人工翻表盯存量。",
@@ -65,7 +65,7 @@ const stages = [
   {
     id: "07",
     title: "流失预警与续费拦截",
-    mode: "后台与团队协同",
+    mode: "AI 与销售协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
     ai: "输出风险等级、续费窗口、优先级名单和建议动作。",
     human: "决定先救谁、怎么谈、是否联动主管或客户成功挽回。",
@@ -73,7 +73,7 @@ const stages = [
   {
     id: "08",
     title: "复盘与规则迭代",
-    mode: "后台与团队协同",
+    mode: "AI 与销售协同",
     modeClass: "text-blue-300 border-blue-500/30 bg-blue-500/10",
     ai: "汇总动作结果、提炼高频问题，沉淀下一轮规则和管理口径。",
     human: "确定审批边界、经营规则和下一轮要继续加深的能力。",
@@ -82,7 +82,7 @@ const stages = [
 
 const boundaries = [
   {
-    title: "后台先接住",
+    title: "AI 先负责",
     icon: Bot,
     tint: "text-emerald-300 border-emerald-500/20 bg-emerald-500/10",
     points: [
@@ -92,7 +92,7 @@ const boundaries = [
     ],
   },
   {
-    title: "团队亲自推进",
+    title: "销售亲自推进",
     icon: Handshake,
     tint: "text-amber-300 border-amber-500/20 bg-amber-500/10",
     points: [
@@ -102,11 +102,11 @@ const boundaries = [
     ],
   },
   {
-    title: "一起把重点抬出来",
+    title: "AI 与人一起抬重点",
     icon: Users,
     tint: "text-blue-300 border-blue-500/20 bg-blue-500/10",
     points: [
-      "模糊问题先在后台分清，再把处理事项推给对应的人",
+      "模糊问题先由 AI 分清，再把处理事项推给对应的人",
       "商机卡点诊断、客户分层和流失优先级",
       "重点名单、沟通摘要和主管复盘同步刷新",
     ],
@@ -120,9 +120,9 @@ const fitCards = [
     body: "把新客推进、问题分流、客户分层、续费风险这些关键节点拆成可持续运转的业务模块，直接接进真实销售流程。",
   },
   {
-    title: "OpenClaw 后台承载",
+    title: "OpenClaw 智能体承载",
     icon: ShieldCheck,
-    body: "由 OpenClaw 在后台负责触发、调度、回写、提醒和持续协作，把系统真正部署成能跑的业务底盘。",
+    body: "由 OpenClaw 作为 AI / Agent 智能体底座，负责触发、调度、回写、提醒和持续协作，把系统真正部署成能跑的业务底盘。",
   },
   {
     title: "按你当前流程定制接入",
@@ -157,7 +157,7 @@ export default function SolutionsPage() {
         <p className="max-w-3xl text-sm leading-relaxed text-gray-400 md:text-base">
           这套系统基于成熟的全链路业务体系，把关键业务节点封装成可持续运转的模块，
           <br className="hidden md:block" />
-          再由 OpenClaw 在后台承载运行，并按你当前的销售工作流做定制接入，平滑融入现有团队。
+          再由 OpenClaw 作为 AI / Agent 智能体底座承载运行，并按你当前的销售工作流做定制接入，平滑融入现有团队。
         </p>
 
         <div className="mt-8 grid w-full gap-4 md:grid-cols-3">
@@ -189,7 +189,7 @@ export default function SolutionsPage() {
               <span className="text-blue-500">你的销售工作流</span>
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-              先把业务节点、后台承载和团队接手点说清楚，后面的部署、接线和持续优化才会稳定。
+              先把业务节点、AI 负责和销售接手点说清楚，后面的部署、接线和持续优化才会稳定。
             </p>
           </div>
         </div>
@@ -219,7 +219,7 @@ export default function SolutionsPage() {
                   <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4">
                     <div className="mb-2 flex items-center gap-2 text-sm font-medium text-emerald-300">
                       <Bot className="h-4 w-4" />
-                      后台承担
+                      AI 负责
                     </div>
                     <p className="text-sm leading-relaxed text-gray-300">{stage.ai}</p>
                   </div>
@@ -227,7 +227,7 @@ export default function SolutionsPage() {
                   <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4">
                     <div className="mb-2 flex items-center gap-2 text-sm font-medium text-amber-300">
                       <Users className="h-4 w-4" />
-                      团队出手
+                      销售负责
                     </div>
                     <p className="text-sm leading-relaxed text-gray-300">{stage.human}</p>
                   </div>
@@ -244,7 +244,7 @@ export default function SolutionsPage() {
             这套系统落地后的三个关键变化
           </h2>
           <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-500">
-            客户真正买单的，是这套系统能否无痛接进团队、持续在后台运转，并把关键动作稳定交回给人。
+            客户真正买单的，是这套系统能否无痛接进团队、持续由 AI 协作运行，并把关键动作稳定交回给人。
           </p>
         </div>
 
@@ -272,25 +272,25 @@ export default function SolutionsPage() {
         <div className="mx-auto max-w-3xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
             <ChevronsRight className="h-3.5 w-3.5 text-blue-400" />
-            下一步看系统实际运转
+            接着看系统实际运转
           </div>
           <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
-            回到首页，看它在业务主线里怎样持续运转
+            去看它在业务主线里怎样持续运转
           </h2>
           <p className="mb-8 text-sm leading-relaxed text-gray-400 md:text-base">
-            如果你已经理解这套系统的接入方式，下一步就回首页看它怎样在真实销售主线里持续运转。
+            接入方式明确之后，最值得继续看的就是它真正跑起来时，AI、销售和主管各自看到什么。
             <br className="hidden md:block" />
-            看完 Demo，往下继续浏览，就能顺着看到模块案例、合作方式和关于我。
+            首页 Demo 会把业务主线、AI 协作和管理结果放在一个界面里连续展示。
           </p>
           <div className="flex flex-col items-center justify-center gap-3">
             <Link
               href="/#demo"
               className="inline-flex items-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/15 px-6 py-3 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-500/20"
             >
-              返回首页看系统 Demo
+              查看首页 Demo
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <p className="text-xs text-gray-500">Demo 之后继续往下，即可自然进入模块案例、合作方式和关于我。</p>
+            <p className="text-xs text-gray-500">顺着 Demo 往下看，还会继续进入模块案例、合作方式和业务背景。</p>
           </div>
         </div>
       </section>

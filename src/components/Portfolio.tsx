@@ -8,7 +8,7 @@ const BENTO_CASES = [
   {
     id: "crm-auto-fill",
     title: "沟通记录结构化回填",
-    metric: "结构化录入",
+    metric: "原始沟通入台账",
     subtext: "把聊天记录、通话纪要和拜访笔记转成可用 CRM 字段，让后续诊断、分层和续费判断建立在干净输入上。",
     badges: ["聊天转字段", "缺失字段提醒", "CRM 标准化", "首批可接入"],
     pipelineStep: "筛选",
@@ -20,7 +20,7 @@ const BENTO_CASES = [
   {
     id: "funnel-doctor",
     title: "商机卡点诊断",
-    metric: "卡点诊断",
+    metric: "推进真伪识别",
     subtext: "把主管平时靠经验追问的判断标准显性化，自动识别当前漏斗卡点、缺失字段、下一步动作与经理动作。",
     badges: ["漏斗诊断", "下一步动作", "经理建议", "首批可接入"],
     pipelineStep: "跟进",
@@ -32,7 +32,7 @@ const BENTO_CASES = [
   {
     id: "customer-profiler",
     title: "客户分层与维护节奏",
-    metric: "分层节奏",
+    metric: "维护优先级",
     subtext: "把客户价值等级、联系频率和优先级经验沉淀成可复用规则，让谁该重点维护、谁该降频有清晰标准。",
     badges: ["客户分层", "维护节奏", "推荐动作", "首批可接入"],
     pipelineStep: "复购",
@@ -44,7 +44,7 @@ const BENTO_CASES = [
   {
     id: "renewal-watch",
     title: "续费风险前移预警",
-    metric: "续费前移",
+    metric: "窗口期拦截",
     subtext: "在客户真正流失前给出 P1/P2/P3 风险名单、续费窗口与挽回优先级，把补救从事后抢救拉回到窗口期内。",
     badges: ["风险分级", "续费窗口", "挽回优先级", "首批可接入"],
     pipelineStep: "复购",
@@ -77,7 +77,7 @@ export function Portfolio() {
           <p className="text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
             这 4 个是最适合第一批接入的高频业务模块，
             <br className="hidden md:block" />
-            能先把后台最重复、最依赖经验判断的地方接住。
+            能先把 AI 最适合承担、最依赖经验判断的地方接住。
             <br className="hidden md:block" />
             真正落地时，会先读取客户自己的工作流、案例数据和团队经验，
             <br className="hidden md:block" />

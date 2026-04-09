@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Search, Wrench, RefreshCcw } from "lucide-react";
+import Image from "next/image";
 
 const STEPS = [
   {
@@ -15,7 +16,7 @@ const STEPS = [
     icon: Wrench,
     step: "阶段 02",
     title: "规则抽取与模块封装",
-    desc: "把你们团队已经验证过的经验、案例数据和优先级逻辑抽出来，结合我的实战方法论，封装成真正可执行的后台模块。",
+    desc: "把你们团队已经验证过的经验、案例数据和优先级逻辑抽出来，结合我的实战方法论，封装成真正可执行的 AI 模块。",
     bullets: ["抽取经验与案例数据", "封装客户自有模块规则", "定义输入输出与人工边界"],
   },
   {
@@ -46,7 +47,13 @@ export function CooperationProcess() {
             <span className="mt-2 inline-flex flex-wrap items-center justify-center gap-3 text-blue-500">
               <span>我们会这样把系统接进</span>
               <span className="inline-flex items-center gap-2">
-                <img src="/openclaw-logo.png" alt="OpenClaw" className="h-9 w-9 object-contain md:h-10 md:w-10" />
+                <Image
+                  src="/openclaw-logo.png"
+                  alt="OpenClaw"
+                  width={40}
+                  height={40}
+                  className="h-9 w-9 object-contain md:h-10 md:w-10"
+                />
                 <span>OpenClaw</span>
               </span>
             </span>

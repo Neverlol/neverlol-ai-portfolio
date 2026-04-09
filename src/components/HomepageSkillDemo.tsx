@@ -109,7 +109,7 @@ const STAGES: DemoStage[] = [
     caseId: "LEAD-031",
     subtitle: "原始线索先被接住，来源、负责人和首触顺序先理清。",
     customerInput: "客户通过表单留下电话，随后在微信里补充了意向城市、行业方向和预计启动时间。",
-    aiAction: "后台接入表单与微信新增记录，完成去重、建档、来源标签识别和首触优先级推荐，并把线索带回统一客户底座。",
+    aiAction: "AI 接入表单与微信新增记录，完成去重、建档、来源标签识别和首触优先级推荐，并把线索带回统一客户底座。",
     humanAction: "销售处理少量特殊归属与高价值例外，然后按推荐队列开始首轮触达。",
     managerView: "主管先看到今天新增了多少线索、哪些来源质量更高、哪几条需要先安排首触。",
     salesView: "销售按首触队列拨打电话和加微信，不需要自己先翻多张表找人。",
@@ -118,7 +118,7 @@ const STAGES: DemoStage[] = [
     metrics: [
       { label: "今日新增线索", value: "18", note: "新线索已进入统一底座", tone: "blue" },
       { label: "有效推进商机", value: "6", note: "昨天遗留商机继续推进", tone: "emerald" },
-      { label: "高风险续费", value: "2", note: "存量客户风险仍在后台巡检", tone: "violet" },
+      { label: "高风险续费", value: "2", note: "存量客户风险仍在 AI 巡检", tone: "violet" },
       { label: "待主管处理", value: "2", note: "重点归属需要确认", tone: "amber" },
     ],
     focusList: [
@@ -145,7 +145,7 @@ const STAGES: DemoStage[] = [
     caseId: "QUEUE-118",
     subtitle: "线索池先被分层，再送到最合适的人手里。",
     customerInput: "已入池线索叠加来源标签、历史接触记录和负责人规则，准备进入首次触达。",
-    aiAction: "后台依据线索质量、来源结构、负责人规则和当前负载，给出推荐 owner、首触时限和优先处理队列。",
+    aiAction: "AI 依据线索质量、来源结构、负责人规则和当前负载，给出推荐 owner、首触时限和优先处理队列。",
     humanAction: "主管确认重点客户归属，处理跨团队分配和需要特批资源的对象。",
     managerView: "管理者看到的不只是线索数量，还能看到哪几条要先给谁、哪几条要自己拍板。",
     salesView: "销售拿到的是已经排好轻重缓急的首触名单，可以直接进入当天的实际触达动作。",
@@ -179,9 +179,9 @@ const STAGES: DemoStage[] = [
     laneTone: "blue",
     customer: "云栖家居服务（脱敏）",
     caseId: "CRM-031",
-    subtitle: "销售在前台建立信任，后台把关键事实同步写回系统。",
+    subtitle: "销售在前台建立信任，AI 把关键事实同步写回系统。",
     customerInput: "电话纪要里明确了推广方向、预算区间、启动时间和客户最担心的历史效果波动。",
-    aiAction: "后台把聊天、通话和拜访记录压成结构化字段，补齐需求摘要、预算区间、启动时间和待补信息提醒。",
+    aiAction: "AI 把聊天、通话和拜访记录压成结构化字段，补齐需求摘要、预算区间、启动时间和待补信息提醒。",
     humanAction: "销售确认真实意图、判断是否继续推进，并准备下一轮更深入的沟通。",
     managerView: "管理者看到的是首触完成率、待补字段和高意向对象，不需要再追问录音里到底聊了什么。",
     salesView: "销售可以继续推进，不用再把同样的信息手工抄进另一张表里。",
@@ -190,7 +190,7 @@ const STAGES: DemoStage[] = [
     metrics: [
       { label: "今日新增线索", value: "18", note: "新增端继续滚动", tone: "blue" },
       { label: "有效推进商机", value: "8", note: "又有 1 条进入推进状态", tone: "emerald" },
-      { label: "高风险续费", value: "2", note: "续费风险仍在后台待命", tone: "violet" },
+      { label: "高风险续费", value: "2", note: "续费风险仍在 AI 巡检", tone: "violet" },
       { label: "待主管处理", value: "2", note: "重点对象等复盘确认", tone: "amber" },
     ],
     focusList: [
@@ -217,7 +217,7 @@ const STAGES: DemoStage[] = [
     caseId: "OP-118",
     subtitle: "推进速度一旦变慢，重点名单会先浮出来。",
     customerInput: "最近两次跟进都在谈方案方向，但核心预算和落地时间没有继续推进，阶段却从 30% 被手动提到了 40%。",
-    aiAction: "后台对比有效触达、缺失字段和阶段变化，识别这条商机卡在需求确认，不把表面的活跃误判成真实推进。",
+    aiAction: "AI 对比有效触达、缺失字段和阶段变化，识别这条商机卡在需求确认，不把表面的活跃误判成真实推进。",
     humanAction: "主管加入下轮沟通，销售补需求深度和预算信息，避免继续在热闹里空转。",
     managerView: "管理者会先看到哪些商机在真推进、哪些对象只是表面更新、哪些地方需要自己介入。",
     salesView: "销售拿到的是卡点提示和下一步动作，不用自己靠感觉判断这单到底卡在哪。",
@@ -253,7 +253,7 @@ const STAGES: DemoStage[] = [
     caseId: "DEAL-044",
     subtitle: "系统给出准备依据，真正影响签约的动作仍由人完成。",
     customerInput: "客户开始比较价格、投放周期和效果承诺，希望先看到一版试跑方案再决定是否签约。",
-    aiAction: "后台汇总客户顾虑、报价准备要点和风险提醒，帮助销售与主管在沟通前把异议准备完整。",
+    aiAction: "AI 汇总客户顾虑、报价准备要点和风险提醒，帮助销售与主管在沟通前把异议准备完整。",
     humanAction: "销售推进方案沟通、报价、资源协调和关键谈判，主管在必要时加入拍板。",
     managerView: "管理者最后看到的是哪些单接近签约、哪些报价需要自己拍板、哪些对象值得加资源。",
     salesView: "销售继续谈方案、谈价格、锁时间，系统提供的是准备依据和过程辅助。",
@@ -287,9 +287,9 @@ const STAGES: DemoStage[] = [
     laneTone: "emerald",
     customer: "青禾亲子营地（脱敏）",
     caseId: "ACC-203",
-    subtitle: "存量客户不用全靠人盯，后台会持续巡检健康度和活跃状态。",
+    subtitle: "存量客户不用全靠人盯，AI 会持续巡检健康度和活跃状态。",
     customerInput: "客户最近使用波动、联系间隔拉长、服务提单增加，但还没有进入明显流失状态。",
-    aiAction: "后台持续巡检客户价值、活跃度、联系频率和服务状态，输出客户分层结果和推荐跟进节奏。",
+    aiAction: "AI 持续巡检客户价值、活跃度、联系频率和服务状态，输出客户分层结果和推荐跟进节奏。",
     humanAction: "客户成功只处理高价值异常与需要升级的对象，销售回访重点客户。",
     managerView: "管理者看到的是存量客户健康度、重点维护名单和哪些对象需要提前关心。",
     salesView: "销售拿到的是值得回访的重点客户和优先顺序，不需要自己再从整张存量表里翻找。",
@@ -325,7 +325,7 @@ const STAGES: DemoStage[] = [
     caseId: "SAVE-077",
     subtitle: "高价值和高风险对象一旦露头，会先被抬进优先处理队列。",
     customerInput: "最近两周使用明显下滑，账户余额接近预警线，负责人 8 天没有有效跟进，客户还提到上次服务问题迟迟没人回访。",
-    aiAction: "后台结合到期窗口、余额、使用下滑和服务异常，给出风险等级、优先级名单和建议动作。",
+    aiAction: "AI 结合到期窗口、余额、使用下滑和服务异常，给出风险等级、优先级名单和建议动作。",
     humanAction: "主管决定先救谁、怎么谈、是否联动客户成功；销售补续费方案，客户成功先修复服务问题。",
     managerView: "管理者最后看到的是今天最需要先救的客户、风险等级和干预顺序，能直接决定资源先投向哪里。",
     salesView: "销售拿到的是已经排好优先级的续费对象和下一步动作，不需要再自己从表里找风险。",
@@ -361,7 +361,7 @@ const STAGES: DemoStage[] = [
     caseId: "REVIEW-008",
     subtitle: "一轮动作结束后，系统会继续沉淀结果，帮助团队把经验变成下一轮规则。",
     customerInput: "本周新客推进结果、失单原因、续费挽回结果和人工反馈已经全部回到账本里。",
-    aiAction: "后台汇总动作结果、成功样本、高频卡点和需要调整的规则，为下一轮业务模块优化提供依据。",
+    aiAction: "AI 汇总动作结果、成功样本、高频卡点和需要调整的规则，为下一轮业务模块优化提供依据。",
     humanAction: "主管确定审批边界、经营规则和下一轮要继续加深的模块，销售按新规则进入下周节奏。",
     managerView: "管理者最后看到的是本周新增、推进、风险和结果变化，以及下周应该优先优化哪一段流程。",
     salesView: "销售拿到的是更清晰的下周动作标准和重点对象，不用重复踩同样的坑。",
@@ -448,7 +448,7 @@ export default function HomepageSkillDemo({
           </div>
           <div>
             <p className="text-sm font-medium text-white">{skillName}</p>
-            <p className="text-xs text-gray-500">基于成熟业务节点模块封装，由 OpenClaw 在后台承载并持续协作运行。</p>
+            <p className="text-xs text-gray-500">基于成熟业务节点模块封装，由 OpenClaw 作为 Agent 智能体底座承载并持续协作运行。</p>
           </div>
         </div>
 
@@ -476,7 +476,7 @@ export default function HomepageSkillDemo({
           <ArrowRight className="h-3.5 w-3.5 text-gray-600" />
           <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-blue-300">业务节点模块</span>
           <ArrowRight className="h-3.5 w-3.5 text-gray-600" />
-          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-emerald-300">OpenClaw 后台协作</span>
+          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-emerald-300">OpenClaw AI 协作</span>
           <ArrowRight className="h-3.5 w-3.5 text-gray-600" />
           <span className="rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-amber-300">人工接手与管理结果</span>
         </div>
@@ -495,7 +495,7 @@ export default function HomepageSkillDemo({
                     <span className="text-xs uppercase tracking-[0.18em] text-gray-500">8 个业务节点</span>
                   </div>
                   <p className="text-xs leading-relaxed text-gray-400">
-                    这里按真实业务链展示人机交互节点。右侧会同步展示后台协作、人工接手和管理侧最终看到的结果。
+                    这里按真实业务链展示人机交互节点。右侧会同步展示 AI 协作、人工接手和管理侧最终看到的结果。
                   </p>
                 </div>
                 <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-gray-500">
@@ -600,7 +600,7 @@ export default function HomepageSkillDemo({
                 <div className="rounded-2xl border border-white/10 bg-black/35 p-4">
                   <div className="mb-2 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-gray-500">
                     <Bot className="h-3.5 w-3.5" />
-                    AI 在后台做什么
+                    AI 在过程中做什么
                   </div>
                   <p className="text-sm leading-relaxed text-gray-200">{currentStage.aiAction}</p>
                 </div>
@@ -732,7 +732,7 @@ export default function HomepageSkillDemo({
               <CheckCircle2 className="h-4.5 w-4.5 text-emerald-300" />
             </div>
             <div>
-              <p className="text-sm font-medium text-white">同一条业务主线里，后台协作、人工接手和管理结果会持续回到一个系统里。</p>
+              <p className="text-sm font-medium text-white">同一条业务主线里，AI 协作、人工接手和管理结果会持续回到一个系统里。</p>
               <p className="mt-1 text-xs leading-relaxed text-gray-400">
                 如果你想看这套系统怎样按现有团队流程接入，可以继续进入解决方案页。
               </p>

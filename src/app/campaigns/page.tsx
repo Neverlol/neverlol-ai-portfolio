@@ -31,11 +31,11 @@ export default function CampaignsPage() {
           <span className="text-white">真实跑通过的<span className="text-blue-500">业务链</span></span>
         </h1>
         <p className="text-gray-500 max-w-2xl text-sm leading-relaxed mb-6">
-          这里展示的是这套系统背后的业务原型，也就是一条真实团队怎样从线索走到利润的销售运营链路。
+          这里摊开的是一条真实团队怎样从线索走到利润的销售运营链路。
           <br className="hidden md:block" />
-          先看“线索到利润”如何在现场运转，
+          从这条链里，
           <br className="hidden md:block" />
-          再看哪些成熟节点最适合交给后台持续协作。
+          你能直接看清哪些高频判断和动作最适合先接进 AI / Agent 智能体持续协作。
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export default function CampaignsPage() {
             为什么这条业务链，适合接进<span className="text-blue-500">AI 业务系统</span>
           </h2>
           <p className="text-gray-500 text-sm max-w-xl mx-auto">
-            因为它包含大量高频、可标准化、依赖数据判断的后台动作，
+            因为它包含大量高频、可标准化、依赖数据判断的 AI 可持续承担动作，
             <br className="hidden md:block" />
             正适合交给系统长期稳定地承担。
           </p>
@@ -80,7 +80,7 @@ export default function CampaignsPage() {
                 <span className="text-sm font-medium text-white">经验可沉淀</span>
               </div>
               <p className="text-sm text-gray-400 leading-relaxed">
-                老销售和运营主管的经验，不必继续只留在脑子里，可以被整理成可复用、可迭代的业务 Skill。
+                销售和运营的经验，可以被整理成可复用、可迭代的业务模块，持续沉淀在系统里。
               </p>
             </div>
           </div>
@@ -198,12 +198,12 @@ export default function CampaignsPage() {
       <div className="w-full max-w-4xl mx-auto mb-16 relative z-10">
         <div className="text-center p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
           <h3 className="text-lg font-medium text-white mb-3">
-            看完业务原型，再看它怎样接进你的团队
+            接着看它怎样接进你的团队
           </h3>
           <p className="text-gray-500 text-sm mb-6">
-            这页展示的是底层业务原型，也就是这套系统最早在真实团队里怎样跑通。
+            这条业务链已经拆成可接入的人机交互式 AI 业务系统。
             <br className="hidden md:block" />
-            下一页会把这条链拆成客户可直接接入的人机交互式 AI 业务系统，说明 AI 和团队各自承担什么。
+            下一页会把 AI 负责、销售负责和管理结果分别讲清楚。
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -244,7 +244,7 @@ export default function CampaignsPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* 获客问题 */}
           <Link
-            href="/category/attribution"
+            href="/category/crm-auto-fill"
             className="group p-6 rounded-xl border border-white/10 bg-[#050505] hover:border-blue-500/50 transition-colors cursor-pointer text-left"
           >
             <div className="flex items-center gap-3 mb-4">
@@ -257,11 +257,11 @@ export default function CampaignsPage() {
               </div>
             </div>
             <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-              获客越来越贵
+              留资后接不住
               <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" />
             </h3>
             <p className="text-gray-500 text-sm leading-relaxed">
-              投了很多广告，但不知道哪分钱真的有用。客户留了电话就消失。
+              客户留了电话、加了微信，但信息散在聊天和通话里，后面没人接得住，线索很快就流失。
             </p>
             <div className="mt-4 pt-4 border-t border-white/5">
               <div className="text-[10px] text-blue-400">→ 查看对应模块方向</div>
@@ -270,7 +270,7 @@ export default function CampaignsPage() {
 
           {/* 成交问题 */}
           <Link
-            href="/category/sales-enablement"
+            href="/category/funnel-doctor"
             className="group p-6 rounded-xl border border-white/10 bg-[#050505] hover:border-blue-500/50 transition-colors cursor-pointer text-left"
           >
             <div className="flex items-center gap-3 mb-4">
@@ -296,7 +296,7 @@ export default function CampaignsPage() {
 
           {/* 复购问题 */}
           <Link
-            href="/category/lead-scoring"
+            href="/category/renewal-watch"
             className="group p-6 rounded-xl border border-white/10 bg-[#050505] hover:border-blue-500/50 transition-colors cursor-pointer text-left"
           >
             <div className="flex items-center gap-3 mb-4">

@@ -29,14 +29,14 @@ export default function Home() {
 
             <div className="text-center mb-8">
               <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                接进团队之后
+                一线照常沟通
                 <br className="hidden md:block" />
-                <span className="text-blue-500">这套 AI 业务系统</span>会怎样持续运转
+                <span className="text-blue-500">AI 持续把每次触达变成经营动作</span>
               </h3>
               <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                左侧按真实业务主线轮播 8 个节点，右侧同步展示 AI 在后台做什么、销售和主管各自做什么，以及管理侧最终看到的变化。
+                左侧按真实业务主线轮播 8 个节点，右侧同步展示 AI 在过程中做什么、销售和主管各自做什么，以及管理侧最终看到的变化。
                 <br className="hidden md:block" />
-                你可以直接看到它如何接进现有销售流程，把后台协作、人工接手和管理结果串成一个闭环。
+                你会直接看到一次沟通记录怎样进入 AI 协作系统，被整理、判断、回写，再变成团队可执行的下一步。
               </p>
               <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1.5 text-xs text-amber-300">
                 <div className="h-1.5 w-1.5 rounded-full bg-amber-400" />

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Github, Zap, Database, Brain, Route, CheckCircle, AlertCircle } from "lucide-react";
-import { motion as motionFramer } from "framer-motion";
+import Image from "next/image";
 
 interface PipelineStep {
   id: string;
@@ -11,12 +11,11 @@ interface PipelineStep {
   description: string;
   icon: typeof Database;
   annotation: string;
-  highlight?: boolean; // 标记这是 Skill 要替代的环节
+  highlight?: boolean; // 标记这是 AI 模块要替代的环节
 }
 
 interface TerminalDemoProps {
   skillName: string;
-  command: string;
   inputData?: string;
   problem?: string;
   whyTraditionalFails?: string;
@@ -54,7 +53,7 @@ const PIPELINE_STEPS: PipelineStep[] = [
     label: "NLP 画像分析",
     description: "基于 CRM 数据建模",
     icon: Brain,
-    annotation: "传统方式：人工翻 CRM 判断意向\n• 耗时：每个客户 5-10 分钟\n• 主观性强，标准不一\n\nSkill 执行：\n• 分析 CRM 中的沟通记录、行为轨迹、字段标签\n• 自动建立客户画像（意向度/需求/风险）\n• 耗时：4.2 秒/万条",
+    annotation: "传统方式：人工翻 CRM 判断意向\n• 耗时：每个客户 5-10 分钟\n• 主观性强，标准不一\n\nAI 模块执行：\n• 分析 CRM 中的沟通记录、行为轨迹、字段标签\n• 自动建立客户画像（意向度/需求/风险）\n• 耗时：4.2 秒/万条",
     highlight: true,
   },
   {
@@ -62,14 +61,13 @@ const PIPELINE_STEPS: PipelineStep[] = [
     label: "智能路由",
     description: "自动分级 + 精准分配",
     icon: Route,
-    annotation: "传统方式：销售挑肥拣瘦，优质线索被冷落\n• 分配看关系，不看转化概率\n• 资源严重浪费\n\nSkill 执行：\n• 高意向 → 分配给金牌销售 + 缩短跟进周期\n• 中意向 → 进入培育流，自动推送内容\n• 低意向 → 进入沉默库，定期激活\n\n结果：3.2x 转化效率提升",
+    annotation: "传统方式：销售挑肥拣瘦，优质线索被冷落\n• 分配看关系，不看转化概率\n• 资源严重浪费\n\nAI 模块执行：\n• 高意向 → 分配给金牌销售 + 缩短跟进周期\n• 中意向 → 进入培育流，自动推送内容\n• 低意向 → 进入沉默库，定期激活\n\n结果：3.2x 转化效率提升",
     highlight: true,
   },
 ];
 
 export function TerminalDemo({
   skillName,
-  command,
   problem = "你的销售团队每天浪费 80% 的时间在低质量线索上？",
   whyTraditionalFails = "人工清洗线索需要逐个打电话确认意向，效率低且成本高昂。",
   steps = [
@@ -235,7 +233,7 @@ export function TerminalDemo({
                     {step.highlight && !isActive && index < currentStep && (
                       <div className="absolute -top-6">
                         <span className={`text-[10px] px-1.5 py-0.5 rounded ${colors.bg} ${colors.text}`}>
-                          Skill ✓
+                          模块 ✓
                         </span>
                       </div>
                     )}
@@ -298,7 +296,7 @@ export function TerminalDemo({
                   <div>
                     <p className="text-white font-medium">Pipeline 执行完成</p>
                     <p className="text-gray-400 text-sm">
-                      销售打完电话、CRM 录入信息后，Skill 在 4.2 秒内完成画像分析与线索分层。
+                      销售打完电话、CRM 录入信息后，AI 模块会在 4.2 秒内完成画像分析与线索分层。
                     </p>
                   </div>
                 </div>
@@ -311,7 +309,7 @@ export function TerminalDemo({
                     <div className="text-xs text-gray-500">每客户 5-10 分钟，主观判断</div>
                   </div>
                   <div className="p-3 rounded-lg bg-white/5 border border-green-500/30">
-                    <div className="text-xs text-gray-400 mb-1">使用 Skill 后</div>
+                    <div className="text-xs text-gray-400 mb-1">AI 接入后</div>
                     <div className="text-lg font-bold text-green-400">4.2 秒 / 万条</div>
                     <div className="text-xs text-gray-500">自动画像 + 精准分层</div>
                   </div>
@@ -322,10 +320,10 @@ export function TerminalDemo({
         </AnimatePresence>
       </div>
 
-      {/* Skill 详情展开区 */}
+      {/* 模块详情展开区 */}
       <div className="mt-6 space-y-3">
         <div className={`p-4 rounded-xl border ${colors.accent} ${colors.bg}`}>
-          <h4 className={`text-sm font-bold ${colors.text} mb-2`}>这个 Skill 解决什么问题</h4>
+          <h4 className={`text-sm font-bold ${colors.text} mb-2`}>这个模块解决什么问题</h4>
           <p className="text-sm text-gray-400">{problem}</p>
         </div>
 
@@ -335,7 +333,7 @@ export function TerminalDemo({
         </div>
 
         <div className="p-4 rounded-xl border border-white/10 bg-white/5">
-          <h4 className="text-sm font-bold text-emerald-400 mb-3">Skill 执行逻辑（3步以内）</h4>
+          <h4 className="text-sm font-bold text-emerald-400 mb-3">AI 模块执行逻辑（3步以内）</h4>
           <div className="space-y-2">
             {steps.map((step, i) => (
               <div key={i} className="flex items-center gap-3 text-sm">
@@ -355,7 +353,17 @@ export function TerminalDemo({
           className={`flex items-center justify-center gap-2 p-3 rounded-xl ${colors.bg} ${colors.text} border ${colors.accent} hover:opacity-80 transition-opacity`}
         >
           <Github className="w-4 h-4" />
-          <span className="text-sm font-medium">查看源码 / 部署到 <img src="/openclaw-logo.png" alt="OpenClaw" className="w-4 h-4 object-contain inline-block align-text-bottom mx-0.5" />OpenClaw</span>
+          <span className="text-sm font-medium">
+            查看源码 / 部署到{" "}
+            <Image
+              src="/openclaw-logo.png"
+              alt="OpenClaw"
+              width={16}
+              height={16}
+              className="mx-0.5 inline-block h-4 w-4 object-contain align-text-bottom"
+            />
+            OpenClaw
+          </span>
         </a>
       </div>
     </div>
