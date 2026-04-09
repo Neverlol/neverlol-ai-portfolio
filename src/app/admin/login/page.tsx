@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Lock, Eye, EyeOff, AlertCircle, Loader2 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/lib/auth";
 
@@ -112,9 +113,9 @@ export default function LoginPage() {
 
         {/* Back to home */}
         <div className="text-center mt-6">
-          <a href="/" className="text-sm text-[#a3a3a3] hover:text-white transition-colors">
+          <Link href="/" className="text-sm text-[#a3a3a3] hover:text-white transition-colors">
             ← 返回首页
-          </a>
+          </Link>
         </div>
       </motion.div>
     </div>

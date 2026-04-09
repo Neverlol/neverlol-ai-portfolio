@@ -1,29 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { NAV_ITEMS } from "@/constants";
 
 export function Header() {
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0D1117]"
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0D1117]">
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="flex items-center"
-        >
+        <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2 group">
             {/* 终端风格 Logo - > N_ (加宽) */}
             <div className="relative flex items-center justify-center w-10 h-8 bg-black border border-white/20 rounded-md overflow-hidden group-hover:border-white/40 transition-colors">
@@ -78,25 +67,33 @@ export function Header() {
               </Link>
             </div>
           )}
-        </motion.div>
+        </div>
 
         <nav className="flex items-center gap-1">
-          {NAV_ITEMS.map((item, index) => (
-            <motion.a
-              key={item.label}
-              href={item.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * (index + 1) + 0.3 }}
-              className="group relative flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-mono tracking-wider text-gray-500 hover:text-gray-200 hover:bg-white/5 transition-all duration-200 border border-transparent hover:border-white/10"
-            >
-              {/* 脉冲点 */}
-              <div className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-blue-500 transition-colors duration-200" />
-              {item.label}
-            </motion.a>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isRouteActive = !item.href.includes("#") && pathname === item.href;
+
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`group relative flex items-center gap-2 rounded-md border px-3 py-1.5 text-xs font-mono tracking-wider transition-all duration-200 ${
+                  isRouteActive
+                    ? "border-white/10 bg-white/5 text-gray-200"
+                    : "border-transparent text-gray-500 hover:border-white/10 hover:bg-white/5 hover:text-gray-200"
+                }`}
+              >
+                <div
+                  className={`h-1 w-1 rounded-full transition-colors duration-200 ${
+                    isRouteActive ? "bg-blue-500" : "bg-gray-600 group-hover:bg-blue-500"
+                  }`}
+                />
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </div>
-    </motion.header>
+    </header>
   );
 }

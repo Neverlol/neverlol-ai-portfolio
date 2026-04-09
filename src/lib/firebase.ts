@@ -25,7 +25,6 @@ export function getDb() {
   try {
     dbInstance = initializeFirestore(app, {
       experimentalAutoDetectLongPolling: true,
-      useFetchStreams: false,
     });
   } catch {
     dbInstance = getFirestore(app);

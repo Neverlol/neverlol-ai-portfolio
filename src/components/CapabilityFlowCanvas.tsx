@@ -11,6 +11,8 @@ import {
   Handle,
   Position,
   NodeProps,
+  Node,
+  Edge,
   MarkerType
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
@@ -182,7 +184,7 @@ const rawEdges = [
 ];
 
 // 双轨流光引擎
-export const initialEdges = rawEdges.flatMap((e: any) => {
+export const initialEdges = rawEdges.flatMap((e: (typeof rawEdges)[number]) => {
   const trackEdge = {
     ...e, id: `${e.id}-track`, animated: false, label: undefined,
     sourceHandle: e.sourceHandle || 's-bottom', targetHandle: e.targetHandle || 't-top', type: e.type || 'step',
@@ -199,8 +201,8 @@ export const initialEdges = rawEdges.flatMap((e: any) => {
 });
 
 export default function CapabilityFlowCanvas() {
-  const [nodes, setNodes, onNodesChange] = useNodesState<any>([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<any>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [loaded, setLoaded] = useState(false);
 
   // 从数据库加载配置并更新状态
@@ -208,8 +210,8 @@ export default function CapabilityFlowCanvas() {
     async function loadConfig() {
       const config = await getSandboxConfig('capability');
       if (config && config.nodes_json && config.edges_json) {
-        setNodes(config.nodes_json as any[]);
-        setEdges(config.edges_json as any[]);
+        setNodes(config.nodes_json as Node[]);
+        setEdges(config.edges_json as Edge[]);
       } else {
         // 没有数据库配置时使用初始数据
         setNodes(initialNodes);

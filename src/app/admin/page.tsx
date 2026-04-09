@@ -86,19 +86,7 @@ export default function AdminPage() {
   const [saving, setSaving] = useState(false);
   const [savedMessage, setSavedMessage] = useState("");
 
-  // 加载数据
-  useEffect(() => {
-    if (!authLoading && !user) {
-      router.push("/admin/login");
-      return;
-    }
-
-    if (user) {
-      loadData();
-    }
-  }, [user, authLoading, router]);
-
-  const loadData = async () => {
+  async function loadData() {
     setLoading(true);
     const [projectsData, logsData] = await Promise.all([
       getProjects(),
@@ -107,7 +95,23 @@ export default function AdminPage() {
     setProjects(projectsData);
     setLogs(logsData);
     setLoading(false);
-  };
+  }
+
+  // 加载数据
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push("/admin/login");
+      return;
+    }
+
+    if (user) {
+      const timer = window.setTimeout(() => {
+        void loadData();
+      }, 0);
+
+      return () => window.clearTimeout(timer);
+    }
+  }, [user, authLoading, router]);
 
   const showSavedMessage = (msg: string) => {
     setSavedMessage(msg);

@@ -12,6 +12,8 @@ import {
   Handle,
   Position,
   NodeProps,
+  Node,
+  Edge,
   MarkerType,
   EdgeProps,
   getBezierPath,
@@ -20,6 +22,19 @@ import {
 import '@xyflow/react/dist/style.css';
 import { ArrowRight } from 'lucide-react';
 import { getSandboxConfig } from '@/lib/db';
+
+type SvgLabelStyle = { fill?: string; fillOpacity?: number };
+type DecisionSubBlock = { label: string; highlight?: boolean };
+type RichNodeData = {
+  label?: string;
+  items?: string[];
+  layout?: string;
+  subBlocks?: DecisionSubBlock[];
+  highlight?: boolean;
+  width?: number;
+  align?: string;
+  isHeader?: boolean;
+};
 
 // --- 0. 流光动画边组件 (Double-Edge Track) ---
 // 双层轨道：底层暗线 + 顶层流光动画
@@ -39,6 +54,7 @@ const FlowingEdge = ({
   data
 }: EdgeProps) => {
   const edgeColor = style.stroke as string || '#3b82f6';
+  const backgroundStyle = labelBgStyle as SvgLabelStyle | undefined;
 
   // 使用 smoothstep 路径
   const [path, labelX, labelY] = getSmoothStepPath({
@@ -107,7 +123,7 @@ const FlowingEdge = ({
               width={40}
               height={16}
               rx={3}
-              fill={(labelBgStyle as any).fill || '#111'}
+              fill={backgroundStyle?.fill || '#111'}
             />
           )}
           <text
@@ -139,7 +155,7 @@ const FlowingEdgeStyles = () => (
 
 // --- 1. 万能复合工业蓝图节点 ---
 const RichDrawioNode = ({ data }: NodeProps) => {
-  const nodeData = data as unknown as { label?: string; items?: string[]; layout?: string; subBlocks?: any[]; highlight?: boolean; width?: number; align?: string; isHeader?: boolean };
+  const nodeData = data as unknown as RichNodeData;
 
   if (nodeData.isHeader) {
     return (
@@ -389,8 +405,8 @@ export const initialEdges = [
 ];
 
 export default function CampaignFlowCanvas() {
-  const [nodes, setNodes, onNodesChange] = useNodesState<any>([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<any>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [loaded, setLoaded] = useState(false);
 
   // 从数据库加载配置并更新状态
@@ -398,8 +414,8 @@ export default function CampaignFlowCanvas() {
     async function loadConfig() {
       const config = await getSandboxConfig('campaigns');
       if (config && config.nodes_json && config.edges_json) {
-        setNodes(config.nodes_json as any[]);
-        setEdges(config.edges_json as any[]);
+        setNodes(config.nodes_json as Node[]);
+        setEdges(config.edges_json as Edge[]);
       } else {
         // 没有数据库配置时使用初始数据
         setNodes(initialNodes);

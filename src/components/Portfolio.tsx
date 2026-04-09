@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Database, Route, Users, AlertTriangle, ArrowRight } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const BENTO_CASES = [
   {
@@ -56,7 +56,6 @@ const BENTO_CASES = [
 ];
 
 export function Portfolio() {
-  const router = useRouter();
   return (
     <section id="portfolio" className="py-16 px-6 relative">
       <div className="max-w-6xl mx-auto">
@@ -91,100 +90,108 @@ export function Portfolio() {
             const isLarge = item.className.includes("row-span-2");
 
             return (
-              <motion.div
+              <Link
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => router.push(item.href)}
-                className={`${item.className} group relative bg-black border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 cursor-pointer min-h-[180px]`}
+                href={item.href}
+                className={`${item.className} group relative block min-h-[180px] overflow-hidden rounded-3xl border border-white/5 bg-black transition-all duration-500 hover:border-white/20`}
               >
-                {/* 悬浮光晕 */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${item.color} rounded-full blur-[80px] -mr-32 -mt-32 opacity-20`} />
-                </div>
-
-                <div className={`relative z-10 p-8 h-full flex flex-col ${isLarge ? 'justify-center' : 'justify-between'}`}>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    {!isLarge && <h3 className="text-lg font-medium text-white/90">{item.title}</h3>}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="h-full"
+                >
+                  {/* 悬浮光晕 */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${item.color} rounded-full blur-[80px] -mr-32 -mt-32 opacity-20`} />
                   </div>
 
-                  {isLarge && (
-                    <h3 className="text-2xl md:text-3xl font-medium text-white/90 mb-6">
-                      {item.title}
-                    </h3>
-                  )}
-
-                  <div>
-                    <div className={`font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r ${item.color} pb-2 ${isLarge ? 'text-5xl md:text-7xl mb-4' : 'text-3xl mb-2'}`}>
-                      {item.metric}
-                    </div>
-                    <p className={`text-[#8b949e] ${isLarge ? 'text-lg' : 'text-sm'} mb-4`}>
-                      {item.subtext}
-                    </p>
-                    {/* 战果标签 */}
-                    {item.badges && item.badges.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {/* PipelineTeaser 步骤标签 */}
-                        {item.pipelineStep && (
-                          <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-blue-500/20 border border-blue-500/50 text-blue-400 whitespace-nowrap">
-                            → {item.pipelineStep}
-                          </span>
-                        )}
-                        {item.badges.map((badge, idx) => (
-                          <span
-                            key={idx}
-                            className={`px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-[#a3a3a3] whitespace-nowrap`}
-                          >
-                            {badge}
-                          </span>
-                        ))}
+                  <div className={`relative z-10 flex h-full flex-col p-8 ${isLarge ? 'justify-center' : 'justify-between'}`}>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:scale-110 transition-transform">
+                        <Icon className="w-6 h-6 text-white" />
                       </div>
+                      {!isLarge && <h3 className="text-lg font-medium text-white/90">{item.title}</h3>}
+                    </div>
+
+                    {isLarge && (
+                      <h3 className="text-2xl md:text-3xl font-medium text-white/90 mb-6">
+                        {item.title}
+                      </h3>
                     )}
+
+                    <div>
+                      <div className={`font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r ${item.color} pb-2 ${isLarge ? 'text-5xl md:text-7xl mb-4' : 'text-3xl mb-2'}`}>
+                        {item.metric}
+                      </div>
+                      <p className={`text-[#8b949e] ${isLarge ? 'text-lg' : 'text-sm'} mb-4`}>
+                        {item.subtext}
+                      </p>
+                      {/* 战果标签 */}
+                      {item.badges && item.badges.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {/* PipelineTeaser 步骤标签 */}
+                          {item.pipelineStep && (
+                            <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-blue-500/20 border border-blue-500/50 text-blue-400 whitespace-nowrap">
+                              → {item.pipelineStep}
+                            </span>
+                          )}
+                          {item.badges.map((badge, idx) => (
+                            <span
+                              key={idx}
+                              className={`px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-[#a3a3a3] whitespace-nowrap`}
+                            >
+                              {badge}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             );
           })}
 
           {/* 更多案例链接 - 填补右下角空位 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            onClick={() => router.push("/cases")}
-            className="col-span-1 group relative bg-black border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 cursor-pointer min-h-[180px]"
+          <Link
+            href="/cases"
+            className="col-span-1 group relative block min-h-[180px] overflow-hidden rounded-3xl border border-white/5 bg-black transition-all duration-500 hover:border-white/20"
           >
-            {/* 悬浮光晕 */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#245fff] to-[#00f0ff] rounded-full blur-[80px] -mr-32 -mt-32 opacity-15" />
-            </div>
-
-            <div className="relative z-10 p-8 h-full flex flex-col justify-between">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:scale-110 transition-transform">
-                  <ArrowRight className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-medium text-white/90">查看更多模块案例 →</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="h-full"
+            >
+              {/* 悬浮光晕 */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#245fff] to-[#00f0ff] rounded-full blur-[80px] -mr-32 -mt-32 opacity-15" />
               </div>
 
-              <div>
-                <p className="text-sm text-[#8b949e] mb-4">
-                  已上线案例、在接模块以及后续持续补充的扩展方向
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-[#a3a3a3]">
-                    持续更新中
-                  </span>
+              <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-medium text-white/90">查看更多模块案例 →</h3>
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#8b949e] mb-4">
+                    已上线案例、在接模块以及后续持续补充的扩展方向
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-[#a3a3a3]">
+                      持续更新中
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </Link>
         </div>
 
       </div>

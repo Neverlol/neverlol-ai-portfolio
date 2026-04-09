@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
+const appRoot = process.cwd();
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    webpackBuildWorker: false,
+  },
+  outputFileTracingRoot: appRoot,
+  turbopack: {
+    root: appRoot,
+  },
 };
 
 export default nextConfig;

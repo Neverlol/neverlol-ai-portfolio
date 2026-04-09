@@ -14,8 +14,8 @@ export async function signOut() {
   try {
     await firebaseSignOut(auth)
     return { success: true }
-  } catch (error: any) {
-    return { error: error.message }
+  } catch (error: unknown) {
+    return { error: error instanceof Error ? error.message : 'Sign out failed' }
   }
 }
 
@@ -24,7 +24,7 @@ export async function signIn(email: string, password: string) {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
     return { user: userCredential.user }
-  } catch (error: any) {
-    return { error: error.message }
+  } catch (error: unknown) {
+    return { error: error instanceof Error ? error.message : 'Sign in failed' }
   }
 }

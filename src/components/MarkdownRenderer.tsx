@@ -1,9 +1,10 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
+import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import { useState, useEffect } from "react";
+import { isValidElement, useEffect, useMemo, useState } from "react";
 import { Copy, Check } from "lucide-react";
 
 interface Heading {
@@ -64,8 +65,8 @@ function flattenText(node: React.ReactNode): string {
   if (typeof node === 'string') return node;
   if (typeof node === 'number') return String(node);
   if (Array.isArray(node)) return node.map(flattenText).join('');
-  if (node && typeof node === 'object' && 'props' in node && node.props) {
-    return flattenText((node as any).props.children);
+  if (isValidElement<{ children?: React.ReactNode }>(node)) {
+    return flattenText(node.props.children);
   }
   return '';
 }
@@ -207,22 +208,25 @@ function TableOfContents({ headings, activeId }: { headings: Heading[]; activeId
 }
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeHeading, setActiveHeading] = useState("");
+  const headings = useMemo(() => {
+    if (!content) return [];
 
-  useEffect(() => {
-    if (!content) return;
     const headingRegex = /^(#{2,3})\s+(.+)$/gm;
     const extracted: Heading[] = [];
-    let match;
+    let match: RegExpExecArray | null;
+
     while ((match = headingRegex.exec(content)) !== null) {
       const level = match[1].length;
       const text = match[2].trim();
-      const id = slugify(text);
-      extracted.push({ id, text, level });
+      extracted.push({ id: slugify(text), text, level });
     }
-    setHeadings(extracted);
-    setActiveHeading(extracted[0]?.id || "");
+
+    return extracted;
+  }, [content]);
+
+  useEffect(() => {
+    if (headings.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -234,19 +238,18 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
     );
 
     const timer = setTimeout(() => {
-      extracted.forEach((h) => {
+      headings.forEach((h) => {
         const el = document.getElementById(h.id);
         if (el) observer.observe(el);
       });
     }, 150);
 
     return () => { observer.disconnect(); clearTimeout(timer); };
-  }, [content]);
+  }, [headings]);
 
   // Custom components
-  const components = {
-    code(props: any) {
-      const { className, children, node, ...rest } = props;
+  const components: Components = {
+    code({ className, children, ...rest }) {
       const isInline = !className;
 
       if (isInline) {
@@ -260,18 +263,18 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
       return <CodeBlock className={className}>{children}</CodeBlock>;
     },
 
-    h2(props: any) {
+    h2(props) {
       const { children, ...rest } = props;
       return <h2 id={slugify(String(children))} {...rest}>{children}</h2>;
     },
-    h3(props: any) {
+    h3(props) {
       const { children, ...rest } = props;
       return <h3 id={slugify(String(children))} {...rest}>{children}</h3>;
     },
 
-    a(props: any) {
+    a(props) {
       const { href, children, ...rest } = props;
-      if (href && isYouTubeUrl(href)) {
+      if (typeof href === "string" && isYouTubeUrl(href)) {
         const childText = String(children).toLowerCase().trim();
         if (childText === 'youtube') {
           return <YouTubeEmbed url={href} />;
@@ -280,8 +283,8 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
       return <a href={href} {...rest} className="text-[#58a6ff] hover:underline">{children}</a>;
     },
 
-    p(props: any) {
-      const { node, children, ...rest } = props;
+    p(props) {
+      const { children, ...rest } = props;
       return <div className="mb-4 leading-relaxed text-[#c9d1d9] my-5" {...rest}>{children}</div>;
     },
   };
@@ -300,6 +303,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         prose-img:rounded-xl prose-img:border prose-img:border-white/10
         prose-strong:text-white prose-hr:border-white/10"
       >
+        <TableOfContents headings={headings} activeId={activeHeading || headings[0]?.id || ""} />
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeHighlight]}

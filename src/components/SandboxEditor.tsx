@@ -64,6 +64,8 @@ type NodeData = {
   subBlocks?: { label: string; highlight?: boolean }[];
 };
 
+type SvgLabelStyle = { fill?: string; fillOpacity?: number };
+
 // ==================== 通用可编辑节点组件 ====================
 const EditableNode = ({ data, id, selected }: NodeProps) => {
   const nodeData = data as unknown as NodeData;
@@ -196,7 +198,9 @@ const GroupNode = ({ data, selected }: NodeProps) => {
       style={{
         width: groupData.width,
         height: groupData.height,
-        border: `1.5px dashed ${groupData.borderColor || '#444'}` as any,
+        borderWidth: '1.5px',
+        borderStyle: 'dashed',
+        borderColor: groupData.borderColor || '#444',
         backgroundColor: groupData.bgColor || 'rgba(17, 17, 17, 0.4)'
       }}
     >
@@ -241,6 +245,7 @@ const FlowingEdge = ({
   data
 }: EdgeProps) => {
   const edgeColor = style.stroke as string || '#3b82f6';
+  const backgroundStyle = labelBgStyle as SvgLabelStyle | undefined;
 
   const [path, labelX, labelY] = getSmoothStepPath({
     sourceX,
@@ -304,7 +309,7 @@ const FlowingEdge = ({
               width={40}
               height={16}
               rx={3}
-              fill={(labelBgStyle as any).fill || '#111'}
+              fill={backgroundStyle?.fill || '#111'}
             />
           )}
           <text
@@ -365,8 +370,8 @@ interface SandboxEditorProps {
 
 function SandboxEditorInner({ configId, initialNodes = [], initialEdges = [], name, nodeTypes: customNodeTypes, edgeTypes: customEdgeTypes }: SandboxEditorProps) {
   // 不使用初始值，让 useEffect 加载完成后再渲染，避免闪烁
-  const [nodes, setNodes, onNodesChange] = useNodesState<any>([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<any>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
   const [selectedEdge, setSelectedEdge] = useState<Edge | null>(null);
   const [saving, setSaving] = useState(false);
@@ -397,8 +402,8 @@ function SandboxEditorInner({ configId, initialNodes = [], initialEdges = [], na
         const config = await getSandboxConfig(configId);
         if (config && config.nodes_json && config.edges_json && (config.nodes_json as unknown[]).length > 0) {
           // 数据库有配置，使用数据库的数据
-          setNodes(config.nodes_json as any[]);
-          setEdges(config.edges_json as any[]);
+          setNodes(config.nodes_json as Node[]);
+          setEdges(config.edges_json as Edge[]);
         } else {
           // 数据库没有配置，使用传入的初始数据
           setNodes(initialNodes);

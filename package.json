@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "preview": "next build && next start",
     "watch": "node scripts/dev-watch.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint src --cache --cache-strategy content"
   },
   "dependencies": {
     "@hisma/server-puppeteer": "^0.6.5",
